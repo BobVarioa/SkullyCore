@@ -5,6 +5,7 @@ export class Task extends Game.buffType {
     // Todo : allow the user to dismiss task if dismissable is set to true or has open sesame
 
     // Todo : Add buff dismissal to user when open sesame is enabled for all buffs
+    
 }
 /*
 name 

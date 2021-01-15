@@ -18,6 +18,7 @@ import {
 } from "./rifts"
 
 import {
+    TopBarMenuWidget,
     BarWidget
 } from "./bars"
 
@@ -42,9 +43,17 @@ const SkullyCore = {
     PrestigePage,
     RiftUpgrade,
     PagedHeavenlyUpgrade,
+    currentPage: "vanilla",
+    pages: {"vanilla": Game.PrestigeUpgrades} as {[pageid: string]: Game.HeavenlyUpgrade[]},
 
     // Injecting into bars to add stuff (ex. sugar lumps)
-    BarWidget,
+    TopBarMenuWidget,
+    BarWidgets: {
+        TopBar: {
+            currentPos: 12,
+            Bars: [] as TopBarMenuWidget[]
+        }
+    },
 
     // Full screen cosmetic effects
     Effect,
@@ -54,8 +63,6 @@ const SkullyCore = {
 
     // OnLoad
     onLoad: [] as (() => void)[],
-    currentPage: "vanilla",
-    pages: {"vanilla": Game.PrestigeUpgrades} as {[pageid: string]: Game.HeavenlyUpgrade[]}
 }
 
 declare global {
@@ -68,5 +75,6 @@ window.SkullyCore = SkullyCore
 export default SkullyCore
 export { 
     CrateLike, 
-    TagConditional 
+    TagConditional,
+    BarWidget
 }

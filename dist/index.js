@@ -71,15 +71,19 @@
 	    __extends(AdvancedAchievement, _super);
 	    /**
 	     * Creates a achievement with a few utility features.
-	     * @param {string} name The name of the achievement
-	     * @param {string} desc The description of it
-	     * @param {Game.Icon} icon The icon for it
+	     * @param name The name of the achievement
+	     * @param desc The description of it
+	     * @param icon The icon for it
 	     */
 	    function AdvancedAchievement(name, desc, icon) {
 	        return _super.call(this, name, desc, icon) || this;
 	    }
 	    return AdvancedAchievement;
 	}(dist.Achievement));
+	/**
+	 * An class to add your own credits to your mod
+	 * @class
+	 */
 	var AuthorAchievement = /** @class */ (function (_super) {
 	    __extends(AuthorAchievement, _super);
 	    /**
@@ -107,23 +111,64 @@
 	        return false;
 	    }
 	});
+	/**
+	 * An extended Upgrade class that add a few utility features
+	 * @class
+	 */
 	var AdvancedUpgrade = /** @class */ (function (_super) {
 	    __extends(AdvancedUpgrade, _super);
+	    /**
+	     * Creates a AdvancedUpgrade
+	     * @param name The name of your upgrade
+	     * @param desc Your upgrade's description
+	     * @param price The price of your upgrade
+	     * @param icon Your upgrade's icon
+	     * @param buyFunc A function that gets called when your upgrade is bought
+	     */
 	    function AdvancedUpgrade(name, desc, price, icon, buyFunc) {
 	        return _super.call(this, name, desc, price, icon, buyFunc) || this;
 	    }
 	    return AdvancedUpgrade;
 	}(dist.Upgrade));
+	/**
+	 * An extended Heavenly Upgrade class that add a few utility features
+	 * @class
+	 */
 	var AdvancedHeavenlyUpgrade = /** @class */ (function (_super) {
 	    __extends(AdvancedHeavenlyUpgrade, _super);
+	    /**
+	     * Creates a AdvancedHeavenlyUpgrade.
+	     * @param name The name of the heavenly upgrade
+	     * @param desc The heavenly upgrade's description
+	     * @param price The price of the heavenly upgrade
+	     * @param icon The icon of your heavenly upgrade
+	     * @param position The position of the heavenly upgrade on screen, (-30, -30) is the origin
+	     * @param parents Your heavenly upgrade's parents
+	     * @param buyFunc A function that gets called when buying your heavenly upgrade
+	     */
 	    function AdvancedHeavenlyUpgrade(name, desc, price, icon, position, parents, buyFunc) {
 	        return _super.call(this, name, desc, price, icon, [position[0], position[1]], parents, buyFunc) || this;
 	    }
 	    return AdvancedHeavenlyUpgrade;
 	}(dist.HeavenlyUpgrade));
 
+	/**
+	 * A class that adds a Heavenly Upgrade that is only visble if it's page is selected
+	 * @class
+	 */
 	var PagedHeavenlyUpgrade = /** @class */ (function (_super) {
 	    __extends(PagedHeavenlyUpgrade, _super);
+	    /**
+	     * Creates a PagedHeavenlyUpgrade.
+	     * @param name The name of the heavenly upgrade
+	     * @param desc The heavenly upgrade's description
+	     * @param price The price of the heavenly upgrade
+	     * @param position The position of the heavenly upgrade on screen, (-30, -30) is the origin
+	     * @param page The page's id that denotes when your heavenly upgrade will be visable
+	     * @param icon The icon of your heavenly upgrade
+	     * @param parents Your heavenly upgrade's parents
+	     * @param buyFunc A function that gets called when buying your heavenly upgrade
+	     */
 	    function PagedHeavenlyUpgrade(name, desc, price, position, page, icon, parents, buyFunc) {
 	        var _this = _super.call(this, name, desc, price, icon, position, parents, buyFunc) || this;
 	        if (typeof window.SkullyCore.pages[page] === "undefined")
@@ -135,11 +180,29 @@
 	    }
 	    return PagedHeavenlyUpgrade;
 	}(AdvancedHeavenlyUpgrade));
+	/**
+	 * A class that allows you to transfer yourself to another page. Note : You probably shouldn't define this yourself unless you know what you're doing
+	 * @class
+	 */
 	var RiftUpgrade = /** @class */ (function (_super) {
 	    __extends(RiftUpgrade, _super);
+	    /**
+	     * Creates a RiftUpgrade.
+	     * @param name The name of the heavenly upgrade
+	     * @param desc The heavenly upgrade's description
+	     * @param position The position of the heavenly upgrade on screen, (-30, -30) is the origin
+	     * @param goto
+	     * @param back
+	     * @param icon The icon of your heavenly upgrade
+	     * @param parents Your heavenly upgrade's parents
+	     * @param buyFunc A function that gets called when buying your heavenly upgrade
+	     */
 	    function RiftUpgrade(name, desc, position, goto, back, icon, parents, buyFunc) {
 	        if (icon === void 0) { icon = [0, 0]; }
 	        var _this = _super.call(this, name, desc, 0, position, back, icon, parents, buyFunc) || this;
+	        /**
+	         * Don't change this. This is for checking if the rift is a rift when going through tags.
+	         */
 	        _this.isRift = true;
 	        _this.activateFunction = function () {
 	            window.SkullyCore.currentPage = _this.goto;
@@ -148,7 +211,7 @@
 	        _this.exclude = {
 	            all: true
 	        };
-	        _this.pageid = back;
+	        _this.back = back;
 	        _this.noTags = true;
 	        _this.unlocked = 1;
 	        _this.bought = 1;
@@ -159,6 +222,9 @@
 	    return RiftUpgrade;
 	}(PagedHeavenlyUpgrade));
 	new TagCondition("Rift", "#9700cf", function (me) {
+	    /*
+	        Why do I not just change the pool? Because It breaks HUs, why you ask? Because Orteil that's why.
+	    */
 	    if (typeof me.isRift !== "undefined") {
 	        return true;
 	    }
@@ -166,15 +232,77 @@
 	        return false;
 	    }
 	});
+	/**
+	 *
+	 * @class
+	 */
 	var PrestigePage = /** @class */ (function () {
-	    function PrestigePage(name, id, parents, icon) {
+	    /**
+	     * Creates a PrestigePage
+	     * @param name The page's name in a sentence
+	     * @param id The internal id of the page
+	     * @param parents Your Goto Rift's parents (vanilla page)
+	     * @param gotoicon Your Goto Rift's icon
+	     * @param backicon Your Back Rift's icon
+	     */
+	    function PrestigePage(name, id, parents, gotoicon, backicon) {
 	        this.name = name;
 	        this.id = id;
-	        this.Rift = new RiftUpgrade("Goto " + this.name + "...", "Goto a new universe of possiblities. Don't worry you can come back.", [-30, -130], this.id, "vanilla", icon, parents);
-	        this.VanillaRift = new RiftUpgrade("Goto Vanilla...", "Takes you back to the vanilla prestige tree.", [-30, -30], "vanilla", this.id, icon);
+	        this.Rift = new RiftUpgrade("Goto " + this.name + "...", "Goto a new universe of possiblities. Don't worry you can come back.", [-30, -130], this.id, "vanilla", gotoicon, parents);
+	        this.VanillaRift = new RiftUpgrade("Goto Vanilla...", "Takes you back to the vanilla prestige tree.", [-30, -30], "vanilla", this.id, backicon);
 	    }
 	    return PrestigePage;
 	}());
+
+	// Todo : find a resonable way for a mod to choose which bar to inject into 
+	// Todo : handle multiple widgets on the same bar 
+	// Todo : this one actually needs dom manipulation 
+	// Todo : toggle, and menu
+	// Todo : have a option to add all the switches here, maybe. 
+	// Todo : hide widgets in a similar fashion to vaulting 
+	// Todo : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	var TopBarMenuWidget = /** @class */ (function () {
+	    function TopBarMenuWidget(id, icon, tooltip) {
+	        this.id = id;
+	        this.icon = icon;
+	        this.tooltip = tooltip;
+	        window.SkullyCore.BarWidgets.TopBar.Bars.push(this);
+	    }
+	    TopBarMenuWidget.prototype.getDiv = function () {
+	        if (typeof this.onclick !== "undefined" && this.onclick.toString().includes("\"")) {
+	            throw new Error("One of your onclick functions in a TopBarMenuWidget has quote in it, please remove it");
+	        }
+	        if (typeof this.tooltip !== "undefined" && this.tooltip.toString().includes("\"")) {
+	            throw new Error("One of your tooltip functions in a TopBarMenuWidget has quote in it, please remove it");
+	        }
+	        window.SkullyCore.BarWidgets.TopBar.currentPos += 48;
+	        return "\n        <div class=\"top_bar\" style=\"left:" + window.SkullyCore.BarWidgets.TopBar.currentPos + "px;\" id=\"" + this.id + "\" " + (typeof this.onclick !== "undefined" ? "onclick=\"" + this.onclick.toString() + "\"" : "") + " onmouseout=\"Game.tooltip.shouldHide=1;\" onmouseover=\"Game.tooltip.dynamic=1;Game.tooltip.draw(this,function(){return " + this.tooltip.toString().replace(new RegExp("\""), "'") + "();},'bottom');Game.tooltip.wobble();\"> \n            <div id=\"" + this.id + "Icon\" class=\"baseIcon " + (typeof this.icon[2] !== "undefined" ? '' : 'usesIcon') + "\" style=\"" + (typeof this.icon[2] !== "undefined" ? 'background-image:url(' + this.icon[2] + ');' : '') + "background-position:" + -this.icon[0] * 48 + "px " + -this.icon[1] * 48 + "px;\"></div>\n        </div>\n        ";
+	    };
+	    return TopBarMenuWidget;
+	}());
+
+	var Effect = /** @class */ (function () {
+	    function Effect() {
+	    }
+	    return Effect;
+	}());
+
+	var Task = /** @class */ (function (_super) {
+	    __extends(Task, _super);
+	    function Task() {
+	        return _super !== null && _super.apply(this, arguments) || this;
+	    }
+	    return Task;
+	}(Game.buffType));
+	/*
+	name
+	desc
+	icon
+	check
+	finish
+	dismissable?
+	time?
+	*/
 
 	// Copied from Cppkies 2 : Electric Boogaloo
 	var SkullyCore = {
@@ -189,13 +317,24 @@
 	    PrestigePage: PrestigePage,
 	    RiftUpgrade: RiftUpgrade,
 	    PagedHeavenlyUpgrade: PagedHeavenlyUpgrade,
+	    currentPage: "vanilla",
+	    pages: { "vanilla": Game.PrestigeUpgrades },
+	    // Injecting into bars to add stuff (ex. sugar lumps)
+	    TopBarMenuWidget: TopBarMenuWidget,
+	    BarWidgets: {
+	        TopBar: {
+	            currentPos: 24,
+	            Bars: []
+	        }
+	    },
+	    // Full screen cosmetic effects
+	    Effect: Effect,
+	    // Task Effects (aka. quests), tasks that have a completion req and give a reward when completed 
+	    Task: Task,
 	    // OnLoad
 	    onLoad: [],
-	    currentPage: "vanilla",
-	    pages: { "vanilla": Game.PrestigeUpgrades }
 	};
 	window.SkullyCore = SkullyCore;
-	window.SkullyCore.TagConditions = SkullyCore.TagConditions;
 
 	dist.onLoad.push(function () {
 	    // Author Upgrade
@@ -206,9 +345,6 @@
 	        ["if (neuromancy)", "if (neuromancy && (typeof me.noNeuromancy !== \"undefined\" ? !me.noNeuromancy : true))", "replace"]
 	    ]);
 	    Game.crateTooltip = dist.injectCodes(Game.crateTooltip, [
-	        /*// Add author tag
-	        [`if (me.pool=='shadow') tags.push('Shadow Achievement','#9700cf');`, `
-	        else if (me.pool=='authors') tags.push('Author','#ffffff');`, `after`], */
 	        // Tag Logic
 	        ["var tagsStr='';", "\n        if (typeof me.noTags !== \"undefined\" ? me.noTags : false) tags = []\n        if (typeof me.tags !== \"undefined\") {\n            for(let i in me.tags) {\n                tags.concat(me.tags[i]);\n            }\n        }\n        if (typeof window.SkullyCore !== \"undefined\") window.SkullyCore.TagConditions.forEach((element) => {\n            if(typeof element[2] === \"function\") {\n                if(element[2](me)) tags.push(element[0], element[1]) \n            } else if (typeof element[2] === \"boolean\") {\n                if(element[2]) tags.push(element[0], element[1])\n            } else {\n                console.warn(\"Malformed TagCondition\")\n            }\n        })\n        ", "before"]
 	    ]);
@@ -245,11 +381,21 @@
 	        ["achievementsOwnedOther++;", " if ((typeof me.exclude === \"undefined\" ? true : typeof me.exclude.shadow === \"undefined\"  ? true : !me.exclude.shadow)  || (typeof me.exclude === \"undefined\" ? true : typeof me.exclude.all === \"undefined\"  ? false : !me.exclude.all)) ", "before"],
 	    ]);
 	    Game.BuildAscendTree = dist.injectCodes(Game.BuildAscendTree, [
-	        ["for (var i in Game.PrestigeUpgrades)", "for (var i in window.SkullyCore.pages[window.SkullyCore.currentPage])", "replace"]
+	        ["for (var i in Game.PrestigeUpgrades)", "for (var i in window.SkullyCore.pages[window.SkullyCore.currentPage])", "replace"],
+	        ["var str='';", "var currentHeavenlyUpgrades = window.SkullyCore.pages[window.SkullyCore.currentPage];\n", "before"],
+	        ["Game.PrestigeUpgrades", "currentHeavenlyUpgrades", "replace"]
 	    ]);
+	    document.getElementsByTagName("head")[0].innerHTML += "\n    <style type=\"text/css\">\n        .top_bar { \n            width:32px;\n            height:32px;\n            position:absolute;\n            bottom:-12px;\n            z-index:10000;\n            filter:drop-shadow(0px 3px 2px #000);\n            -webkit-filter:drop-shadow(0px 3px 2px #000);\n        }\n        .top_bar:hover {\n            bottom:-10px\n        }\n        .baseIcon {\n            width:48px;\n            height:48px;\n            position:absolute;\n            left:-8px;\n            top:-8px;\n            pointer-events:none;\n        }\n    </style>\n    ";
 	    SkullyCore.onLoad.forEach(function (element) {
 	        element();
 	    });
+	    // TopBars
+	    var TopBars = document.getElementById("comments");
+	    SkullyCore.BarWidgets.TopBar.Bars.forEach(function (value, index, array) {
+	        TopBars.innerHTML += value.getDiv();
+	    });
+	});
+	SkullyCore.onLoad.push(function () {
 	    new SkullyCore.AuthorAchievement("Orteil & Opti", "The people who made this awesome game!", [17, 5, ""]);
 	    new SkullyCore.AuthorAchievement("TheGLander", "The developer of Cppkies and the CCRepo (W.I.P) ", [0, 0]);
 	    new SkullyCore.AuthorAchievement("TheSkullyKO", "The ideas guy and artist for SkullyCore and other Skully mods", [0, 1]);
@@ -315,8 +461,11 @@
 	    */
 	    //#endregion
 	    console.log("SkullyCore Loaded!");
-	    var testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"]);
-	    new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, -230], "test", [0, 0], [testPage.VanillaRift.id]);
+	    //let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
+	    //new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
+	    new SkullyCore.TopBarMenuWidget("test", [0, 0], function () {
+	        return 'test';
+	    });
 	});
 
 })));

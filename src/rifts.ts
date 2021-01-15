@@ -126,9 +126,4 @@ export class PrestigePage {
     }
 
     // TODO : Idleverse lore or something
-    // TODO : Fix the weird bugs
-    // - No hus showing up (except season switcher and persistant memory) on the test page but are all in the test array (season switcher and persistant memory are not in the test array)
-    // All injects are being preformed correctly
-    // And the pages array is correctly populated
-    // aaaaaaaaaaaaaaaaaaaa
 }

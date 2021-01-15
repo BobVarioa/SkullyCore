@@ -89,12 +89,48 @@ Cppkies.onLoad.push(() => {
     ])
 
     Game.BuildAscendTree = Cppkies.injectCodes(Game.BuildAscendTree, [
-        [`for (var i in Game.PrestigeUpgrades)`, `for (var i in window.SkullyCore.pages[window.SkullyCore.currentPage])`, "replace"]
+        [`for (var i in Game.PrestigeUpgrades)`, `for (var i in window.SkullyCore.pages[window.SkullyCore.currentPage])`, "replace"],
+        [`var str='';`, `var currentHeavenlyUpgrades = window.SkullyCore.pages[window.SkullyCore.currentPage];\n`, "before"], 
+        [`Game.PrestigeUpgrades`, `currentHeavenlyUpgrades`, "replace"]
     ])
+
+    document.getElementsByTagName("head")[0].innerHTML += `
+    <style type="text/css">
+        .top_bar { 
+            width:32px;
+            height:32px;
+            position:absolute;
+            bottom:-12px;
+            z-index:10000;
+            filter:drop-shadow(0px 3px 2px #000);
+            -webkit-filter:drop-shadow(0px 3px 2px #000);
+        }
+        .top_bar:hover {
+            bottom:-10px
+        }
+        .baseIcon {
+            width:48px;
+            height:48px;
+            position:absolute;
+            left:-8px;
+            top:-8px;
+            pointer-events:none;
+        }
+    </style>
+    `;
 
     SkullyCore.onLoad.forEach(element => {
         element()
     });
+
+    // TopBars
+    let TopBars = document.getElementById("comments")
+    SkullyCore.BarWidgets.TopBar.Bars.forEach((value, index, array) => {
+        TopBars.innerHTML += value.getDiv();
+    })
+})
+
+SkullyCore.onLoad.push(()=>{
     new SkullyCore.AuthorAchievement("Orteil & Opti", "The people who made this awesome game!", [17, 5, ""])
 	new SkullyCore.AuthorAchievement("TheGLander", "The developer of Cppkies and the CCRepo (W.I.P) ", [0, 0])
 	new SkullyCore.AuthorAchievement("TheSkullyKO", "The ideas guy and artist for SkullyCore and other Skully mods", [0, 1])
@@ -160,6 +196,11 @@ Cppkies.onLoad.push(() => {
     */
     //#endregion
     console.log("SkullyCore Loaded!")
-    let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
-    new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
+    
+    //let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
+    //new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
+
+    new SkullyCore.TopBarMenuWidget("test", [0, 0], ()=>{
+        return 'test'
+    })
 })
