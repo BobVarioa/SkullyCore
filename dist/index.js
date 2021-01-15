@@ -323,7 +323,7 @@
 	    TopBarMenuWidget: TopBarMenuWidget,
 	    BarWidgets: {
 	        TopBar: {
-	            currentPos: 24,
+	            currentPos: 12,
 	            Bars: []
 	        }
 	    },
@@ -390,10 +390,14 @@
 	        element();
 	    });
 	    // TopBars
-	    var TopBars = document.getElementById("comments");
+	    var TopBars = l("comments");
 	    SkullyCore.BarWidgets.TopBar.Bars.forEach(function (value, index, array) {
 	        TopBars.innerHTML += value.getDiv();
 	    });
+	    l("prefsButton").setAttribute("onclick", "Game.ShowMenu('prefs');");
+	    l("statsButton").setAttribute("onclick", "Game.ShowMenu('stats');");
+	    l("logButton").setAttribute("onclick", "Game.ShowMenu('log');");
+	    l("legacyButton").setAttribute("onclick", "PlaySound('snd/tick.mp3');Game.Ascend();");
 	});
 	SkullyCore.onLoad.push(function () {
 	    new SkullyCore.AuthorAchievement("Orteil & Opti", "The people who made this awesome game!", [17, 5, ""]);

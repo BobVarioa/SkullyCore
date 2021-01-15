@@ -118,16 +118,22 @@ Cppkies.onLoad.push(() => {
         }
     </style>
     `;
+    
 
     SkullyCore.onLoad.forEach(element => {
         element()
     });
 
     // TopBars
-    let TopBars = document.getElementById("comments")
+    let TopBars = l("comments")
     SkullyCore.BarWidgets.TopBar.Bars.forEach((value, index, array) => {
         TopBars.innerHTML += value.getDiv();
     })
+
+    l("prefsButton").setAttribute("onclick","Game.ShowMenu('prefs');")
+    l("statsButton").setAttribute("onclick","Game.ShowMenu('stats');")
+    l("logButton").setAttribute("onclick","Game.ShowMenu('log');")
+    l("legacyButton").setAttribute("onclick","PlaySound('snd/tick.mp3');Game.Ascend();")
 })
 
 SkullyCore.onLoad.push(()=>{
