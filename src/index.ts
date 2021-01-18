@@ -133,15 +133,19 @@ Cppkies.onLoad.push(() => {
     </style>
     `;
     
-
     SkullyCore.onLoad.forEach((element) => {
         element()
     });
 
+    function createElementFromHTML(htmlString) {
+        var div = document.createElement('div');
+        div.innerHTML = htmlString.trim();
+        return div.firstChild; 
+    }
     // TopBars
     let TopBar = l("comments")
     SkullyCore.BarWidgets.TopBar.Bars.forEach((value) => {
-        TopBar.innerHTML += value.getDiv();
+        TopBar.appendChild(createElementFromHTML(value.getDiv()));
     })
 
     Game.ObjectsById.forEach((object) => {
@@ -150,7 +154,7 @@ Cppkies.onLoad.push(() => {
         if(building !== null) {
             if (typeof SkullyCore.BarWidgets.BuildingBar.Bars[object.name] === "undefined") SkullyCore.BarWidgets.BuildingBar.Bars[object.name] = []
             SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
-                building.innerHTML += bar.getDiv();
+                building.appendChild(createElementFromHTML(bar.getDiv()));
             })
         }
     })
@@ -159,6 +163,17 @@ Cppkies.onLoad.push(() => {
     l("statsButton").setAttribute("onclick","Game.ShowMenu('stats');")
     l("logButton").setAttribute("onclick","Game.ShowMenu('log');")
     l("legacyButton").setAttribute("onclick","PlaySound('snd/tick.mp3');Game.Ascend();")
+
+    Cppkies.on("check", () => {
+        if(typeof SkullyCore.ActiveTasks !== "undefined" && SkullyCore.ActiveTasks.length !== 0) {
+            SkullyCore.ActiveTasks.forEach((value, index) => {
+                if (value.check()) {
+                    value.finish();
+                    delete SkullyCore.ActiveTasks[index];
+                }
+            });
+        } 
+    })
 })
 
 SkullyCore.onLoad.push(()=>{
@@ -166,7 +181,7 @@ SkullyCore.onLoad.push(()=>{
 	new SkullyCore.AuthorAchievement("TheGLander", "The developer of Cppkies and the CCRepo (W.I.P) ", [0, 0])
 	new SkullyCore.AuthorAchievement("TheSkullyKO", "The ideas guy and artist for SkullyCore and other Skully mods", [0, 1])
     let BobCheevo = new SkullyCore.AuthorAchievement("Bob", "The developer that made this menu for authors and hopefully will work on much more.", [0, 2])
-    //#region Spoliers for tiny minigame, Hide it if you don't want to be spolied!!!!! (Currenly unavailable tho)
+    //#region Spoliers for tiny minigame, Hide it if you don't want to be spolied!!!!! (Currenly unavailable tho) I might implement it later
     /*
     declare global {
 	    interface Window {
@@ -231,7 +246,6 @@ SkullyCore.onLoad.push(()=>{
     /* Examples 
     let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
     new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
-    */
 
     new SkullyCore.TopBarMenuWidget("test", [0, 0], ()=>{
         return 'test'
@@ -243,4 +257,5 @@ SkullyCore.onLoad.push(()=>{
     }).onclick=()=>{
         console.log('Test2')
     }
+    */
 })

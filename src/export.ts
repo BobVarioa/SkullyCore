@@ -23,9 +23,9 @@ import {
     BarWidget
 } from "./bars"
 
-import {
-    Effect
-} from "./cosmetics"
+//import {
+    //Effect
+// from "./cosmetics"
 
 import {
     Task
@@ -62,10 +62,11 @@ const SkullyCore = {
     },
 
     // Full screen cosmetic effects
-    Effect,
+    //Effect,
 
     // Task Effects (aka. quests), tasks that have a completion req and give a reward when completed 
     Task,
+    ActiveTasks: [] as Task[], 
 
     // OnLoad
     onLoad: [] as (() => void)[],

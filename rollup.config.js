@@ -1,6 +1,6 @@
 import babel from "rollup-plugin-babel"
 import analyze from "rollup-plugin-analyzer"
-//import minify from "rollup-plugin-babel-minify"
+import minify from "rollup-plugin-babel-minify"
 import typescript from "rollup-plugin-typescript2"
 import resolve from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
@@ -24,10 +24,9 @@ export default {
 		analyze({
 			summaryOnly: true,
 		}),
-		/* Just for dev stuff
 		minify({
 			comments: false,
-		}),*/
+		}),
 		commonjs(),
 	],
 }

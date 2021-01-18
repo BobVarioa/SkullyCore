@@ -1,10 +1,3 @@
-// Todo : find a resonable way for a mod to choose which bar to inject into 
-// Todo : handle multiple widgets on the same bar 
-// Todo : this one actually needs dom manipulation 
-// Todo : toggle, and menu
-// Todo : have a option to add all the switches here, maybe. 
-// Todo : hide widgets in a similar fashion to vaulting 
-// Todo : aaaaaaaaaaaaaaaaaaaaaaaaaa
 export class TopBarMenuWidget {
     public id: string;
     public icon: Game.Icon;
@@ -60,7 +53,10 @@ export class BuildingBarMenuWidget {
         this.icon = icon;
         this.building = building;
         this.tooltip = tooltip;
-        if (typeof window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building] === "undefined") window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building] = [];
+        if (typeof window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building] === "undefined") {
+            window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building] = [];
+            window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] = -36; 
+        }
         window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building].push(this)
     }
     
@@ -73,11 +69,7 @@ export class BuildingBarMenuWidget {
             console.warn("One of your tooltip functions in a TopBarMenuWidget has double quote in it, please remove it");
             return "";
         }
-        if (typeof window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] !== "undefined") {
-            window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building]+=48
-        } else {
-            window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] = 12;
-        }
+        window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building]+=48;
         return `
         <div class="building_bar" style="left:${window.SkullyCore.BarWidgets.TopBar.currentPos}px;" id="${this.id}BuildingBarMenu" ${typeof this.onclick !== "undefined" ? `onclick="${"let " + this.id + "BuildingBarMenuIconOnClick = " + this.onclick.toString().replace("\"", "'") + "();"}"` : ""} ${ typeof this.tooltip !== "undefined" ? `onmouseout="Game.tooltip.shouldHide=1;" onmouseover="Game.tooltip.dynamic=1;Game.tooltip.draw(this,function(){return ${this.tooltip.toString().replace("\"", "'")}();},'bottom');Game.tooltip.wobble();"` : ""}> 
             <div id="${this.id}BuildingBarMenuIcon" class="baseIcon ${typeof this.icon[2] !== "undefined"?'':'usesIcon'}" style="${typeof this.icon[2] !== "undefined"?'background-image:url('+this.icon[2]+');':''}background-position:${-this.icon[0]*48}px ${-this.icon[1]*48}px;"></div>
@@ -87,3 +79,4 @@ export class BuildingBarMenuWidget {
 }
 
 export type BarWidget = (TopBarMenuWidget | BuildingBarMenuWidget);
+// Todo : hide widgets in a similar fashion to vaulting 

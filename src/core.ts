@@ -1,7 +1,7 @@
 import { CommonValue, injectCode, injectCodes } from "cppkies/dist/helpers";
 import Cppkies from "cppkies"
 
-// I really did not wanna put any here but I kinda had to
+// I really did not wanna put any here but I kinda had to because of the overwhelming amount of crate-likes I make and probably other mods will make.
 export type CrateLike = (Game.Upgrade | Game.HeavenlyUpgrade | Game.Achievement |  AdvancedUpgrade | AdvancedHeavenlyUpgrade | AdvancedAchievement | any )
 
 export interface ExcludeTypes {
@@ -195,5 +195,18 @@ export class AdvancedHeavenlyUpgrade extends Cppkies.HeavenlyUpgrade {
      */
 	constructor(name: string, desc: CommonValue<string>, price: CommonValue<number>, icon: CommonValue<Game.Icon>, position: [number, number], parents?: (string | number)[], buyFunc?: () => void) {
 		super(name, desc, price, icon, [position[0], position[1]], parents, buyFunc);
+	}
+}
+
+export interface AdvancedBuffInterface extends Game.Buff{
+	timeless?: boolean;
+	dismissable?: boolean;
+}
+export class AdvancedBuff extends Game.buffType {
+	public timeless: boolean;
+	public dismissable: boolean;
+
+	constructor(name: string, func: (time: number, arg1?: number, arg2?: number, arg3?: number) => AdvancedBuffInterface) {
+		super(name, func)
 	}
 }
