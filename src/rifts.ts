@@ -56,7 +56,7 @@ export class RiftUpgrade extends PagedHeavenlyUpgrade {
      * @param parents Your heavenly upgrade's parents
      * @param buyFunc A function that gets called when buying your heavenly upgrade
      */
-    constructor(name: string, desc: CommonValue<string>, position: [number, number], goto: string, back: string, icon: CommonValue<Game.Icon> = [0, 0], parents?: (string | number)[], buyFunc?: () => void)  {
+    constructor(name: string, desc: CommonValue<string>, position: [number, number], goto: string, back: string, icon: CommonValue<Game.Icon> = [1, 2, "https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png"], parents?: (string | number)[], buyFunc?: () => void)  {
         super(name, desc, 0, position, back, icon, parents, buyFunc);
         this.exclude = {
             all: true

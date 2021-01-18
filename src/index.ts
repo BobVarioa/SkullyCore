@@ -133,6 +133,7 @@ Cppkies.onLoad.push(() => {
     </style>
     `;
     
+    let BarsCreated = false;
     SkullyCore.onLoad.forEach((element) => {
         element()
     });
@@ -146,6 +147,7 @@ Cppkies.onLoad.push(() => {
     let TopBar = l("comments")
     SkullyCore.BarWidgets.TopBar.Bars.forEach((value) => {
         TopBar.appendChild(createElementFromHTML(value.getDiv()));
+        BarsCreated = true;
     })
 
     Game.ObjectsById.forEach((object) => {
@@ -155,14 +157,17 @@ Cppkies.onLoad.push(() => {
             if (typeof SkullyCore.BarWidgets.BuildingBar.Bars[object.name] === "undefined") SkullyCore.BarWidgets.BuildingBar.Bars[object.name] = []
             SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
                 building.appendChild(createElementFromHTML(bar.getDiv()));
+                BarsCreated = true;
             })
         }
     })
 
-    l("prefsButton").setAttribute("onclick","Game.ShowMenu('prefs');")
-    l("statsButton").setAttribute("onclick","Game.ShowMenu('stats');")
-    l("logButton").setAttribute("onclick","Game.ShowMenu('log');")
-    l("legacyButton").setAttribute("onclick","PlaySound('snd/tick.mp3');Game.Ascend();")
+    if(BarsCreated) {
+        l("prefsButton").setAttribute("onclick","Game.ShowMenu('prefs');")
+        l("statsButton").setAttribute("onclick","Game.ShowMenu('stats');")
+        l("logButton").setAttribute("onclick","Game.ShowMenu('log');")
+        l("legacyButton").setAttribute("onclick","PlaySound('snd/tick.mp3');Game.Ascend();")
+    }
 
     Cppkies.on("check", () => {
         if(typeof SkullyCore.ActiveTasks !== "undefined" && SkullyCore.ActiveTasks.length !== 0) {
@@ -177,10 +182,11 @@ Cppkies.onLoad.push(() => {
 })
 
 SkullyCore.onLoad.push(()=>{
+    let iconLink = "https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png";
     new SkullyCore.AuthorAchievement("Orteil & Opti", "The people who made this awesome game!", [17, 5, ""])
-	new SkullyCore.AuthorAchievement("TheGLander", "The developer of Cppkies and the CCRepo (W.I.P) ", [0, 0])
-	new SkullyCore.AuthorAchievement("TheSkullyKO", "The ideas guy and artist for SkullyCore and other Skully mods", [0, 1])
-    let BobCheevo = new SkullyCore.AuthorAchievement("Bob", "The developer that made this menu for authors and hopefully will work on much more.", [0, 2])
+	new SkullyCore.AuthorAchievement("TheGLander", "The developer of Cppkies and the CCRepo (W.I.P) ", [3, 2, iconLink])
+	new SkullyCore.AuthorAchievement("TheSkullyKO", "The ideas guy and artist for SkullyCore and other Skully mods", [1, 0, iconLink])
+    let BobCheevo = new SkullyCore.AuthorAchievement("Bob", "The developer that made this menu for authors and hopefully will work on much more.", [2, 2, iconLink])
     //#region Spoliers for tiny minigame, Hide it if you don't want to be spolied!!!!! (Currenly unavailable tho) I might implement it later
     /*
     declare global {
