@@ -108,26 +108,51 @@ Cppkies.onLoad.push(() => {
         .top_bar:hover {
             bottom:-10px
         }
+
+        .building_bar { 
+            width:32px;
+            height:32px;
+            position:absolute;
+            bottom:-12px;
+            z-index:10000;
+            filter:drop-shadow(0px 3px 2px #000);
+            -webkit-filter:drop-shadow(0px 3px 2px #000);
+        }
+
+        .building_bar:hover {
+            bottom:-10px
+        }
+
         .baseIcon {
             width:48px;
             height:48px;
             position:absolute;
             left:-8px;
             top:-8px;
-            pointer-events:none;
         }
     </style>
     `;
     
 
-    SkullyCore.onLoad.forEach(element => {
+    SkullyCore.onLoad.forEach((element) => {
         element()
     });
 
     // TopBars
-    let TopBars = l("comments")
-    SkullyCore.BarWidgets.TopBar.Bars.forEach((value, index, array) => {
-        TopBars.innerHTML += value.getDiv();
+    let TopBar = l("comments")
+    SkullyCore.BarWidgets.TopBar.Bars.forEach((value) => {
+        TopBar.innerHTML += value.getDiv();
+    })
+
+    Game.ObjectsById.forEach((object) => {
+        let building = l("row" + object.id);
+        //@ts-ignore
+        if(building !== null) {
+            if (typeof SkullyCore.BarWidgets.BuildingBar.Bars[object.name] === "undefined") SkullyCore.BarWidgets.BuildingBar.Bars[object.name] = []
+            SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
+                building.innerHTML += bar.getDiv();
+            })
+        }
     })
 
     l("prefsButton").setAttribute("onclick","Game.ShowMenu('prefs');")
@@ -203,10 +228,19 @@ SkullyCore.onLoad.push(()=>{
     //#endregion
     console.log("SkullyCore Loaded!")
     
-    //let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
-    //new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
+    /* Examples 
+    let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
+    new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
+    */
 
     new SkullyCore.TopBarMenuWidget("test", [0, 0], ()=>{
         return 'test'
-    })
+    }).onclick=()=>{
+        console.log('Test')
+    }
+    new SkullyCore.BuildingBarMenuWidget("test2", [0, 0], "Grandma", ()=>{
+        return 'test2'
+    }).onclick=()=>{
+        console.log('Test2')
+    }
 })

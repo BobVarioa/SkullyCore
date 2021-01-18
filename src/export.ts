@@ -19,6 +19,7 @@ import {
 
 import {
     TopBarMenuWidget,
+    BuildingBarMenuWidget,
     BarWidget
 } from "./bars"
 
@@ -48,10 +49,15 @@ const SkullyCore = {
 
     // Injecting into bars to add stuff (ex. sugar lumps)
     TopBarMenuWidget,
+    BuildingBarMenuWidget,
     BarWidgets: {
         TopBar: {
             currentPos: 12,
             Bars: [] as TopBarMenuWidget[]
+        },
+        BuildingBar: {
+            currentPos: {} as Record<string, number>,
+            Bars: {} as Record<string, BuildingBarMenuWidget[]>
         }
     },
 

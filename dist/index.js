@@ -260,7 +260,7 @@
 	// Todo : toggle, and menu
 	// Todo : have a option to add all the switches here, maybe. 
 	// Todo : hide widgets in a similar fashion to vaulting 
-	// Todo : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	// Todo : aaaaaaaaaaaaaaaaaaaaaaaaaa
 	var TopBarMenuWidget = /** @class */ (function () {
 	    function TopBarMenuWidget(id, icon, tooltip) {
 	        this.id = id;
@@ -270,15 +270,46 @@
 	    }
 	    TopBarMenuWidget.prototype.getDiv = function () {
 	        if (typeof this.onclick !== "undefined" && this.onclick.toString().includes("\"")) {
-	            throw new Error("One of your onclick functions in a TopBarMenuWidget has quote in it, please remove it");
+	            console.warn("One of your onclick functions in a TopBarMenuWidget has double quote in it, please remove it");
+	            return "";
 	        }
 	        if (typeof this.tooltip !== "undefined" && this.tooltip.toString().includes("\"")) {
-	            throw new Error("One of your tooltip functions in a TopBarMenuWidget has quote in it, please remove it");
+	            console.warn("One of your tooltip functions in a TopBarMenuWidget has double quote in it, please remove it");
+	            return "";
 	        }
 	        window.SkullyCore.BarWidgets.TopBar.currentPos += 48;
-	        return "\n        <div class=\"top_bar\" style=\"left:" + window.SkullyCore.BarWidgets.TopBar.currentPos + "px;\" id=\"" + this.id + "\" " + (typeof this.onclick !== "undefined" ? "onclick=\"" + this.onclick.toString() + "\"" : "") + " onmouseout=\"Game.tooltip.shouldHide=1;\" onmouseover=\"Game.tooltip.dynamic=1;Game.tooltip.draw(this,function(){return " + this.tooltip.toString().replace(new RegExp("\""), "'") + "();},'bottom');Game.tooltip.wobble();\"> \n            <div id=\"" + this.id + "Icon\" class=\"baseIcon " + (typeof this.icon[2] !== "undefined" ? '' : 'usesIcon') + "\" style=\"" + (typeof this.icon[2] !== "undefined" ? 'background-image:url(' + this.icon[2] + ');' : '') + "background-position:" + -this.icon[0] * 48 + "px " + -this.icon[1] * 48 + "px;\"></div>\n        </div>\n        ";
+	        return "\n        <div class=\"top_bar\" style=\"left:" + window.SkullyCore.BarWidgets.TopBar.currentPos + "px;\" id=\"" + this.id + "TopBarMenu\" " + (typeof this.onclick !== "undefined" ? "onclick=\"" + ("let " + this.id + "TopBarMenuIconOnClick = " + this.onclick.toString().replace("\"", "'") + "();") + "\"" : "") + " " + (typeof this.tooltip !== "undefined" ? "onmouseout=\"Game.tooltip.shouldHide=1;\" onmouseover=\"Game.tooltip.dynamic=1;Game.tooltip.draw(this,function(){return " + this.tooltip.toString().replace("\"", "'") + "();},'bottom');Game.tooltip.wobble();\"" : "") + "> \n            <div id=\"" + this.id + "TopBarMenuIcon\" class=\"baseIcon " + (typeof this.icon[2] !== "undefined" ? '' : 'usesIcon') + "\" style=\"" + (typeof this.icon[2] !== "undefined" ? 'background-image:url(' + this.icon[2] + ');' : '') + "background-position:" + -this.icon[0] * 48 + "px " + -this.icon[1] * 48 + "px;\"></div>\n        </div>\n        ";
 	    };
 	    return TopBarMenuWidget;
+	}());
+	var BuildingBarMenuWidget = /** @class */ (function () {
+	    function BuildingBarMenuWidget(id, icon, building, tooltip) {
+	        this.id = id;
+	        this.icon = icon;
+	        this.building = building;
+	        this.tooltip = tooltip;
+	        if (typeof window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building] === "undefined")
+	            window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building] = [];
+	        window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building].push(this);
+	    }
+	    BuildingBarMenuWidget.prototype.getDiv = function () {
+	        if (typeof this.onclick !== "undefined" && this.onclick.toString().includes("\"")) {
+	            console.warn("One of your onclick functions in a TopBarMenuWidget has double quote in it, please remove it");
+	            return "";
+	        }
+	        if (typeof this.tooltip !== "undefined" && this.tooltip.toString().includes("\"")) {
+	            console.warn("One of your tooltip functions in a TopBarMenuWidget has double quote in it, please remove it");
+	            return "";
+	        }
+	        if (typeof window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] !== "undefined") {
+	            window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] += 48;
+	        }
+	        else {
+	            window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] = 12;
+	        }
+	        return "\n        <div class=\"building_bar\" style=\"left:" + window.SkullyCore.BarWidgets.TopBar.currentPos + "px;\" id=\"" + this.id + "BuildingBarMenu\" " + (typeof this.onclick !== "undefined" ? "onclick=\"" + ("let " + this.id + "BuildingBarMenuIconOnClick = " + this.onclick.toString().replace("\"", "'") + "();") + "\"" : "") + " " + (typeof this.tooltip !== "undefined" ? "onmouseout=\"Game.tooltip.shouldHide=1;\" onmouseover=\"Game.tooltip.dynamic=1;Game.tooltip.draw(this,function(){return " + this.tooltip.toString().replace("\"", "'") + "();},'bottom');Game.tooltip.wobble();\"" : "") + "> \n            <div id=\"" + this.id + "BuildingBarMenuIcon\" class=\"baseIcon " + (typeof this.icon[2] !== "undefined" ? '' : 'usesIcon') + "\" style=\"" + (typeof this.icon[2] !== "undefined" ? 'background-image:url(' + this.icon[2] + ');' : '') + "background-position:" + -this.icon[0] * 48 + "px " + -this.icon[1] * 48 + "px;\"></div>\n        </div>\n        ";
+	    };
+	    return BuildingBarMenuWidget;
 	}());
 
 	var Effect = /** @class */ (function () {
@@ -321,10 +352,15 @@
 	    pages: { "vanilla": Game.PrestigeUpgrades },
 	    // Injecting into bars to add stuff (ex. sugar lumps)
 	    TopBarMenuWidget: TopBarMenuWidget,
+	    BuildingBarMenuWidget: BuildingBarMenuWidget,
 	    BarWidgets: {
 	        TopBar: {
 	            currentPos: 12,
 	            Bars: []
+	        },
+	        BuildingBar: {
+	            currentPos: {},
+	            Bars: {}
 	        }
 	    },
 	    // Full screen cosmetic effects
@@ -385,14 +421,40 @@
 	        ["var str='';", "var currentHeavenlyUpgrades = window.SkullyCore.pages[window.SkullyCore.currentPage];\n", "before"],
 	        ["Game.PrestigeUpgrades", "currentHeavenlyUpgrades", "replace"]
 	    ]);
-	    document.getElementsByTagName("head")[0].innerHTML += "\n    <style type=\"text/css\">\n        .top_bar { \n            width:32px;\n            height:32px;\n            position:absolute;\n            bottom:-12px;\n            z-index:10000;\n            filter:drop-shadow(0px 3px 2px #000);\n            -webkit-filter:drop-shadow(0px 3px 2px #000);\n        }\n        .top_bar:hover {\n            bottom:-10px\n        }\n        .baseIcon {\n            width:48px;\n            height:48px;\n            position:absolute;\n            left:-8px;\n            top:-8px;\n            pointer-events:none;\n        }\n    </style>\n    ";
+	    document.getElementsByTagName("head")[0].innerHTML += "\n    <style type=\"text/css\">\n        .top_bar { \n            width:32px;\n            height:32px;\n            position:absolute;\n            bottom:-12px;\n            z-index:10000;\n            filter:drop-shadow(0px 3px 2px #000);\n            -webkit-filter:drop-shadow(0px 3px 2px #000);\n        }\n        .top_bar:hover {\n            bottom:-10px\n        }\n\n        .building_bar { \n            width:32px;\n            height:32px;\n            position:absolute;\n            bottom:-12px;\n            z-index:10000;\n            filter:drop-shadow(0px 3px 2px #000);\n            -webkit-filter:drop-shadow(0px 3px 2px #000);\n        }\n\n        .building_bar:hover {\n            bottom:-10px\n        }\n\n        .baseIcon {\n            width:48px;\n            height:48px;\n            position:absolute;\n            left:-8px;\n            top:-8px;\n        }\n    </style>\n    ";
 	    SkullyCore.onLoad.forEach(function (element) {
 	        element();
 	    });
 	    // TopBars
-	    var TopBars = l("comments");
-	    SkullyCore.BarWidgets.TopBar.Bars.forEach(function (value, index, array) {
-	        TopBars.innerHTML += value.getDiv();
+	    var TopBar = l("comments");
+	    SkullyCore.BarWidgets.TopBar.Bars.forEach(function (value) {
+	        TopBar.innerHTML += value.getDiv();
+	    });
+	    /*
+	    Before loading this set current pos for each building
+	    for ( buildings ) {
+	        get row id thingy
+	        for ( all barwidgits that belong to this building ) {
+	            add them
+	        }
+	    }
+	    */
+	    /*
+	    let BuildingBars = l("comments")
+	    SkullyCore.BarWidgets.TopBar.Bars.forEach((value, index, array) => {
+	        BuildingBars.innerHTML += value.getDiv();
+	    })
+	    */
+	    Game.ObjectsById.forEach(function (object) {
+	        var building = l("row" + object.id);
+	        //@ts-ignore
+	        if (building !== null) {
+	            if (typeof SkullyCore.BarWidgets.BuildingBar.Bars[object.name] === "undefined")
+	                SkullyCore.BarWidgets.BuildingBar.Bars[object.name] = [];
+	            SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach(function (bar) {
+	                building.innerHTML += bar.getDiv();
+	            });
+	        }
 	    });
 	    l("prefsButton").setAttribute("onclick", "Game.ShowMenu('prefs');");
 	    l("statsButton").setAttribute("onclick", "Game.ShowMenu('stats');");
@@ -465,11 +527,20 @@
 	    */
 	    //#endregion
 	    console.log("SkullyCore Loaded!");
-	    //let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
-	    //new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
+	    /* Examples
+	    let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
+	    new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
+	    */
 	    new SkullyCore.TopBarMenuWidget("test", [0, 0], function () {
 	        return 'test';
-	    });
+	    }).onclick = function () {
+	        console.log('Test');
+	    };
+	    new SkullyCore.BuildingBarMenuWidget("test2", [0, 0], "Grandma", function () {
+	        return 'test2';
+	    }).onclick = function () {
+	        console.log('Test2');
+	    };
 	});
 
 })));
