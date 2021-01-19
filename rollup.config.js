@@ -8,7 +8,8 @@ import commonjs from "@rollup/plugin-commonjs"
 export default {
 	input: `./src/index.ts`,
 	output: {
-		file: `./dist/index.js`,
+		name: "SkullyCore",
+		file: "./dist/index.js",
 		format: "umd",
 		sourcemap: true,
 	},
