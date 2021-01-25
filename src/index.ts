@@ -26,7 +26,12 @@ import {
     Task
 } from "./quests"
 
-const SkullyCore = {
+import {
+    createElementFromHTML,
+    exclude
+} from "./helpers"
+
+let SkullyCore = {
     // Base
     AdvancedAchievement,
     AdvancedHeavenlyUpgrade,
@@ -62,6 +67,9 @@ const SkullyCore = {
 
     // OnLoad
     onLoad: [] as (() => void)[],
+
+    // Global Helpers
+    exclude
 }
 
 declare global {
@@ -115,47 +123,70 @@ Cppkies.onLoad.push(() => {
 
     Another thing I noticed opon writing this is I could've used nested if statements instead of nested ternary operators but... uhh I probabaly should've done that but.... I don't want to redo my code now.
     I might redo it later though.
+    Redone Later B)
     
         - Bob
     */
     Game.UpdateMenu = Cppkies.injectCodes(Game.UpdateMenu, [
         // Exclude Total
-        [`if (me.pool=='' || me.pool=='cookie' || me.pool=='tech') upgradesTotal++;`, `if ((me.pool=='' || me.pool=='cookie' || me.pool=='tech' ) && ((typeof me.exclude === "undefined" ? true : typeof me.exclude.total === "undefined"  ? true : !me.exclude.total) || (typeof me.exclude === "undefined" ? true : typeof me.exclude.all === "undefined"  ? false : !me.exclude.all))) upgradesTotal++;`, "replace"],
+        [`if (me.pool=='' || me.pool=='cookie' || me.pool=='tech') upgradesTotal++;`, 
+        `if (me.pool=='' || me.pool=='cookie' || me.pool=='tech' ) {
+            // SkullyCore Inject
+            if (window.SkullyCore.exclude("total", me)) {
+                upgradesTotal++
+            }
+        }
+        `, "replace"],
         
         // Exclude Debug - Display
-        [ `if (me.pool=='debug') hiddenUpgrades+=str2;`, `if ((me.pool=='debug') && ((typeof me.exclude === "undefined" ? true : typeof me.exclude.debug === "undefined"  ? true : !me.exclude.debug ) || (typeof me.exclude === "undefined" ? true : typeof me.exclude.all === "undefined"  ? false : !me.exclude.all))) {
-            hiddenUpgrades+=str2;
+        [ `if (me.pool=='debug') hiddenUpgrades+=str2;`, 
+        `if (me.pool=='debug') { 
+            // SkullyCore Inject
+            if (window.SkullyCore.exclude("debug", me)) {
+                hiddenUpgrades+=str2;
+            }
         }`, "replace"],
 
         // Exclude Prestige - Display & Count
-        [`else if (me.pool=='prestige') {prestigeUpgrades+=str2;prestigeUpgradesTotal++;}`, `else if ((me.pool=='prestige') && ((typeof me.exclude === "undefined" ? true : typeof me.exclude.prestige === "undefined"  ? true : !me.exclude.prestige)  || (typeof me.exclude === "undefined" ? true : typeof me.exclude.all === "undefined"  ? false : !me.exclude.all))) {
-            prestigeUpgrades+=str2;
-            prestigeUpgradesTotal++;
+        [`else if (me.pool=='prestige') {prestigeUpgrades+=str2;prestigeUpgradesTotal++;}`, 
+        `else if (me.pool=='prestige') {
+            // SkullyCore Inject
+            if (window.SkullyCore.exclude("prestige", me)) {
+                prestigeUpgrades+=str2;
+                prestigeUpgradesTotal++;
+            }
         }`, "replace"],
-        [`else if (me.pool=='prestige') prestigeUpgradesOwned++;`, `else if ((me.pool=='prestige') && ((typeof me.exclude === "undefined" ? true : typeof me.exclude.prestige === "undefined"  ? true : !me.exclude.prestige)  || (typeof me.exclude === "undefined" ? true : typeof me.exclude.all === "undefined"  ? false : !me.exclude.all))) {
-            prestigeUpgradesOwned++;
+        [`else if (me.pool=='prestige') prestigeUpgradesOwned++;`, 
+        `else if (me.pool=='prestige') {
+            // SkullyCore Inject
+            if (window.SkullyCore.exclude("prestige", me)) {
+                prestigeUpgradesOwned++;
+            }
         }`, "replace"],
 
         // Exclude Cookie - Display
-        [`else if (me.pool=='cookie') cookieUpgrades+=str2;`, `\nelse if ((me.pool=='cookie') && ((typeof me.exclude === "undefined" ? true : typeof me.exclude.cookie === "undefined"  ? true : !me.exclude.cookie) || (typeof me.exclude === "undefined" ? true : typeof me.exclude.all === "undefined"  ? false : !me.exclude.all))) {
-            cookieUpgrades+=str2;
+        [`else if (me.pool=='cookie') cookieUpgrades+=str2;`, 
+        `else if (me.pool=='cookie') {
+            // SkullyCore Inject
+            if (window.SkullyCore.exclude("cookie", me)) {
+                cookieUpgrades+=str2;
+            }
         }`, "replace"],
 
         // Exclude Other - Display
-        [ `else if (me.pool!='toggle' && me.pool!='unused') upgrades+=str2;`, `\nelse if ((me.pool!='toggle' && me.pool!='unused') && ((typeof me.exclude === "undefined" ? true : typeof me.exclude.other === "undefined"  ? true : !me.exclude.other)  || (typeof me.exclude === "undefined" ? true : typeof me.exclude.all === "undefined"  ? false : !me.exclude.all))) {
-            upgrades+=str2;
+        [ `else if (me.pool!='toggle' && me.pool!='unused') upgrades+=str2;`, `else if (me.pool!='toggle' && me.pool!='unused') {
+            // SkullyCore Inject
+            if (window.SkullyCore.exclude("other", me)) {
+                upgrades+=str2;
+            }
         }`, "replace"],
 
         // Exclude Shadow - Count
-        [`achievementsOwnedOther++;`, ` if ((typeof me.exclude === "undefined" ? true : typeof me.exclude.shadow === "undefined"  ? true : !me.exclude.shadow)  || (typeof me.exclude === "undefined" ? true : typeof me.exclude.all === "undefined"  ? false : !me.exclude.all)) `, "before"],
-    
-        /*
-        // Log Excludes
-        [`var me=list[i];`, `
-        if(typeof me.exclude !== "undefined" ? me.exclude !== {} : false) {
-            console.log("Types : " + JSON.stringify(me.exclude) + "\\nexclude : " + JSON.stringify(me));
-        }`, "after"]
-        */
+        [`achievementsOwnedOther++;`, 
+        `if (window.SkullyCore.exclude("shadow", me)) {
+            // SkullyCore Inject
+            achievementsOwnedOther++;
+        }`, "replace"],
     ])
 
     Game.BuildAscendTree = Cppkies.injectCodes(Game.BuildAscendTree, [
@@ -164,7 +195,12 @@ Cppkies.onLoad.push(() => {
         [`Game.PrestigeUpgrades`, `currentHeavenlyUpgrades`, "replace"]
     ])
 
-    document.getElementsByTagName("head")[0].innerHTML += `
+    /*Game.tooltip.draw = Cppkies.injectCodes(Game.tooltip.draw, [
+        ["this.shouldHide=0;", "if (this.stopNewTooltips === true) {", "before"],
+        ["this.on=1;", "}", "after"]
+    ])*/
+
+    document.getElementsByTagName("head")[0].appendChild(createElementFromHTML(`
     <style type="text/css">
         .top_bar { 
             width:32px;
@@ -200,45 +236,31 @@ Cppkies.onLoad.push(() => {
             left:-8px;
             top:-8px;
         }
-    </style>
-    `;
+    </style>`));
     
     let BarsCreated = false;
-    SkullyCore.onLoad.forEach((element) => {
-        element()
-    });
+    for(let i of SkullyCore.onLoad) {i()} // Slower but prettier
 
-    function createElementFromHTML(htmlString) {
-        var div = document.createElement('div');
-        div.innerHTML = htmlString.trim();
-        return div.firstChild; 
-    }
     // TopBars
     let TopBar = l("comments")
-    SkullyCore.BarWidgets.TopBar.Bars.forEach((value) => {
-        TopBar.appendChild(createElementFromHTML(value.getDiv()));
+    SkullyCore.BarWidgets.TopBar.Bars.forEach((bar) => {
+        TopBar.appendChild(bar.getDiv())
         BarsCreated = true;
     })
 
     Game.ObjectsById.forEach((object) => {
         let building = l("row" + object.id);
-        //@ts-ignore
+        //@ts-ignore building can be null, if l doesn't find anything for whatever reason
         if(building !== null) {
             if (typeof SkullyCore.BarWidgets.BuildingBar.Bars[object.name] === "undefined") SkullyCore.BarWidgets.BuildingBar.Bars[object.name] = []
             SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
-                building.appendChild(createElementFromHTML(bar.getDiv()));
+                building.appendChild(bar.getDiv());
                 BarsCreated = true;
             })
         }
     })
-
-    if(BarsCreated) {
-        l("prefsButton").setAttribute("onclick","Game.ShowMenu('prefs');")
-        l("statsButton").setAttribute("onclick","Game.ShowMenu('stats');")
-        l("logButton").setAttribute("onclick","Game.ShowMenu('log');")
-        l("legacyButton").setAttribute("onclick","PlaySound('snd/tick.mp3');Game.Ascend();")
-    }
-
+    
+    /*
     Cppkies.on("check", () => {
         if(typeof SkullyCore.ActiveTasks !== "undefined" && SkullyCore.ActiveTasks.length !== 0) {
             SkullyCore.ActiveTasks.forEach((value, index) => {
@@ -249,6 +271,7 @@ Cppkies.onLoad.push(() => {
             });
         } 
     })
+    */
 })
 
 SkullyCore.onLoad.push(()=>{
