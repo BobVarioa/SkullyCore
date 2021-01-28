@@ -255,7 +255,7 @@ declare class Task extends AdvancedBuff {
 	constructor(name: string, func: (time: number, arg1?: number, arg2?: number, arg3?: number) => AdvancedBuffInterface, check: () => boolean, finish: () => boolean);
 }
 declare function exclude(type: ("total" | "debug" | "prestige" | "cookie" | "other" | "shadow"), me: any): boolean;
-declare let SkullyCore: {
+declare const SkullyCore: {
 	AdvancedAchievement: typeof AdvancedAchievement;
 	AdvancedHeavenlyUpgrade: typeof AdvancedHeavenlyUpgrade;
 	AdvancedUpgrade: typeof AdvancedUpgrade;
@@ -290,6 +290,12 @@ declare let SkullyCore: {
 	onLoad: (() => void)[];
 	exclude: typeof exclude;
 };
-export default SkullyCore;
+declare global {
+	interface Window {
+		SkullyCore: typeof SkullyCore | undefined
+	}
+}
+declare let SkullyCoreExport: typeof SkullyCore;
+export default SkullyCoreExport;
 
 export {};
