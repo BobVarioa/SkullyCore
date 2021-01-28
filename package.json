@@ -30,6 +30,6 @@
 	"peerDependencies": {},
 	"ccrepo": {
 		"name" : "SkullyCore",
-		"icon" : [0, 1, "https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png"]
+		"icon" : [1, 0, "https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png"]
 	}
 }
