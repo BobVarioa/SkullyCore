@@ -1,9 +1,10 @@
 {
 	"name": "skullycore",
-	"version": "1.0.2",
-	"description": "A library mod for all of Skully's Mods! Adds Rifts, A way to add credit to your mod, and much much more.",
+	"version": "1.0.4",
+	"description": "A library mod for all of Skully's Mods! Adds Rifts, a way to add credit to your mod, and much much more.",
 	"scripts": {
-		"build": "npx rollup -c && \"./node_modules/.bin/dts-bundle-generator\" -o \"./dist/index.d.ts\" \"./src/index.ts\"",
+		"build": "npx rollup -c",
+		"full_build": "npx rollup -c && \"./node_modules/.bin/dts-bundle-generator\" -o \"./dist/index.d.ts\" \"./src/index.ts\"",
 		"host": "node ./node_modules/serve/bin/serve.js -p 5500"
 	},
 	"keywords": [

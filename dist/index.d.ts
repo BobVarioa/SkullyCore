@@ -231,22 +231,35 @@ declare class TopBarMenuWidget {
 	 * The widgets icon
 	 */
 	icon: Game.Icon;
+	index: number;
 	/**
 	 * The
 	 */
-	tooltip: () => string;
+	tooltip?: () => string;
 	onclick?: () => void;
+	customDiv?: (div: HTMLElement) => HTMLElement;
+	div?: HTMLElement;
 	constructor(id: string, icon: Game.Icon, tooltip?: () => string);
 	getDiv(): HTMLElement;
+	private _hidden;
+	set hidden(thing: boolean);
+	get hidden(): boolean;
+	static reloadPlacement(): void;
 }
 declare class BuildingBarMenuWidget {
 	id: string;
 	icon: Game.Icon;
 	building: string;
-	tooltip: () => string;
+	tooltip?: () => string;
 	onclick?: () => void;
+	customDiv?: (div: HTMLElement) => HTMLElement;
+	div?: HTMLElement;
 	constructor(id: string, icon: Game.Icon, building: string, tooltip?: () => string);
 	getDiv(): HTMLElement;
+	private _hidden;
+	set hidden(thing: boolean);
+	get hidden(): boolean;
+	reloadPlacement(): void;
 }
 export declare type BarWidget = (TopBarMenuWidget | BuildingBarMenuWidget);
 declare class Task extends AdvancedBuff {
@@ -254,7 +267,9 @@ declare class Task extends AdvancedBuff {
 	finish: () => boolean;
 	constructor(name: string, func: (time: number, arg1?: number, arg2?: number, arg3?: number) => AdvancedBuffInterface, check: () => boolean, finish: () => boolean);
 }
+declare function createElementFromString(htmlString: any): ChildNode;
 declare function exclude(type: ("total" | "debug" | "prestige" | "cookie" | "other" | "shadow"), me: any): boolean;
+declare function IconToStyle(icon: Game.Icon): string;
 declare const SkullyCore: {
 	AdvancedAchievement: typeof AdvancedAchievement;
 	AdvancedHeavenlyUpgrade: typeof AdvancedHeavenlyUpgrade;
@@ -289,12 +304,9 @@ declare const SkullyCore: {
 	ActiveTasks: Task[];
 	onLoad: (() => void)[];
 	exclude: typeof exclude;
+	IconToStyle: typeof IconToStyle;
+	createElementFromHTML: typeof createElementFromString;
 };
-declare global {
-	interface Window {
-		SkullyCore: typeof SkullyCore | undefined
-	}
-}
 declare let SkullyCoreExport: typeof SkullyCore;
 export default SkullyCoreExport;
 

@@ -27,8 +27,9 @@ import {
 } from "./quests"
 
 import {
-    createElementFromHTML,
-    exclude
+    createElementFromString,
+    exclude,
+    IconToStyle
 } from "./helpers"
 
 const SkullyCore = {
@@ -69,7 +70,9 @@ const SkullyCore = {
     onLoad: [] as (() => void)[],
 
     // Global Helpers
-    exclude
+    exclude,
+    IconToStyle,
+    createElementFromHTML: createElementFromString
 }
 
 declare global {
@@ -204,7 +207,7 @@ if (typeof window.SkullyCore !== "undefined") {
             ["this.on=1;", "}", "after"]
         ])*/
     
-        document.getElementsByTagName("head")[0].appendChild(createElementFromHTML(`
+        document.getElementsByTagName("head")[0].appendChild(createElementFromString(`
         <style type="text/css">
             .top_bar { 
                 width:32px;
@@ -214,6 +217,7 @@ if (typeof window.SkullyCore !== "undefined") {
                 z-index:10000;
                 filter:drop-shadow(0px 3px 2px #000);
                 -webkit-filter:drop-shadow(0px 3px 2px #000);
+                cursor:pointer;
             }
             .top_bar:hover {
                 bottom:-10px
@@ -227,6 +231,7 @@ if (typeof window.SkullyCore !== "undefined") {
                 z-index:10000;
                 filter:drop-shadow(0px 3px 2px #000);
                 -webkit-filter:drop-shadow(0px 3px 2px #000);
+                cursor:pointer;
             }
     
             .building_bar:hover {
@@ -242,12 +247,12 @@ if (typeof window.SkullyCore !== "undefined") {
             }
         </style>`));
         
-        for(let i of SkullyCore.onLoad) {i()} // Slower but prettier
+        for(let i of SkullyCore.onLoad) {i()} // Very slightly slower but prettier
     
         // TopBars
         let TopBar = l("comments")
         SkullyCore.BarWidgets.TopBar.Bars.forEach((bar) => {
-            TopBar.appendChild(bar.getDiv())
+            bar.div = TopBar.appendChild(bar.getDiv())
         })
     
         Game.ObjectsById.forEach((object) => {
@@ -256,7 +261,7 @@ if (typeof window.SkullyCore !== "undefined") {
             if(building !== null) {
                 if (typeof SkullyCore.BarWidgets.BuildingBar.Bars[object.name] === "undefined") SkullyCore.BarWidgets.BuildingBar.Bars[object.name] = []
                 SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
-                    building.appendChild(bar.getDiv());
+                    bar.div = building.appendChild(bar.getDiv());
                 })
             }
         })
@@ -346,12 +351,18 @@ if (typeof window.SkullyCore !== "undefined") {
         /* Examples 
         let testPage = new SkullyCore.PrestigePage("Test", "test", ["Legacy"])
         new SkullyCore.PagedHeavenlyUpgrade("test", "test", 0, [-30, 70], testPage.id, [0, 0], [testPage.VanillaRift.id])
-    
+
         new SkullyCore.TopBarMenuWidget("test", [0, 0], ()=>{
             return 'test'
         }).onclick=()=>{
             console.log('Test')
         }
+
+        let test_icon = new SkullyCore.TopBarMenuWidget("test_icon", [0, 0], ()=>{
+            return 'test_icon'
+        })
+        test_icon.onclick=new Function(`console.log('test_icon');window.SkullyCore.BarWidgets.TopBar.Bars[${test_icon.index}].div.children[0].setAttribute("style", "${IconToStyle([0,1])}")`) as ()=>void
+
         new SkullyCore.BuildingBarMenuWidget("test2", [0, 0], "Grandma", ()=>{
             return 'test2'
         }).onclick=()=>{

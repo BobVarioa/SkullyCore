@@ -2,7 +2,7 @@
  * Creates a html object based on a string of valid HTML
  * @param htmlString a string that is valid HTML
  */
-export function createElementFromHTML(htmlString) {
+export function createElementFromString(htmlString) {
     var div = document.createElement('div');
     div.innerHTML = htmlString.trim();
     return div.firstChild; 
@@ -70,4 +70,12 @@ export function exclude(type: ("total" | "debug" | "prestige" | "cookie" | "othe
         return true
     }
     return false
+}
+
+/**
+ * Returns the style atrribute that an icon should have, usesIcon should be a class that this element should use if icon[2]
+ * @param icon An icon
+ */
+export function IconToStyle(icon: Game.Icon) {
+    return `${(typeof icon[2] !== "undefined"? (icon[2] === "" ? false : true) : false)?'background-image:url('+icon[2]+');':''}background-position:${-icon[0]*48}px ${-icon[1]*48}px;`
 }
