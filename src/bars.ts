@@ -51,6 +51,9 @@ export class TopBarMenuWidget {
         if (typeof this.customDiv !== "undefined") {
             div = this.customDiv(div)
         }
+        if (this._hidden) {
+            this.div.hidden = true;
+        } 
         return div;
     }
 
@@ -58,7 +61,9 @@ export class TopBarMenuWidget {
     
     set hidden(thing: boolean) {
         this._hidden = thing;
-        this.div.hidden = thing;
+        if (typeof this.div !== "undefined") {
+            this.div.hidden = thing;
+        }
         window.SkullyCore.TopBarMenuWidget.reloadPlacement()
     }
 
