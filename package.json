@@ -1,6 +1,6 @@
 {
 	"name": "skullycore",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A library mod for all of Skully's Mods! Adds Rifts, a way to add credit to your mod, and much much more.",
 	"scripts": {
 		"build": "npx rollup -c",
