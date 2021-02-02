@@ -4,7 +4,7 @@
 	"description": "A library mod for all of Skully's Mods! Adds Rifts, a way to add credit to your mod, and much much more.",
 	"scripts": {
 		"build": "npx rollup -c",
-		"full_build": "npx rollup -c && \"./node_modules/.bin/dts-bundle-generator\" -o \"./dist/index.d.ts\" \"./src/index.ts\"",
+		"full_build": "npx rollup -c && \"./node_modules/.bin/dts-bundle-generator\" -o \"./dist/index.d.ts\" \"./src/index.ts\" && cat ./static/global.txt >> ./dist/index.d.ts",
 		"host": "node ./node_modules/serve/bin/serve.js -p 5500"
 	},
 	"keywords": [
@@ -17,7 +17,7 @@
 		"@rollup/plugin-node-resolve": "^7.1.3",
 		"cppkies": "^0.2.3",
 		"dts-bundle-generator": "^5.6.0",
-		"rollup": "^2.37.0",
+		"rollup": "^2.38.3",
 		"rollup-plugin-analyzer": "^3.3.0",
 		"rollup-plugin-babel": "^4.3.3",
 		"rollup-plugin-babel-minify": "^9.1.1",
@@ -30,7 +30,14 @@
 	"dependencies": {},
 	"peerDependencies": {},
 	"ccrepo": {
-		"name" : "SkullyCore",
-		"icon" : [1, 0, "https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png"]
+		"name": "SkullyCore",
+		"icon": [
+			1,
+			0,
+			"https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png"
+		]
+	},
+	"repository": {
+		"url": "https://github.com/MasterOfBob777/SkullyCore"
 	}
 }

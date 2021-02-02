@@ -72,7 +72,7 @@ const SkullyCore = {
     // Global Helpers
     exclude,
     IconToStyle,
-    createElementFromHTML: createElementFromString
+    createElementFromString
 }
 
 declare global {
@@ -254,6 +254,7 @@ if (typeof window.SkullyCore !== "undefined") {
         SkullyCore.BarWidgets.TopBar.Bars.forEach((bar) => {
             bar.div = TopBar.appendChild(bar.getDiv())
         })
+        SkullyCore.TopBarMenuWidget.reloadPlacement();
     
         Game.ObjectsById.forEach((object) => {
             let building = l("row" + object.id);
@@ -263,8 +264,10 @@ if (typeof window.SkullyCore !== "undefined") {
                 SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
                     bar.div = building.appendChild(bar.getDiv());
                 })
+                SkullyCore.BarWidgets.BuildingBar.Bars[object.name][0].reloadPlacement();
             }
         })
+        
         
         /*
         Cppkies.on("check", () => {

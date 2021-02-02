@@ -2,6 +2,10 @@
 	"compilerOptions": {
 		"sourceMap": true,
 		"target": "ES6",
-		"moduleResolution": "node"
-	}
+		"moduleResolution": "node",
+		
+	},
+	"exclude": [
+		"dist"
+	]
 }

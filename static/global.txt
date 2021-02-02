@@ -1,0 +1,6 @@
+
+declare global {
+	interface Window {
+		SkullyCore: typeof SkullyCore | undefined
+	}
+}

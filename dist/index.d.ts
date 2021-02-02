@@ -222,38 +222,53 @@ declare class PrestigePage {
 	 */
 	constructor(name: string, id: string, parents: (string | number)[], gotoicon?: Game.Icon, backicon?: Game.Icon);
 }
-declare class TopBarMenuWidget {
+declare abstract class BaseWidget {
 	/**
-	 * The widget's id
+	 * The widget's named id, used for the various HTML elements create from this.
 	 */
 	id: string;
 	/**
 	 * The widgets icon
 	 */
 	icon: Game.Icon;
+	/**
+	 * The place the widget lies in the window.SkullyCore.BarWidgets.TopBar.Bars array
+	 */
 	index: number;
 	/**
-	 * The
+	 * The function called when the game tries to render your widgets tooltip
 	 */
 	tooltip?: () => string;
+	/**
+	 * The function called when a user tries to click on your widget
+	 */
 	onclick?: () => void;
+	/**
+	 * Called after internal div creation, use this to edit your widget's HTML representation before it gets passed on to the internals
+	 */
 	customDiv?: (div: HTMLElement) => HTMLElement;
+	/**
+	 * This is a refrence to the bar's HTML element in the dom
+	 * Useful little snippet to change the icon of the widget: bar.div.children[0].setAttribute("style", SkullyCore.IconToStyle([0,0, ""]))
+	 */
 	div?: HTMLElement;
+}
+declare class TopBarMenuWidget extends BaseWidget {
 	constructor(id: string, icon: Game.Icon, tooltip?: () => string);
 	getDiv(): HTMLElement;
+	/**
+	 * Don't mess with this.
+	 */
 	private _hidden;
 	set hidden(thing: boolean);
 	get hidden(): boolean;
 	static reloadPlacement(): void;
 }
-declare class BuildingBarMenuWidget {
-	id: string;
-	icon: Game.Icon;
+declare class BuildingBarMenuWidget extends BaseWidget {
+	/**
+	 * The building this widget is attached to.
+	 */
 	building: string;
-	tooltip?: () => string;
-	onclick?: () => void;
-	customDiv?: (div: HTMLElement) => HTMLElement;
-	div?: HTMLElement;
 	constructor(id: string, icon: Game.Icon, building: string, tooltip?: () => string);
 	getDiv(): HTMLElement;
 	private _hidden;
@@ -261,7 +276,7 @@ declare class BuildingBarMenuWidget {
 	get hidden(): boolean;
 	reloadPlacement(): void;
 }
-export declare type BarWidget = (TopBarMenuWidget | BuildingBarMenuWidget);
+export declare type BarWidget = (TopBarMenuWidget | BuildingBarMenuWidget | BaseWidget);
 declare class Task extends AdvancedBuff {
 	check: () => boolean;
 	finish: () => boolean;
@@ -305,9 +320,15 @@ declare const SkullyCore: {
 	onLoad: (() => void)[];
 	exclude: typeof exclude;
 	IconToStyle: typeof IconToStyle;
-	createElementFromHTML: typeof createElementFromString;
+	createElementFromString: typeof createElementFromString;
 };
 declare let SkullyCoreExport: typeof SkullyCore;
 export default SkullyCoreExport;
 
 export {};
+
+declare global {
+	interface Window {
+		SkullyCore: typeof SkullyCore | undefined
+	}
+}

@@ -1,32 +1,43 @@
 import { createElementFromString, IconToStyle } from "./helpers";
 
-/**
- * Top
- */
-export class TopBarMenuWidget {
+abstract class BaseWidget {
     /**
-     * The widget's id
+     * The widget's named id, used for the various HTML elements create from this.
      */
     public id: string;
 
     /**
-     * The widgets icon
+     * The widgets icon 
      */
     public icon: Game.Icon;
 
+    /**
+     * The place the widget lies in the window.SkullyCore.BarWidgets.TopBar.Bars array
+     */
     public index: number;
 
     /**
-     * The
+     * The function called when the game tries to render your widgets tooltip
      */
     public tooltip?: ()=>string;
+    /**
+     * The function called when a user tries to click on your widget
+     */
     public onclick?: ()=>void;
+    /**
+     * Called after internal div creation, use this to edit your widget's HTML representation before it gets passed on to the internals
+     */
     public customDiv?: (div: HTMLElement)=>HTMLElement;
 
-    //bar.div.children[0].setAttribute("style", IconToStyle([0,0, ""])) - to change icon of the widget
+    /**
+     * This is a refrence to the bar's HTML element in the dom
+     * Useful little snippet to change the icon of the widget: bar.div.children[0].setAttribute("style", SkullyCore.IconToStyle([0,0, ""]))
+     */
     public div?: HTMLElement;
-
+}
+export class TopBarMenuWidget extends BaseWidget {
     constructor(id: string, icon: Game.Icon, tooltip?: ()=>string) {
+        super()
         this.id = id;
         this.icon = icon;
         this.tooltip = tooltip;
@@ -51,12 +62,15 @@ export class TopBarMenuWidget {
         if (typeof this.customDiv !== "undefined") {
             div = this.customDiv(div)
         }
-        if (this._hidden) {
-            this.div.hidden = true;
+        if (this.hidden) {
+            div.hidden = true;
         } 
         return div;
     }
 
+    /**
+     * Don't mess with this.
+     */
     private _hidden: boolean = false;
     
     set hidden(thing: boolean) {
@@ -82,18 +96,14 @@ export class TopBarMenuWidget {
     }
 }
 
-export class BuildingBarMenuWidget {    
-    public id: string;
-    public icon: Game.Icon;
+export class BuildingBarMenuWidget extends BaseWidget {    
+    /**
+     * The building this widget is attached to.
+     */
     public building: string;
 
-    public tooltip?: ()=>string;
-    public onclick?: ()=>void;
-    public customDiv?: (div: HTMLElement)=>HTMLElement;
-
-    public div?: HTMLElement;
-
     constructor(id: string, icon: Game.Icon, building: string, tooltip?: ()=>string) {
+        super()
         this.id = id;
         this.icon = icon;
         this.building = building;
@@ -102,7 +112,7 @@ export class BuildingBarMenuWidget {
             window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building] = [];
             window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] = -36; 
         }
-        window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building].push(this)
+        this.index = window.SkullyCore.BarWidgets.BuildingBar.Bars[this.building].push(this) - 1;
     }
     
     public getDiv(): HTMLElement {
@@ -149,7 +159,7 @@ export class BuildingBarMenuWidget {
     }
 }
 
-export type BarWidget = (TopBarMenuWidget | BuildingBarMenuWidget);
+export type BarWidget = (TopBarMenuWidget | BuildingBarMenuWidget | BaseWidget);
 // Todo : hide widgets in a similar fashion to vaulting 
 
 /*
