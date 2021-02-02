@@ -261,10 +261,12 @@ if (typeof window.SkullyCore !== "undefined") {
             //@ts-ignore building can be null, if l doesn't find anything, and that's not in the types for whatever reason, curses me, curses!
             if(building !== null) {
                 if (typeof SkullyCore.BarWidgets.BuildingBar.Bars[object.name] === "undefined") SkullyCore.BarWidgets.BuildingBar.Bars[object.name] = []
-                SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
-                    bar.div = building.appendChild(bar.getDiv());
-                })
-                SkullyCore.BarWidgets.BuildingBar.Bars[object.name][0].reloadPlacement();
+                if(SkullyCore.BarWidgets.BuildingBar.Bars[object.name].length > 0) {
+                    SkullyCore.BarWidgets.BuildingBar.Bars[object.name].forEach((bar) => {
+                        bar.div = building.appendChild(bar.getDiv());
+                    })
+                    SkullyCore.BarWidgets.BuildingBar.Bars[object.name][0].reloadPlacement();
+                }
             }
         })
         
