@@ -76,7 +76,7 @@ export class TopBarMenuWidget extends BaseWidget {
     set hidden(thing: boolean) {
         this._hidden = thing;
         if (typeof this.div !== "undefined") {
-            this.div.style.display = thing ? "block" : "none";
+            this.div.style.display = thing ? "none" : "block";
             window.SkullyCore.TopBarMenuWidget.reloadPlacement()
         }
     }
@@ -144,7 +144,7 @@ export class BuildingBarMenuWidget extends BaseWidget {
     set hidden(thing: boolean) {
         this._hidden = thing;
         if (typeof this.div !== "undefined") {
-            this.div.style.display = thing ? "block" : "none";
+            this.div.style.display = thing ? "none" : "block";
             this.reloadPlacement()
         }
     }
