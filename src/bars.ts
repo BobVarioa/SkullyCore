@@ -159,7 +159,7 @@ export class BuildingBarMenuWidget extends BaseWidget {
             if(bar.hidden === true) continue;
             window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building] += 48;
             bar.div.removeAttribute("style")
-            bar.div.setAttribute("style", `left:${window.SkullyCore.BarWidgets.TopBar.currentPos}px;`)
+            bar.div.setAttribute("style", `left:${window.SkullyCore.BarWidgets.BuildingBar.currentPos[this.building]}px;`)
         }
     }
 }
