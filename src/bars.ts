@@ -63,7 +63,7 @@ export class TopBarMenuWidget extends BaseWidget {
             div = this.customDiv(div)
         }
         if (this.hidden) {
-            div.hidden = true;
+            div.style.display = "none";
         } 
         return div;
     }
@@ -76,9 +76,9 @@ export class TopBarMenuWidget extends BaseWidget {
     set hidden(thing: boolean) {
         this._hidden = thing;
         if (typeof this.div !== "undefined") {
-            this.div.hidden = thing;
+            this.div.style.display = thing ? "block" : "none";
+            window.SkullyCore.TopBarMenuWidget.reloadPlacement()
         }
-        window.SkullyCore.TopBarMenuWidget.reloadPlacement()
     }
 
     get hidden() {
@@ -133,6 +133,9 @@ export class BuildingBarMenuWidget extends BaseWidget {
         if (typeof this.customDiv !== "undefined") {
             div = this.customDiv(div)
         }
+        if (this.hidden) {
+            div.style.display = "none";
+        } 
         return div;
     }
 
@@ -140,8 +143,10 @@ export class BuildingBarMenuWidget extends BaseWidget {
 
     set hidden(thing: boolean) {
         this._hidden = thing;
-        this.div.hidden = thing;
-        this.reloadPlacement()
+        if (typeof this.div !== "undefined") {
+            this.div.style.display = thing ? "block" : "none";
+            this.reloadPlacement()
+        }
     }
 
     get hidden() {
