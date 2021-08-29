@@ -3,9 +3,9 @@
 	"version": "1.0.9",
 	"description": "A library mod for all of Skully's Mods! Adds Rifts, a way to add credit to your mod, and much much more.",
 	"scripts": {
-		"build": "npx rollup -c",
-		"full_build": "npx rollup -c && \"./node_modules/.bin/dts-bundle-generator\" -o \"./dist/index.d.ts\" \"./src/index.ts\" && cat ./static/global.txt >> ./dist/index.d.ts",
-		"host": "node ./node_modules/serve/bin/serve.js -p 5500"
+		"build": "grunt build",
+		"full_build": "grunt full_build",
+		"host": "npx serve -p 5500"
 	},
 	"keywords": [
 		"cppkies"
@@ -13,21 +13,20 @@
 	"author": "Bob",
 	"license": "MIT",
 	"devDependencies": {
-		"@rollup/plugin-commonjs": "^11.1.0",
-		"@rollup/plugin-node-resolve": "^7.1.3",
-		"cppkies": "^0.2.3",
-		"dts-bundle-generator": "^5.6.0",
-		"rollup": "^2.38.3",
-		"rollup-plugin-analyzer": "^3.3.0",
-		"rollup-plugin-babel": "^4.3.3",
-		"rollup-plugin-babel-minify": "^9.1.1",
-		"rollup-plugin-typescript2": "^0.25.3",
+		"@masterofbob777/eslint-config": "^1.0.6",
+		"@masterofbob777/grunt-config": "^1.1.0",
+		"dts-bundle-generator": "^5.9.0",
+		"eslint": "^7.31.0",
+		"grunt": "^1.4.1",
+		"prettier": "^2.3.2",
 		"serve": "^11.3.2",
-		"typescript": "^4.1.3"
+		"typescript": "^4.3.5"
 	},
 	"types": "./dist/index.d.ts",
 	"main": "./dist/index.js",
-	"dependencies": {},
+	"dependencies": {
+		"cppkies": "^0.2.3"
+	},
 	"peerDependencies": {},
 	"ccrepo": {
 		"name": "SkullyCore",
