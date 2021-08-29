@@ -4,7 +4,7 @@
 	"description": "A library mod for all of Skully's Mods! Adds Rifts, a way to add credit to your mod, and much much more.",
 	"scripts": {
 		"build": "grunt build",
-		"full_build": "grunt full_build",
+		"full_build": "grunt full_build --env=production",
 		"host": "npx serve -p 5500"
 	},
 	"keywords": [

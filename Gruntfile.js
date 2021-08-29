@@ -18,5 +18,8 @@ module.exports = (grunt) => {
 		},
 	});
 
-	grunt.registerTask("full_build", ["build", "shell:dtsbundle"]);
+	grunt.registerTask("full_build", [
+		"build", 
+		//"shell:dtsbundle"
+	]);
 };

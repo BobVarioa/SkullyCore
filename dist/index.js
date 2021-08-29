@@ -1,1152 +1,98 @@
-(() => {
-  var __create = Object.create;
-  var __defProp = Object.defineProperty;
-  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __getProtoOf = Object.getPrototypeOf;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-  var __commonJS = (cb, mod) => function __require() {
-    return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
-  };
-  var __reExport = (target, module, desc) => {
-    if (module && typeof module === "object" || typeof module === "function") {
-      for (let key of __getOwnPropNames(module))
-        if (!__hasOwnProp.call(target, key) && key !== "default")
-          __defProp(target, key, { get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable });
-    }
-    return target;
-  };
-  var __toModule = (module) => {
-    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
-  };
-
-  // node_modules/cppkies/dist/index.js
-  var require_dist = __commonJS({
-    "node_modules/cppkies/dist/index.js"(exports, module) {
-      (function(e, n) {
-        typeof exports == "object" && typeof module != "undefined" ? module.exports = n() : typeof define == "function" && define.amd ? define(n) : (e = e || self, e.Cppkies = n());
-      })(exports, function() {
-        "use strict";
-        var R = Math.abs, F = Math.floor, H = Math.min, D = Math.pow, Y = Math.max;
-        function e(e2, n2) {
-          function i() {
-            this.constructor = e2;
-          }
-          K(e2, n2), e2.prototype = n2 === null ? Object.create(n2) : (i.prototype = n2.prototype, new i());
-        }
-        function n(e2, n2, i, o2) {
-          return new (i || (i = Promise))(function(a2, r2) {
-            function t2(e3) {
-              try {
-                d2(o2.next(e3));
-              } catch (n3) {
-                r2(n3);
-              }
-            }
-            function s2(e3) {
-              try {
-                d2(o2["throw"](e3));
-              } catch (n3) {
-                r2(n3);
-              }
-            }
-            function d2(e3) {
-              e3.done ? a2(e3.value) : new i(function(n3) {
-                n3(e3.value);
-              }).then(t2, s2);
-            }
-            d2((o2 = o2.apply(e2, n2 || [])).next());
-          });
-        }
-        function o(e2, n2) {
-          function i(e3) {
-            return function(n3) {
-              return o2([e3, n3]);
-            };
-          }
-          function o2(i2) {
-            if (a2)
-              throw new TypeError("Generator is already executing.");
-            for (; c2; )
-              try {
-                if (a2 = 1, r2 && (s2 = 2 & i2[0] ? r2["return"] : i2[0] ? r2["throw"] || ((s2 = r2["return"]) && s2.call(r2), 0) : r2.next) && !(s2 = s2.call(r2, i2[1])).done)
-                  return s2;
-                switch ((r2 = 0, s2) && (i2 = [2 & i2[0], s2.value]), i2[0]) {
-                  case 0:
-                  case 1:
-                    s2 = i2;
-                    break;
-                  case 4:
-                    return c2.label++, { value: i2[1], done: false };
-                  case 5:
-                    c2.label++, r2 = i2[1], i2 = [0];
-                    continue;
-                  case 7:
-                    i2 = c2.ops.pop(), c2.trys.pop();
-                    continue;
-                  default:
-                    if ((s2 = c2.trys, !(s2 = 0 < s2.length && s2[s2.length - 1])) && (i2[0] === 6 || i2[0] === 2)) {
-                      c2 = 0;
-                      continue;
-                    }
-                    if (i2[0] === 3 && (!s2 || i2[1] > s2[0] && i2[1] < s2[3])) {
-                      c2.label = i2[1];
-                      break;
-                    }
-                    if (i2[0] === 6 && c2.label < s2[1]) {
-                      c2.label = s2[1], s2 = i2;
-                      break;
-                    }
-                    if (s2 && c2.label < s2[2]) {
-                      c2.label = s2[2], c2.ops.push(i2);
-                      break;
-                    }
-                    s2[2] && c2.ops.pop(), c2.trys.pop();
-                    continue;
-                }
-                i2 = n2.call(e2, c2);
-              } catch (n3) {
-                i2 = [6, n3], r2 = 0;
-              } finally {
-                a2 = s2 = 0;
-              }
-            if (5 & i2[0])
-              throw i2[1];
-            return { value: i2[0] ? i2[1] : void 0, done: true };
-          }
-          var a2, r2, s2, d2, c2 = { label: 0, sent: function() {
-            if (1 & s2[0])
-              throw s2[1];
-            return s2[1];
-          }, trys: [], ops: [] };
-          return d2 = { next: i(0), throw: i(1), return: i(2) }, typeof Symbol == "function" && (d2[Symbol.iterator] = function() {
-            return this;
-          }), d2;
-        }
-        function a() {
-          for (var e2 = 0, n2 = 0, o2 = arguments.length; n2 < o2; n2++)
-            e2 += arguments[n2].length;
-          for (var t2 = Array(e2), r2 = 0, n2 = 0; n2 < o2; n2++)
-            for (var d2 = arguments[n2], a2 = 0, c2 = d2.length; a2 < c2; a2++, r2++)
-              t2[r2] = d2[a2];
-          return t2;
-        }
-        function r(e2) {
-          return e2.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
-        }
-        function t(e2, n2) {
-          var i = n2[0] === null, o2 = /(?:)/;
-          n2[0] !== null && (o2 = typeof n2[0] == "string" ? new RegExp(r(n2[0]), "g") : n2[0], !o2.test(e2) && console.warn("Nothing to inject."));
-          var a2 = /(\)[^{]*{)/, t2 = /(}?)$/;
-          switch (n2[2]) {
-            case "before":
-              e2 = i ? e2.replace(a2, "$1" + n2[1]) : e2.replace(o2, "" + n2[1] + n2[0]);
-              break;
-            case "replace":
-              e2 = i ? n2[1] : e2.replace(o2, n2[1]);
-              break;
-            case "after":
-              e2 = i ? e2.replace(t2, n2[1] + "$1") : e2.replace(o2, "" + n2[0] + n2[1]);
-              break;
-            default:
-              throw new Error('where Parameter must be "before", "replace" or "after"');
-          }
-          return e2;
-        }
-        function s(e2, n2, i, o2, r2) {
-          r2 === void 0 && (r2 = {});
-          var s2 = Function.apply(void 0, a(Object.keys(r2), ["return (" + t(e2.toString(), [n2, i, o2]) + ")"])).apply(void 0, Object.values(r2));
-          return s2.prototype = e2.prototype, s2;
-        }
-        function d(e2, n2, i) {
-          i === void 0 && (i = {});
-          for (var o2, r2 = e2.toString(), s2 = 0, d2 = n2; s2 < d2.length; s2++)
-            o2 = d2[s2], r2 = t(r2, o2);
-          var c2 = Function.apply(void 0, a(Object.keys(i), ["return (" + r2 + ")"])).apply(void 0, Object.values(i));
-          return c2.prototype = e2.prototype, c2;
-        }
-        function c(e2, n2) {
-          for (var o2 in n2)
-            e2[o2] = n2[o2];
-        }
-        function u(e2) {
-          return e2.charAt(0).toUpperCase() + e2.slice(1).toLowerCase();
-        }
-        function p(e2, n2) {
-          return e2.hasOwnProperty(n2);
-        }
-        function g(e2) {
-          for (var n2, i = [[1e3, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"], [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]], o2 = "", a2 = 0, r2 = i; a2 < r2.length; a2++)
-            for (n2 = r2[a2]; e2 >= n2[0]; )
-              o2 += n2[1], e2 -= n2[0];
-          return o2;
-        }
-        function m(e2) {
-          switch (e2) {
-            case "mod":
-              return { achievements: {}, buildings: {}, upgrades: {} };
-            case "dragon":
-              return { level: "sync", auras: ["sync", "sync"] };
-            case "achievement":
-              return { won: false };
-            case "upgrade":
-              return { bought: false, unlocked: false };
-            case "building":
-              return { amount: 0, bought: 0, free: 0, totalCookies: 0, level: 0, muted: 0, minigameSave: "" };
-            default:
-              throw new Error("Invalid fragment name!");
-          }
-        }
-        function k() {
-          return { mods: {}, foreign: m("mod"), saveVer: 1, dragon: m("dragon") };
-        }
-        function b() {
-          Ge.save = Q = k();
-        }
-        function h(e2) {
-          return Q.foreign.buildings[e2.name] || m("building");
-        }
-        function v(e2) {
-          var n2 = e2.amount, i = e2.bought, o2 = e2.free, a2 = e2.totalCookies, r2 = e2.level, t2 = e2.muted, s2 = e2.minigameSave, d2 = e2.name;
-          Q.foreign.buildings[d2] = { amount: n2, bought: i, free: o2, totalCookies: a2, level: r2, muted: t2, minigameSave: s2 };
-        }
-        function f(e2) {
-          return Q.foreign.upgrades[e2.name] || m("upgrade");
-        }
-        function C(e2) {
-          Q.foreign.upgrades[e2.name] = { unlocked: !!e2.unlocked, bought: !!e2.bought };
-        }
-        function y(e2) {
-          return Q.foreign.achievements[e2.name] || m("achievement");
-        }
-        function L(e2) {
-          Q.foreign.achievements[e2.name] = { won: !!e2.won };
-        }
-        function O() {
-          Q.dragon.level !== "sync" && Q.dragon.level <= Game.dragonLevels.length - 1 && (Game.dragonLevel = Q.dragon.level), Q.dragon.auras[0] !== "sync" && Q.dragon.auras[0] <= Object.keys(Game.dragonAuras).length - 1 && (Game.dragonAura = Q.dragon.auras[0]), Q.dragon.auras[1] !== "sync" && Q.dragon.auras[1] <= Object.keys(Game.dragonAuras).length - 1 && (Game.dragonAura2 = Q.dragon.auras[1]);
-        }
-        function A() {
-          for (var e2, n2 = 0, i = Ge.customBuildings; n2 < i.length; n2++)
-            e2 = i[n2], c(e2, h(e2));
-          for (var o2, a2 = 0, r2 = Ge.customUpgrades; a2 < r2.length; a2++)
-            o2 = r2[a2], c(o2, f(o2)), o2.bought && Game.CountsAsUpgradeOwned(o2.pool) && Game.UpgradesOwned++;
-          for (var t2, s2 = 0, d2 = Ge.customAchievements; s2 < d2.length; s2++)
-            t2 = d2[s2], c(t2, y(t2)), t2.won && Game.CountsAsAchievementOwned(t2.pool) && Game.AchievementsOwned++;
-          O();
-        }
-        function w() {
-          for (var e2, n2 = 0, i = Ge.customBuildings; n2 < i.length; n2++)
-            e2 = i[n2], v(e2);
-          for (var o2, a2 = 0, r2 = Ge.customUpgrades; a2 < r2.length; a2++)
-            o2 = r2[a2], C(o2);
-          for (var t2, s2 = 0, d2 = Ge.customAchievements; s2 < d2.length; s2++)
-            t2 = d2[s2], L(t2);
-        }
-        function j(e2) {
-          var n2 = k();
-          if (typeof e2 != "object" || e2 === null)
-            return n2;
-          if (!p(e2, "saveVer") || typeof e2.saveVer != "number" || 1 < e2.saveVer)
-            return n2;
-          if (n2.foreign = p(e2, "foreign") ? function(e3) {
-            var n3 = m("mod");
-            if (typeof e3 != "object" || e3 === null)
-              return n3;
-            if (p(e3, "buildings") && typeof e3.buildings == "object" && e3.buildings !== null)
-              for (var i2 in e3.buildings) {
-                var o3 = e3.buildings[i2];
-                if (typeof o3 == "object" && o3 !== null)
-                  for (var a2 in n3.buildings[i2] = m("building"), o3)
-                    typeof n3.buildings[i2][a2] == typeof o3[a2] && (n3.buildings[i2][a2] = o3[a2]);
-              }
-            if (p(e3, "upgrades") && typeof e3.upgrades == "object" && e3.upgrades !== null)
-              for (var r2 in e3.upgrades) {
-                var t2 = e3.upgrades[r2];
-                if (typeof t2 == "object" && t2 !== null)
-                  for (var a2 in n3.upgrades[r2] = m("upgrade"), n3.upgrades[r2])
-                    typeof n3.upgrades[r2][a2] == typeof t2[a2] && (n3.upgrades[r2][a2] = t2[a2]);
-              }
-            if (p(e3, "achievements") && typeof e3.achievements == "object" && e3.achievements !== null)
-              for (var s2 in e3.achievements) {
-                var d2 = e3.achievements[s2];
-                if (typeof d2 == "object" && d2 !== null)
-                  for (var a2 in n3.achievements[s2] = m("achievement"), n3.achievements[s2])
-                    typeof n3.achievements[s2][a2] == typeof d2[a2] && (n3.achievements[s2][a2] = d2[a2]);
-              }
-            return n3;
-          }(e2.foreign) : m("mod"), p(e2, "dragon") && typeof e2.dragon == "object" && e2.dragon !== null && (p(e2.dragon, "level") && (typeof e2.dragon.level == "number" || e2.dragon.level === "sync") && (n2.dragon.level = e2.dragon.level), p(e2.dragon, "auras") && e2.dragon.auras instanceof Array))
-            for (var o2 in e2.dragon.auras) {
-              var i = e2.dragon.auras[o2];
-              (typeof i == "number" || i === "sync") && (n2.dragon.auras[o2] = i);
-            }
-          return n2;
-        }
-        function S(e2) {
-          var n2;
-          try {
-            n2 = JSON.parse(e2);
-          } catch (n3) {
-            e2 !== "" && console.warn("CPPKIES: Found invalid save, creating new one..."), b();
-          }
-          Q = Ge.save = j(n2), A();
-        }
-        function T() {
-          return w(), JSON.stringify(Q);
-        }
-        function U(e2, n2) {
-          Z[e2] = n2;
-        }
-        function P(e2) {
-          if (J.includes(e2))
-            throw new Error("Recursive alias");
-          return (J.push(e2), e2 in Z) ? P(Z[e2]) : (J = [], e2);
-        }
-        function I(e2) {
-          return new Promise(function(n2) {
-            var i = new Image();
-            i.addEventListener("load", function() {
-              n2(i);
-            }), i.crossOrigin = "Anonymous", i.src = e2;
-          });
-        }
-        function M(e2) {
-          return new Promise(function(n2) {
-            e2.canvas.toBlob(function(e3) {
-              n2(URL.createObjectURL(e3));
-            });
-          });
-        }
-        function G(e2, n2, i, o2, a2, r2) {
-          return new Promise(function(t2) {
-            i[0] instanceof Array || (i = [i]), i = i;
-            var s2 = {};
-            for (var d2 in i)
-              for (var c2 in i[d2])
-                if (i[d2][c2]) {
-                  if (i[d2][c2] = i[d2][c2].toString().toLowerCase(), !(i[d2][c2] in n2))
-                    throw new Error("Invalid icon name");
-                  s2[i[d2][c2]] = [parseInt(c2), parseInt(d2)];
-                }
-            var u2 = document.createElement("canvas").getContext("2d"), p2 = new Image();
-            p2.addEventListener("load", function() {
-              for (var e3 in u2.canvas.width = a2[0], u2.canvas.height = a2[1], s2)
-                u2.drawImage(p2, s2[e3][0] * o2[0], s2[e3][1] * o2[1], o2[0], o2[1], n2[e3][0] * o2[0], n2[e3][1] * o2[1], o2[0], o2[1]);
-              var i2, d3 = function() {
-                M(u2).then(t2);
-              };
-              r2 && (i2 = r2(u2)), i2 instanceof Promise ? i2.then(d3) : d3();
-            }), p2.crossOrigin = "Anonymous", p2.src = e2;
-          });
-        }
-        function _(e2) {
-          return e2 = a(e2), (e2[2] === void 0 || e2[2] === null) && (e2[2] = Ge.iconLink), e2[2] = P(e2[2]), e2;
-        }
-        function B(e2) {
-          var n2 = new X(), i = [new V("tooltip", function() {
-            e2.tooltip = s(s(e2.tooltip, "return", "let tempRet = ", "replace"), null, '\n//Cppkies injection\n				return Cppkies.buildingHooks[this.name].emit("tooltip", tempRet)', "after");
-          }), new V("buy", function() {
-            e2.buy = s(e2.buy, null, '\n//Cppkies injection\n				if(success) {\n					Cppkies.buildingHooks[this.name].emit("buy")\n				}', "after");
-          }), new V("levelUp", function() {
-            e2.levelUp = s(e2.levelUp, "me.level+=1;", '\n// Cppkies injection\nCppkies.buildingHooks[me.name].emit("levelUp")', "after", { me: e2 });
-          })];
-          i.forEach(function(e3) {
-            var n3;
-            (n3 = e3.func) === null || n3 === void 0 ? void 0 : n3.call(e3);
-          }), Ge.hooks.on("buildingCps", function(i2) {
-            return { building: i2.building, cps: Game.Objects[i2.building] === e2 ? n2.emit("cps", i2.cps) : i2.cps };
-          }), oe[e2.name] = n2;
-        }
-        function N() {
-          for (var e2, n2 = 0, i = Game.ObjectsById; n2 < i.length; n2++)
-            e2 = i[n2], oe[e2.name] || B(e2);
-        }
-        function q(e2) {
-          return e2.tier === "fortune";
-        }
-        function E(e2) {
-          for (var n2, o2 = 1, a2 = 1; a2 <= e2; a2++)
-            o2 += (n2 = me[a2]) !== null && n2 !== void 0 ? n2 : me["default"];
-          return 9 * D(10, o2);
-        }
-        function x() {
-          Ge.on("getIcon", function(e2) {
-            var n2 = e2.icon, i = e2.type, o2 = e2.tier;
-            return Ge.customTiers.forEach(function(e3) {
-              e3.keyName === o2.toString() && e3.iconLink && (n2[2] = e3.iconLink);
-            }), { icon: n2, type: i, tier: o2 };
-          }), Ge.on("getIcon", function(e2) {
-            var n2 = e2.icon, i = e2.type, o2 = e2.tier;
-            return Ge.customBuildings.forEach(function(e3) {
-              e3.name === i && e3.iconLink && (n2[2] = e3.iconLink);
-            }), { icon: n2, tier: o2, type: i };
-          }), Ge.on("getIcon", function(e2) {
-            var n2 = e2.icon, i = e2.type, o2 = e2.tier;
-            return n2[2] !== void 0 && n2[2] !== null || p(Game.Tiers[o2.toString()], "iconLink") || (n2[2] = ""), { icon: n2, tier: o2, type: i };
-          }), Ge.on("preSave", function() {
-            if (Game.dragonAura !== 0 && (Q.dragon.auras[0] = "sync"), Game.dragonAura2 !== 0 && (Q.dragon.auras[1] = "sync"), Game.dragonAuras[Game.dragonAura] instanceof Ue && (Q.dragon.auras[0] = Game.dragonAura, Game.dragonAura = 0), Game.dragonAuras[Game.dragonAura2] instanceof Ue && (Q.dragon.auras[1] = Game.dragonAura2, Game.dragonAura2 = 0), Game.dragonLevels[Game.dragonLevel] instanceof Pe || Game.dragonLevel >= $)
-              for (Q.dragon.level = Game.dragonLevel; Game.dragonLevels[Game.dragonLevel] instanceof Pe || Game.dragonLevel >= $; )
-                Game.dragonLevel--;
-          }), Ge.on("postSave", function() {
-            Q.dragon.auras[0] !== "sync" && Game.dragonAuras[Q.dragon.auras[0]] && (Game.dragonAura = Q.dragon.auras[0]), Q.dragon.auras[1] !== "sync" && Game.dragonAuras[Q.dragon.auras[1]] && (Game.dragonAura2 = Q.dragon.auras[1]), Q.dragon.level !== "sync" && Game.dragonLevels[Q.dragon.level] && (Game.dragonLevel = Q.dragon.level);
-          }), Ge.on("reset", function() {
-            Q.dragon.auras = ["sync", "sync"], Q.dragon.level = "sync";
-          }), Ge.on("specialPic", function(e2) {
-            var n2, i = Game.dragonLevels[Game.dragonLevel];
-            return e2.tab === "dragon" && i instanceof Pe && (e2.pic = (n2 = i.picLink) !== null && n2 !== void 0 ? n2 : e2.pic), e2;
-          });
-        }
-        var W, K = function(e2, n2) {
-          return K = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e3, n3) {
-            e3.__proto__ = n3;
-          } || function(e3, n3) {
-            for (var i in n3)
-              n3.hasOwnProperty(i) && (e3[i] = n3[i]);
-          }, K(e2, n2);
-        }, X = function() {
-          function e2() {
-            this._events = {};
-          }
-          return e2.prototype.on = function(e3, n2) {
-            this._events[e3] ? this._events[e3].push(n2) : this._events[e3] = [n2];
-          }, e2.prototype.once = function(e3, n2) {
-            var i = this;
-            this.on(e3, function(o2) {
-              return i.off(e3, n2), n2(o2);
-            });
-          }, e2.prototype.off = function(e3, n2) {
-            this._events[e3].splice(this._events[e3].indexOf(n2), 1);
-          }, e2.prototype.emit = function(e3) {
-            for (var n2 = [], i = 1; i < arguments.length; i++)
-              n2[i - 1] = arguments[i];
-            var o2 = n2[0];
-            this._events[e3] || (this._events[e3] = []);
-            for (var a2, r2 = 0, t2 = this._events[e3]; r2 < t2.length; r2++)
-              a2 = t2[r2], o2 = a2(o2);
-            return o2;
-          }, e2.prototype.constEmit = function(e3) {
-            for (var n2 = [], i = 1; i < arguments.length; i++)
-              n2[i - 1] = arguments[i];
-            this._events[e3] || (this._events[e3] = []);
-            for (var o2, a2 = 0, r2 = this._events[e3]; a2 < r2.length; a2++)
-              o2 = r2[a2], o2(n2[0]);
-          }, e2;
-        }(), V = function() {
-          return function(e2, n2) {
-            this.value = e2, this.func = n2;
-          };
-        }(), $ = Game.dragonLevels.length + 0, Q = k(), Z = {}, J = [], z = {}, ee = { "3d": [0, 21], milestone1: [0, 22], milestone2: [0, 23], milestone3: [0, 24], krumblor: [0, 25], level1: [0, 26], level2: [0, 27] }, ne = {}, ie = { research: [9, 0], cookie: [10, 0], mouse: [11, 0], multicursor: [12, 0], kitten: [18, 0] }, oe = {}, ae = [], re = function(n2) {
-          function i(e2, o2, a2, r2, t2, s2, d2, c2, u2, p2) {
-            var g2, m2, k2 = this;
-            if (Game.Objects[e2])
-              throw new Error(`Can't create building, "` + e2 + '" is already used as a building name');
-            r2[1] !== 0 && console.warn("All icon sheets must follow an order, see https://cppkies.js.org/#/CommonProblems#IconOrder?id=relink-column"), t2[0] !== 0 && console.warn("All big icon sheets must follow an order, see https://cppkies.js.org/#/CommonProblems#IconOrder?id=big-icons"), k2 = n2.call(this, e2, o2, a2, t2[1], r2[0], s2, 0, d2, c2) || this, ae.push(k2), oe[e2] || B(k2);
-            var b2 = function(e3) {
-              if (0 >= parseInt(e3))
-                return "continue";
-              var n3 = Game.ObjectsById[e3];
-              if (n3.canvas = l("rowCanvas" + e3), !n3.canvas)
-                return "continue";
-              if (n3.ctx = n3.canvas.getContext("2d"), n3.canvas.addEventListener("mouseover", function() {
-                n3.mouseOn = true;
-              }), n3.canvas.addEventListener("mouseout", function() {
-                n3.mouseOn = false;
-              }), n3.canvas.addEventListener("mousemove", function(i3) {
-                var e4 = n3.canvas.getBoundingClientRect();
-                n3.mousePos[0] = i3.pageX - e4.left, n3.mousePos[1] = i3.pageY - e4.top;
-              }), n3.minigame && n3.minigameLoaded) {
-                var i2 = n3.minigame.save();
-                n3.minigame.launch(), n3.minigame.load(i2);
-              }
-            };
-            for (var v2 in Game.ObjectsById)
-              b2(v2);
-            k2.buildingLink = (g2 = t2[2]) !== null && g2 !== void 0 ? g2 : Ge.buildingLink, k2.iconLink = P((m2 = r2[2]) !== null && m2 !== void 0 ? m2 : Ge.iconLink), u2 && (Game.foolObjects[e2] = u2), p2 && (Game.goldenCookieBuildingBuffs[e2] = p2), k2.iconLink && oe[k2.name].on("tooltip", function(e3) {
-              return k2.locked ? e3 : e3.replace("background-position", "background-image:url(" + k2.iconLink + ");background-position");
-            }), Game.BuildStore(), k2.buildingLink && Ge.hooks.on("buildStore", function() {
-              l("productIcon" + k2.id).style.backgroundImage = "url(" + k2.buildingLink + ")", l("productIconOff" + k2.id).style.backgroundImage = "url(" + k2.buildingLink + ")";
-            }), Game.BuildStore(), k2.canvas = l("rowCanvas" + k2.id), k2.ctx = k2.canvas.getContext("2d"), k2.pics = [];
-            var f2 = document.createElement("div");
-            f2.className = "tinyProductIcon", f2.id = "mutedProduct" + k2.id, f2.style.display = "none", k2.buildingLink && (f2.style.backgroundImage = "url(" + k2.buildingLink + ")"), f2.style.backgroundPositionX = "-" + r2[0] + "px", f2.style.backgroundPositionY = "-" + r2[1] + "px", f2.addEventListener("click", function() {
-              k2.mute(0), window.PlaySound(k2.muted ? "snd/clickOff.mp3" : "snd/clickOn.mp3");
-            }), window.AddEvent(k2.canvas, "mouseover", function() {
-              k2.mouseOn = true;
-            }), window.AddEvent(k2.canvas, "mouseout", function() {
-              k2.mouseOn = false;
-            }), k2.canvas.addEventListener("mousemove", function(n3) {
-              var e3 = k2.canvas.getBoundingClientRect();
-              k2.mousePos[0] = n3.pageX - e3.left, k2.mousePos[1] = n3.pageY - e3.top;
-            }), l("buildingsMute").appendChild(f2);
-            var C2 = h(k2);
-            for (var v2 in C2)
-              k2[v2] = C2[v2];
-            return Game.recalculateGains = 1, k2;
-          }
-          return e(i, n2), i;
-        }(Game.Object), te = [], se = function(n2) {
-          function i(e2, o2, a2, r2, t2) {
-            t2 === void 0 && (t2 = function() {
-            });
-            var s2 = n2.call(this, e2, typeof o2 == "function" ? "" : o2, typeof a2 == "function" ? 0 : a2, typeof r2 == "function" ? [0, 0] : _(r2), t2) || this;
-            typeof o2 == "function" && (s2.descFunc = o2), typeof a2 == "function" && (s2.priceFunc = a2), typeof r2 == "function" && (s2.iconFunction = function() {
-              return _(r2());
-            }), te.push(s2);
-            var d2 = f(s2);
-            for (var c2 in d2)
-              s2[c2] = d2[c2];
-            return Game.upgradesToRebuild = 1, s2.bought && Game.CountsAsUpgradeOwned(s2.pool) && Game.UpgradesOwned++, s2;
-          }
-          return e(i, n2), i;
-        }(Game.Upgrade), de = function(n2) {
-          function i(e2, i2, o2, a2, r2, t2, s2) {
-            t2 === void 0 && (t2 = ["Legacy"]), s2 === void 0 && (s2 = function() {
-            });
-            var d2 = n2.call(this, e2, i2, o2, a2, s2) || this;
-            return d2.pool = "prestige", d2.posX = r2[0], d2.posY = r2[1], d2.parents = t2.map(function(e3) {
-              return Game.Upgrades[e3] || Game.UpgradesById[e3];
-            }), Game.PrestigeUpgrades.push(d2), Game.UpgradePositions[d2.id] = r2, d2;
-          }
-          return e(i, n2), i;
-        }(se), ce = function(n2) {
-          function i(e2, i2, o2, a2) {
-            var r2 = this;
-            return typeof o2 == "string" && (o2 = Game.Objects[o2]), r2 = n2.call(this, e2, u(o2.plural) + " are <b>twice</b> as efficient.<q>" + i2 + "</q>", o2.basePrice * Game.Tiers[a2].price, Game.GetIcon(o2.name, a2)) || this, Game.SetTier(o2.name, a2), r2.buildingTie1 = o2, q(r2) && (r2.order = 19e3, o2.fortune = r2), isNaN(parseInt(a2.toString())) || (a2 = parseInt(a2.toString())), typeof a2 == "number" && (r2.order = 100 * (o2.id + 1) + r2.id / 1e3, r2.order -= 75 * Y(0, H(o2.id - 4, 3)), 8 <= o2.id && (r2.order -= 75)), a2 === "fortune" && Game.Tiers[a2].upgrades.push(r2), o2.buyFunction.apply(o2), r2;
-          }
-          return e(i, n2), i;
-        }(se), le = function(n2) {
-          function i(e2, i2, o2, r2) {
-            var t2 = this;
-            if (r2) {
-              if (!r2.endsWith(".png"))
-                throw new Error(`Can't use the grandma picture URL "` + r2 + '", URL must end with .png');
-              r2 = r2.substring(0, r2.length - 4);
-            }
-            typeof o2 == "string" && (o2 = Game.Objects[o2]);
-            var s2 = o2.id - 1;
-            return s2 === 1 ? s2 = "grandma" : s2 += " grandmas", t2 = n2.call(this, e2, "Grandmas are <b>twice</b> as efficient. " + u(o2.plural) + " gain <b>+1% CpS</b> per " + s2 + ".<q>" + i2 + "</q>", o2.basePrice * Game.Tiers[2].price, [10, 9, ""], Game.Objects.Grandma.redraw) || this, o2.grandma = t2, t2.buildingTie = o2, t2.order = 250 + t2.id / 1e3, 12 <= o2.id && (t2.order += 5), Game.GrandmaSynergies.push(t2.name), r2 && Ge.hooks.on("grandmaPic", function(e3) {
-              return t2.bought ? a(e3, [r2]) : e3;
-            }), Game.Objects.Grandma.redraw(), o2.buyFunction.apply(o2), t2;
-          }
-          return e(i, n2), i;
-        }(se), ue = function(n2) {
-          function i(e2, i2, o2, a2, r2) {
-            var t2 = this;
-            typeof o2 == "string" && (o2 = Game.Objects[o2]), typeof a2 == "string" && (a2 = Game.Objects[a2]);
-            var s2 = Game.GetIcon(o2.name, r2);
-            if (o2.basePrice > a2.basePrice) {
-              var d2 = o2;
-              o2 = a2, a2 = d2;
-            }
-            return t2 = n2.call(this, e2, u(o2.plural) + " gain <b>+5% CpS</b> per " + a2.name.toLowerCase() + ".<br>" + u(a2.plural) + " gain <b>+0.1% CpS</b> per \n			" + o2.name.toLowerCase() + ".<q>" + i2 + "</q>", (10 * o2.basePrice + 1 * a2.basePrice) * Game.Tiers[r2].price, s2) || this, t2.tier = r2, t2.buildingTie1 = o2, t2.buildingTie2 = a2, t2.order = 5e3 + t2.id / 1e3, o2.synergies.push(t2), a2.synergies.push(t2), Game.Tiers[r2].upgrades.push(t2), Game.RebuildUpgrades(), o2.buyFunction.apply(o2), t2;
-          }
-          return e(i, n2), i;
-        }(se), pe = [5, 7, 8, 9, 10], ge = function(n2) {
-          function i(e2, i2, o2, a2) {
-            a2 === void 0 && (a2 = 20);
-            var r2 = this, t2 = Game.Objects.Cursor, s2 = parseInt(o2.toString());
-            return r2 = n2.call(this, e2, "Multiplies the gain from Thousand fingers by <b>" + a2 + "</b>.<q>" + i2 + "</q>", Game.Tiers[o2].special || isNaN(s2) ? t2.basePrice * Game.Tiers[o2].price : D(10, pe[H(s2 - 4, pe.length - 1)] + 3 * Y(s2 - 8, 0)), Game.GetIcon(t2.name, o2)) || this, r2.tier = o2, r2.pool = "", r2.order = 100 + r2.id / 1e3, Ge.on("cursorFingerMult", function(e3) {
-              return r2.bought ? e3 * a2 : e3;
-            }), Game.Tiers[o2].special || isNaN(s2) || Ge.buildingHooks.Cursor.on("buy", function() {
-              t2.amount >= (s2 === 4 ? 25 : 50 * (s2 - 4)) && Game.Unlock(r2.name);
-            }), o2 === "fortune" && Game.Tiers[o2].upgrades.push(r2), Game.Objects.Cursor.buyFunction.apply(Game.Objects.Cursor), r2;
-          }
-          return e(i, n2), i;
-        }(se), me = { 1: 5, 2: 4, 4: 4, default: 3 }, ke = [0.1, 0.125, 0.15, 0.175, 0.2, 0.2, 0.2, 0.2, 0.2, 0.175, 0.15, 0.125, 0.115], be = function(n2) {
-          function i(e2, i2, o2, a2, r2, t2) {
-            a2 === void 0 && (a2 = Game.Tiers[o2].special || isNaN(parseInt(o2.toString())) ? null : ke[(parseInt(o2.toString()) - 1) % (ke.length - 1)]), t2 === void 0 && (t2 = Game.Tiers[o2].special || isNaN(parseInt(o2.toString())) ? null : o2 === 1 ? 0.5 : o2 - 1);
-            var s2 = n2.call(this, e2, "You gain <b>more CpS</b> the more milk you have.<q>" + i2 + "</q>", Game.Tiers[o2].special || isNaN(parseInt(o2.toString())) ? r2 !== null && r2 !== void 0 ? r2 : 0 : E(o2), Game.GetIcon("Kitten", o2)) || this;
-            return s2.tier = o2, s2.kitten = true, s2.pool = "", a2 === null && console.warn("Please make sure to specify the power if the kitten tier is special"), (Game.Tiers[o2].special || isNaN(parseInt(o2.toString()))) && r2 === void 0 && console.warn("Please make sure to specify the cost if the kitten tier is special"), t2 !== null && Ge.on("logic", function() {
-              Game.milkProgress >= t2 && Game.Unlock(s2.name);
-            }), s2.order = 2e4 + s2.id / 1e3, a2 !== null && Ge.on("rawCpsMult", function(e3) {
-              var n3 = s2.bought ? 1 + Game.milkProgress * a2 * Ge.hiddenMilkMult : 1;
-              return Game.cookiesMultByType.kittens *= n3, e3 * n3;
-            }), Game.UpgradesByPool.kitten.push(s2), o2 === "fortune" && Game.Tiers[o2].upgrades.push(s2), s2;
-          }
-          return e(i, n2), i;
-        }(se), he = function(n2) {
-          function i(e2, i2, o2, a2) {
-            a2 === void 0 && (a2 = 1);
-            var r2 = n2.call(this, e2, "Clicking gains <b>+" + a2 + "% of your CpS</b>.<q>" + i2 + "</q>", D(10, 3 + 2 * parseInt(o2.toString())), Game.GetIcon("Mouse", o2)) || this;
-            r2.tier = o2, r2.pool = "";
-            var t2 = parseInt(o2.toString());
-            return r2.order = 150 + r2.id / 1e3, Ge.on("cpcAdd", function(e3) {
-              return r2.bought ? e3 + Game.cookiesPs * a2 / 100 : e3;
-            }), Game.Tiers[o2].special || isNaN(t2) || Ge.on("check", function() {
-              Game.handmadeCookies >= D(10, 1 + 2 * t2) && Game.Unlock(r2.name);
-            }), o2 === "fortune" && Game.Tiers[o2].upgrades.push(r2), r2;
-          }
-          return e(i, n2), i;
-        }(se), ve = function(n2) {
-          function i(e2, i2, o2, a2, r2, t2, s2) {
-            var d2, c2 = n2.call(this, e2, "Cookie production multiplier <b>+" + Beautify(typeof r2 == "function" ? r2() : r2, 1) + "%</b>.<q>" + i2 + "</q>", o2, a2) || this;
-            return c2.power = r2, c2.pool = "cookie", c2.order = ((d2 = s2 !== null && s2 !== void 0 ? s2 : Ge.cookieOrder) !== null && d2 !== void 0 ? d2 : 10020) + c2.id / 1e3, c2.unlockAt = { name: e2, cookies: (typeof o2 == "function" ? o2() : o2) / 20, require: t2 === null || t2 === void 0 ? void 0 : t2.require, season: t2 === null || t2 === void 0 ? void 0 : t2.season }, Game.UnlockAt.push(c2.unlockAt), Game.UpgradesByPool.cookie.push(c2), Game.cookieUpgrades.push(c2), c2;
-          }
-          return e(i, n2), i;
-        }(se), fe = [], Ce = function() {
-          return function(e2, n2, i, o2, a2, r2, t2, s2, d2) {
-            o2 === void 0 && (o2 = false), a2 === void 0 && (a2 = "auto"), r2 === void 0 && (r2 = null), t2 === void 0 && (t2 = null), s2 === void 0 && (s2 = null), d2 === void 0 && (d2 = "auto");
-            var c2;
-            this.name = e2, this.color = i, this.special = o2, this.keyName = d2 === "auto" ? o2 ? e2 : (Object.keys(Game.Tiers).filter(function(e3) {
-              return !isNaN(parseInt(e3));
-            }).length + 1).toString() : d2, r2 === null && (this.unlock = -1), typeof r2 == "number" && (this.unlock = r2), (o2 === false && r2 === null || r2 === "auto") && (this.unlock = Game.Tiers[parseInt(this.keyName) - 1].unlock + 50), typeof t2 == "number" && (this.achievUnlock = t2), (o2 === false && t2 === null || t2 === "auto") && (this.achievUnlock = Game.Tiers[parseInt(this.keyName) - 1].achievUnlock + 50), s2 && (this.req = s2), this.price = a2 === "auto" ? 1e8 * Game.Tiers[Object.keys(Game.Tiers).filter(function(e3) {
-              return !isNaN(parseInt(e3));
-            }).length.toString()].price : a2, this.iconRow = n2[1], this.iconLink = P((c2 = n2[2]) !== null && c2 !== void 0 ? c2 : Ge.iconLink), Game.Tiers[this.keyName] = this, fe.push(this);
-          };
-        }(), ye = [], Le = function(n2) {
-          function i(e2, i2, o2) {
-            var a2 = n2.call(this, e2, i2, _(o2)) || this;
-            return c(a2, y(a2)), ye.push(a2), a2.won && Game.CountsAsAchievementOwned(a2.pool) && Game.AchievementsOwned++, a2;
-          }
-          return e(i, n2), i;
-        }(Game.Achievement), Oe = function(n2) {
-          function i(e2, i2, o2, a2) {
-            a2 === void 0 && (a2 = D(10, F(1.5 * Game.BankAchievements.length + 2)));
-            var r2 = n2.call(this, e2, "Bake <b>" + toFixed(a2) + "</b> cookie" + (R(a2) === 1 ? "" : "s") + " in one ascension." + (o2 ? "<q>" + o2 + "</q>" : ""), i2) || this;
-            return r2.treshold = a2, r2.order = 100 + 0.01 * Game.BankAchievements.length, Game.BankAchievements.push(r2), r2;
-          }
-          return e(i, n2), i;
-        }(Le), Ae = function(n2) {
-          function i(e2, i2, o2, a2) {
-            a2 === void 0 && (a2 = D(10, F(1.2 * Game.BankAchievements.length)));
-            var r2 = n2.call(this, e2, "Bake <b>" + toFixed(a2) + "</b> cookie" + (R(a2) === 1 ? "" : "s") + " per second." + (o2 ? "<q>" + o2 + "</q>" : ""), i2) || this;
-            return r2.treshold = a2, r2.order = 200 + 0.01 * Game.CpsAchievements.length, Game.CpsAchievements.push(r2), r2;
-          }
-          return e(i, n2), i;
-        }(Le), we = function(n2) {
-          function i(e2, i2, o2, a2) {
-            var r2 = this, t2 = typeof o2 == "object" ? o2 : Game.Objects[o2], s2 = null, d2 = -1;
-            if (t2.id === 0) {
-              switch (a2) {
-                case "cursor2":
-                  s2 = [0, 6], d2 = 2;
-                  break;
-                case "cursor50":
-                  s2 = [1, 6], d2 = 50;
-                  break;
-                default:
-                  if (0 >= Game.Tiers[a2].achievUnlock) {
-                    console.warn("Tier has invalid unlock amount");
-                    break;
-                  }
-                  d2 = a2 === 1 ? 1 : 2 * Game.Tiers[a2].achievUnlock;
-              }
-              Ge.buildingHooks.Cursor.on("buy", function() {
-                Game.Objects.Cursor.amount >= d2 && Game.Win(r2.name);
-              });
-            } else
-              d2 = Game.Tiers[a2].achievUnlock;
-            return r2 = n2.call(this, e2, "Have <b>" + d2 + "</b> " + (R(d2) === 1 ? t2.single : t2.plural) + "." + (i2 ? "<q>" + i2 + "</q>" : ""), s2 !== null && s2 !== void 0 ? s2 : Game.GetIcon(t2.name, a2)) || this, Game.SetTier(t2.name, a2 === "cursor2" || a2 === "cursor50" ? 1 : a2), t2.tieredAchievs[a2] = r2, r2.buildingTie = t2, r2.order = 1e3 + 100 * t2.id + r2.id / 1e3, r2.order -= 75 * Y(0, H(t2.id - 4, 3)), 8 <= t2.id && (r2.order -= 75), t2.id === 0 && (r2.order += 50), r2;
-          }
-          return e(i, n2), i;
-        }(Le), je = function(n2) {
-          function i(e2, i2, o2, a2, r2) {
-            var t2 = this;
-            typeof i2 == "string" && (i2 = Game.Objects[i2]);
-            var s2 = [i2.iconColumn, 21 + o2, i2 instanceof re ? i2.iconLink : void 0], d2 = D(10, 12 + i2.id + (r2 !== null && r2 !== void 0 ? r2 : 0) + 7 * (o2 - 1));
-            return t2 = n2.call(this, e2, "Make <b>" + toFixed(d2) + "</b> cookies just from " + i2.plural + "." + (a2 ? "<q>" + a2 + "</q>" : ""), s2) || this, t2.order = 1020 + 100 * i2.id + t2.id / 1e3, t2.order -= 75 * Y(0, H(i2.id - 4, 3)), 8 <= i2.id && (t2.order -= 75), i2.id === 0 && (t2.order += 50), i2.productionAchievs.push({ pow: d2, achiev: t2 }), t2;
-          }
-          return e(i, n2), i;
-        }(Le), Se = function(n2) {
-          function i(e2, i2, o2) {
-            var a2 = this;
-            typeof i2 == "string" && (i2 = Game.Objects[i2]);
-            var r2 = [i2.iconColumn, 26, i2 instanceof re ? i2.iconLink : void 0];
-            return a2 = n2.call(this, e2, "Reach level <b>10</b> " + i2.plural + "." + (o2 ? "<q>" + o2 + "</q>" : ""), r2) || this, a2.order = 1020 + 100 * i2.id + a2.id / 1e3, a2.order -= 75 * Y(0, H(i2.id - 4, 3)), 8 <= i2.id && (a2.order -= 75), i2.id === 0 && (a2.order += 50), i2.levelAchiev10 = a2, a2;
-          }
-          return e(i, n2), i;
-        }(Le), Te = function(n2) {
-          function i(e2, i2, o2) {
-            var a2 = this, r2 = parseInt(i2.toString());
-            return a2 = n2.call(this, e2, "Make <b>" + toFixed(D(10, 1 + 2 * r2)) + "</b> cookies from clicking." + (o2 ? "<q>" + o2 + "</q>" : ""), Game.GetIcon("Mouse", i2)) || this, a2.pool = "normal", a2.tier = i2, a2.order = 1e3 + a2.id / 1e3, Game.Tiers[i2].special || isNaN(r2) || Ge.on("check", function() {
-              Game.handmadeCookies >= D(10, 1 + 2 * r2) && Game.Win(a2.name);
-            }), a2;
-          }
-          return e(i, n2), i;
-        }(Le), Ue = function() {
-          function e2(e3, n2, i) {
-            this.name = e3, this.desc = n2, typeof i == "string" && (i = Game.Objects[i]), this.pic = i instanceof Game.Object ? _([i.iconColumn, 25, i instanceof re ? i.iconLink : void 0]) : i, Game.dragonAuras[Object.keys(Game.dragonAuras).length] = this, Q.dragon.auras[0] !== "sync" && Object.keys(Game.dragonAuras).length >= Q.dragon.auras[0] && (Game.dragonAura = Q.dragon.auras[0]), Q.dragon.auras[1] !== "sync" && Object.keys(Game.dragonAuras).length >= Q.dragon.auras[1] && (Game.dragonAura2 = Q.dragon.auras[1]);
-          }
-          return e2;
-        }(), Pe = function() {
-          function e2(n2, i, o2, a2, r2, t2, s2) {
-            s2 === void 0 && (s2 = Game.dragonLevels.length - 3), this.buy = r2, this.picY = 0;
-            var d2 = Game.dragonLevels[s2 - 1];
-            this.name = n2 !== null && n2 !== void 0 ? n2 : d2.name, this.action = i, this.costStr = typeof o2 == "string" ? function() {
-              return o2;
-            } : o2, this.cost = a2, t2 ? (this.pic = t2[0], this.picY = t2[1], this.picY !== 0 && console.warn("For now, all dragon levels must not use pic Y, sorry."), this.picLink = t2[2]) : (this.pic = d2.pic, d2 instanceof e2 && (this.picY = d2.picY, this.picLink = d2.picLink)), Game.dragonLevels.splice(s2, 0, this), Q.dragon.level !== "sync" && Game.dragonLevels.length >= Q.dragon.level && (Game.dragonLevel = Q.dragon.level);
-          }
-          return e2;
-        }(), Ie = function(n2) {
-          function i(e2, i2, o2) {
-            var a2 = this;
-            return typeof o2 == "string" && (o2 = Game.Objects[o2]), a2 = n2.call(this, null, "Train " + e2 + "<br/><small>Aura : " + i2 + "</small>", "100 " + o2.plural, function() {
-              return 100 <= o2.amount;
-            }, function() {
-              return o2.sacrifice(100);
-            }) || this, a2;
-          }
-          return e(i, n2), i;
-        }(Pe), Me = function() {
-          return function(e2, n2, i, o2) {
-            if (o2 === void 0 && (o2 = false), this.name = e2, this.pic = i, this.special = o2, !i.endsWith(".png"))
-              throw new Error(`Can't create milk with the milk URL "` + i + '", the URL must end with .png!');
-            o2 || (this.name = "Rank " + g(Game.Milks.length + 1) + " - " + e2), this.pic = i.substr(0, i.length - 4), _(n2), this.icon = [n2[0], n2[1]], this.iconLink = n2[2], o2 ? Game.MilksByChoice[Object.keys(Game.MilksByChoice).length] = this : Game.Milks.push(this);
-          };
-        }(), Ge = { hooks: null, on: null, hiddenMilkMult: 1, iconLink: "", buildingLink: "", cookieOrder: 10020, buildingHooks: oe, buildingHooksById: [], hookAllBuildings: N, customBuildings: ae, customUpgrades: te, customTiers: fe, save: Q, onLoad: [], Building: re, Upgrade: se, TieredUpgrade: ce, Tier: Ce, HeavenlyUpgrade: de, GrandmaSynergy: le, SynergyUpgrade: ue, CursorUpgrade: ge, KittenUpgrade: be, MouseUpgrade: he, CookieUpgrade: ve, Achievement: Le, CpsAchievement: Ae, BankAchievement: Oe, TieredAchievement: we, ProductionAchievement: je, Level10Achievement: Se, MouseAchievement: Te, customAchievements: ye, DragonAura: Ue, DragonLevel: Pe, DragonAuraLevel: Ie, Milk: Me, injectCode: s, injectCodes: d, DEFAULT_ONBUY: function() {
-          Game.UnlockTiered(this), this.amount >= Game.SpecialGrandmaUnlock && 0 < Game.Objects.Grandma.amount && this.grandma && Game.Unlock(this.grandma.name);
-        }, DEFAULT_CPS: function(e2) {
-          return Game.GetTieredCpsMult(e2) * Game.magicCpS(e2.name) * e2.baseCps;
-        }, icons: { relinkColumn: function(e2, a2, r2, t2) {
-          return t2 === void 0 && (t2 = false), n(this, void 0, void 0, function() {
-            var n2, s2, s2, d2, c2;
-            return o(this, function(i) {
-              switch (i.label) {
-                case 0:
-                  for (s2 in r2 === void 0 && (!z[e2] && (z[e2] = 0), r2 = z[e2]++), n2 = {}, ee)
-                    n2[s2] = [r2, ee[s2][1]];
-                  for (s2 in Game.Tiers)
-                    n2[Game.Tiers[s2].name.toLowerCase()] = n2[s2.toString()] = [r2, Game.Tiers[s2].iconRow];
-                  return d2 = U, c2 = [e2], [4, G(t2 ? P(e2) : e2, n2, a2, [48, 48], [48 * (r2 + 1), 48 * (Object.values(n2).reduce(function(e3, n3) {
-                    return Y(e3, n3[1]);
-                  }, -Infinity) + 1)], function(n3) {
-                    return new Promise(function(i2) {
-                      if (P(e2) !== e2) {
-                        var o2 = new Image();
-                        o2.addEventListener("load", function() {
-                          n3.drawImage(o2, 0, 0), i2();
-                        }), o2.src = P(e2), o2.crossOrigin = "Anonymous";
-                      } else
-                        i2();
-                    });
-                  })];
-                case 1:
-                  return d2.apply(void 0, c2.concat([i.sent()])), [2];
-              }
-            });
-          });
-        }, relinkRow: function(e2, a2, r2, t2) {
-          return t2 === void 0 && (t2 = false), n(this, void 0, void 0, function() {
-            var n2, s2, s2, d2, c2;
-            return o(this, function(i) {
-              switch (i.label) {
-                case 0:
-                  for (s2 in r2 === void 0 && (!ne[e2] && (ne[e2] = 0), r2 = ne[e2]++), n2 = {}, ie)
-                    n2[s2] = [ie[s2][0], r2];
-                  for (s2 in Game.ObjectsById)
-                    n2[Game.ObjectsById[s2].single.toLowerCase()] = n2[s2] = [Game.ObjectsById[s2].iconColumn, r2];
-                  return d2 = U, c2 = [e2], [4, G(t2 ? P(e2) : e2, n2, a2, [48, 48], [48 * (Object.values(n2).reduce(function(e3, n3) {
-                    return Y(e3, n3[0]);
-                  }, -Infinity) + 1), 48 * (r2 + 1)], function(n3) {
-                    return new Promise(function(i2) {
-                      if (P(e2) !== e2) {
-                        var o2 = new Image();
-                        o2.addEventListener("load", function() {
-                          n3.drawImage(o2, 0, 0), i2();
-                        }), o2.src = P(e2), o2.crossOrigin = "Anonymous";
-                      } else
-                        i2();
-                    });
-                  })];
-                case 1:
-                  return d2.apply(void 0, c2.concat([i.sent()])), [2];
-              }
-            });
-          });
-        }, patchIconsheet: function(e2, i, a2) {
-          var r2;
-          return a2 === void 0 && (a2 = true), n(this, void 0, void 0, function() {
-            var n2, t2, s2, d2, c2, u2, p2, g2, m2, k2, b2, h2, v2, f2, C2;
-            return o(this, function(o2) {
-              switch (o2.label) {
-                case 0:
-                  return n2 = document.createElement("canvas").getContext("2d"), [4, I(a2 ? P(e2) : e2)];
-                case 1:
-                  for (t2 = o2.sent(), s2 = [t2.width, t2.height], d2 = 0, c2 = i; d2 < c2.length; d2++)
-                    u2 = c2[d2], 48 * u2[0][0] > s2[0] && (s2[0] = 48 * u2[0][0]), 48 * u2[0][1] > s2[1] && (s2[1] = 48 * u2[0][1]);
-                  n2.canvas.width = s2[0], n2.canvas.height = s2[1], n2.drawImage(t2, 0, 0), p2 = {}, g2 = 0, m2 = i, o2.label = 2;
-                case 2:
-                  return g2 < m2.length ? (k2 = m2[g2], b2 = P(((r2 = k2[1][2]) !== null && r2 !== void 0 ? r2 : Ge.iconLink) || "img/icons.png"), !!p2[b2]) ? [3, 4] : (h2 = p2, v2 = b2, [4, I(b2)]) : [3, 6];
-                case 3:
-                  h2[v2] = o2.sent(), o2.label = 4;
-                case 4:
-                  n2.clearRect(48 * k2[0][0], 48 * k2[0][1], 48, 48), n2.drawImage(p2[b2], 48 * k2[1][0], 48 * k2[1][1], 48, 48, 48 * k2[0][0], 48 * k2[0][1], 48, 48), o2.label = 5;
-                case 5:
-                  return g2++, [3, 2];
-                case 6:
-                  return f2 = U, C2 = [e2], [4, M(n2)];
-                case 7:
-                  return f2.apply(void 0, C2.concat([o2.sent()])), [2];
-              }
-            });
-          });
-        }, extraColumnIcons: ee, extraRowIcons: ie, alias: U, aliases: Z } };
-        window.Cppkies ? W = window.Cppkies : (W = Ge, window.Cppkies = W, function() {
-          return new Promise(function(e2) {
-            var n2 = new X(), i = [new V("customMenu", function() {
-              Game.UpdateMenu = s(Game.UpdateMenu, null, '\n					// Cppkies injection\n					switch (Game.onMenu) {\n						case "prefs":\n							Cppkies.hooks.emit("optionsMenu")\n							break\n						case "stats":\n							Cppkies.hooks.emit("statsMenu")\n							break\n						case "log":\n							Cppkies.hooks.emit("logMenu")\n							break\n					}\n					Cppkies.hooks.emit("menu")\n					', "after");
-            }), new V("preSave", function() {
-              Game.WriteSave = s(Game.WriteSave, null, '\n					// Cppkies injection\n					Cppkies.hooks.emit("preSave")\n					', "before");
-            }), new V("postSave", function() {
-              Game.WriteSave = s(Game.WriteSave, "if (type==2 || type==3)", '\n					// Cppkies injection\n					Cppkies.hooks.emit("postSave")\n					', "before");
-            }), new V("reset", function() {
-              Game.Reset = s(Game.Reset, null, '\n					// Cppkies injection\n					Cppkies.hooks.constEmit("reset", hard)\n					', "before");
-            }), new V("reincarnate", function() {
-              Game.registerHook("reincarnate", function() {
-                return n2.emit("reincarnate");
-              });
-            }), new V("getIcon", function() {
-              Game.GetIcon = d(Game.GetIcon, [["return [col,Game.Tiers[tier].iconRow];", '// Cppkies Injection\n					return Cppkies.hooks.emit("getIcon", { icon: [col, Game.Tiers[tier].iconRow], tier: tier, type: type }).icon', "replace"], ["col=18;", 'else if (type === "Mouse") col = 11;', "after"]]);
-            }), new V("buildStore", function() {
-              Game.BuildStore = s(Game.BuildStore, null, ';\nCppkies.hooks.emit("buildStore")', "after");
-            }), new V("grandmaPic", function() {
-              Game.Objects.Grandma.art.pic = s(Game.Objects.Grandma.art.pic, "return choose(list)+'.png'", '// Cppkies injection\n					list = Cppkies.hooks.emit("grandmaPic", list)\n					', "before");
-            }), new V("cps", function() {
-              Game.CalculateGains = d(Game.CalculateGains, [["var rawCookiesPs=Game.cookiesPs*mult;", '// Cppkies injection\n					Game.cookiesPs = Cppkies.hooks.emit("rawCps", Game.cookiesPs);\n					mult = Cppkies.hooks.emit("rawCpsMult", mult);\n', "before"], ["Game.cookiesPs=Game.runModHookOnValue('cps',Game.cookiesPs);", '// Cppkies injection\n						mult = Cppkies.hooks.emit("cpsMult", mult);\n', "before"]]), Game.registerHook("cps", function(e3) {
-                return n2.emit("cps", e3);
-              });
-            }), new V("cursorFingerMult", function() {
-              Game.Objects.Cursor.cps = s(Game.Objects.Cursor.cps, "var mult=1;", '// Cppkies injection\nadd = Cppkies.hooks.emit("cursorFingerMult", add);\n', "before");
-            }), new V("cpc", function() {
-              Game.mouseCps = d(Game.mouseCps, [["var num=0;", '// Cppkies injection\n						add = Cppkies.hooks.emit("cursorFingerMult", add);\n', "before"], ["var out", '// Cppkies injection\n						add = Cppkies.hooks.emit("cpcAdd", add);\n', "before"]]), Game.registerHook("cookiesPerClick", function(e3) {
-                return n2.emit("cpc", e3);
-              });
-            }), new V("buildingCps", function() {
-              Game.CalculateGains = s(Game.CalculateGains, "me.storedTotalCps=me.amount*me.storedCps;", '// Cppkies injection (internal, do not use)\nme.storedCps = Cppkies.hooks.emit("buildingCps", { building: i, cps: me.storedCps }).cps;\n', "before");
-            }), new V("logic", function() {
-              Game.registerHook("logic", function() {
-                return n2.emit("logic");
-              });
-            }), new V("draw", function() {
-              Game.registerHook("draw", function() {
-                return n2.emit("draw");
-              });
-            }), new V("check", function() {
-              Game.registerHook("check", function() {
-                return n2.emit("check");
-              });
-            }), new V("ticker", function() {
-              Game.getNewTicker = s(Game.getNewTicker, "Game.TickerAge=Game.fps*10;", '// Cppkies injection\nlist = Cppkies.hooks.emit("ticker", list);\n', "before");
-            }), new V("specialPic", function() {
-              Game.DrawSpecial = s(Game.DrawSpecial, "if (hovered || selected)", '// Cppkies injection\nconst override = Cppkies.hooks.emit("specialPic", {tab: Game.specialTabs[i], frame: frame, pic: pic})\npic = override.pic\nframe = override.frame;\n', "before"), Game.ToggleSpecialMenu = s(Game.ToggleSpecialMenu, "else {pic='dragon.png?v='+Game.version;frame=4;}", '// Cppkies injection\nconst override = Cppkies.hooks.emit("specialPic", {tab: Game.specialTab, frame: frame, pic: pic})\npic = override.pic\nframe = override.frame;\n', "after");
-            })];
-            i.forEach(function(e3) {
-              var n3;
-              (n3 = e3.func) === null || n3 === void 0 ? void 0 : n3.call(e3);
-            }), Game.Loader.Load = s(Game.Loader.Load, "img.src=this.domain", `
+(()=>{var En=Object.create;var ye=Object.defineProperty;var Nn=Object.getOwnPropertyDescriptor;var Rn=Object.getOwnPropertyNames;var Hn=Object.getPrototypeOf,Fn=Object.prototype.hasOwnProperty;var _n=p=>ye(p,"__esModule",{value:!0});var qn=(p,d)=>()=>(d||p((d={exports:{}}).exports,d),d.exports);var Dn=(p,d,f)=>{if(d&&typeof d=="object"||typeof d=="function")for(let h of Rn(d))!Fn.call(p,h)&&h!=="default"&&ye(p,h,{get:()=>d[h],enumerable:!(f=Nn(d,h))||f.enumerable});return p},ce=p=>Dn(_n(ye(p!=null?En(Hn(p)):{},"default",p&&p.__esModule&&"default"in p?{get:()=>p.default,enumerable:!0}:{value:p,enumerable:!0})),p);var X=qn((Ge,we)=>{(function(p,d){typeof Ge=="object"&&typeof we!="undefined"?we.exports=d():typeof define=="function"&&define.amd?define(d):(p=p||self,p.Cppkies=d())})(Ge,function(){"use strict";var p=Math.abs,d=Math.floor,f=Math.min,h=Math.pow,y=Math.max;function g(e,t){function a(){this.constructor=e}me(e,t),e.prototype=t===null?Object.create(t):(a.prototype=t.prototype,new a)}function I(e,t,a,o){return new(a||(a=Promise))(function(n,i){function r(u){try{c(o.next(u))}catch(m){i(m)}}function s(u){try{c(o.throw(u))}catch(m){i(m)}}function c(u){u.done?n(u.value):new a(function(m){m(u.value)}).then(r,s)}c((o=o.apply(e,t||[])).next())})}function T(e,t){function a(u){return function(m){return o([u,m])}}function o(u){if(n)throw new TypeError("Generator is already executing.");for(;c;)try{if(n=1,i&&(r=2&u[0]?i.return:u[0]?i.throw||((r=i.return)&&r.call(i),0):i.next)&&!(r=r.call(i,u[1])).done)return r;switch(i=0,r&&(u=[2&u[0],r.value]),u[0]){case 0:case 1:r=u;break;case 4:return c.label++,{value:u[1],done:!1};case 5:c.label++,i=u[1],u=[0];continue;case 7:u=c.ops.pop(),c.trys.pop();continue;default:if(r=c.trys,!(r=0<r.length&&r[r.length-1])&&(u[0]===6||u[0]===2)){c=0;continue}if(u[0]===3&&(!r||u[1]>r[0]&&u[1]<r[3])){c.label=u[1];break}if(u[0]===6&&c.label<r[1]){c.label=r[1],r=u;break}if(r&&c.label<r[2]){c.label=r[2],c.ops.push(u);break}r[2]&&c.ops.pop(),c.trys.pop();continue}u=t.call(e,c)}catch(m){u=[6,m],i=0}finally{n=r=0}if(5&u[0])throw u[1];return{value:u[0]?u[1]:void 0,done:!0}}var n,i,r,s,c={label:0,sent:function(){if(1&r[0])throw r[1];return r[1]},trys:[],ops:[]};return s={next:a(0),throw:a(1),return:a(2)},typeof Symbol=="function"&&(s[Symbol.iterator]=function(){return this}),s}function j(){for(var e=0,t=0,a=arguments.length;t<a;t++)e+=arguments[t].length;for(var o=Array(e),n=0,t=0;t<a;t++)for(var i=arguments[t],r=0,s=i.length;r<s;r++,n++)o[n]=i[r];return o}function nn(e){return e.replace(/([.*+?^=!:${}()|\[\]\/\\])/g,"\\$1")}function je(e,t){var a=t[0]===null,o=/(?:)/;t[0]!==null&&(o=typeof t[0]=="string"?new RegExp(nn(t[0]),"g"):t[0],!o.test(e)&&console.warn("Nothing to inject."));var n=/(\)[^{]*{)/,i=/(}?)$/;switch(t[2]){case"before":e=a?e.replace(n,"$1"+t[1]):e.replace(o,""+t[1]+t[0]);break;case"replace":e=a?t[1]:e.replace(o,t[1]);break;case"after":e=a?e.replace(i,t[1]+"$1"):e.replace(o,""+t[0]+t[1]);break;default:throw new Error('where Parameter must be "before", "replace" or "after"')}return e}function w(e,t,a,o,n){n===void 0&&(n={});var i=Function.apply(void 0,j(Object.keys(n),["return ("+je(e.toString(),[t,a,o])+")"])).apply(void 0,Object.values(n));return i.prototype=e.prototype,i}function q(e,t,a){a===void 0&&(a={});for(var o,n=e.toString(),i=0,r=t;i<r.length;i++)o=r[i],n=je(n,o);var s=Function.apply(void 0,j(Object.keys(a),["return ("+n+")"])).apply(void 0,Object.values(a));return s.prototype=e.prototype,s}function te(e,t){for(var a in t)e[a]=t[a]}function ie(e){return e.charAt(0).toUpperCase()+e.slice(1).toLowerCase()}function P(e,t){return e.hasOwnProperty(t)}function tn(e){for(var t,a=[[1e3,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]],o="",n=0,i=a;n<i.length;n++)for(t=i[n];e>=t[0];)o+=t[1],e-=t[0];return o}function B(e){switch(e){case"mod":return{achievements:{},buildings:{},upgrades:{}};case"dragon":return{level:"sync",auras:["sync","sync"]};case"achievement":return{won:!1};case"upgrade":return{bought:!1,unlocked:!1};case"building":return{amount:0,bought:0,free:0,totalCookies:0,level:0,muted:0,minigameSave:""};default:throw new Error("Invalid fragment name!")}}function pe(){return{mods:{},foreign:B("mod"),saveVer:1,dragon:B("dragon")}}function on(){k.save=v=pe()}function Ue(e){return v.foreign.buildings[e.name]||B("building")}function rn(e){var t=e.amount,a=e.bought,o=e.free,n=e.totalCookies,i=e.level,r=e.muted,s=e.minigameSave,c=e.name;v.foreign.buildings[c]={amount:t,bought:a,free:o,totalCookies:n,level:i,muted:r,minigameSave:s}}function Be(e){return v.foreign.upgrades[e.name]||B("upgrade")}function an(e){v.foreign.upgrades[e.name]={unlocked:!!e.unlocked,bought:!!e.bought}}function Pe(e){return v.foreign.achievements[e.name]||B("achievement")}function sn(e){v.foreign.achievements[e.name]={won:!!e.won}}function cn(){v.dragon.level!=="sync"&&v.dragon.level<=Game.dragonLevels.length-1&&(Game.dragonLevel=v.dragon.level),v.dragon.auras[0]!=="sync"&&v.dragon.auras[0]<=Object.keys(Game.dragonAuras).length-1&&(Game.dragonAura=v.dragon.auras[0]),v.dragon.auras[1]!=="sync"&&v.dragon.auras[1]<=Object.keys(Game.dragonAuras).length-1&&(Game.dragonAura2=v.dragon.auras[1])}function un(){for(var e,t=0,a=k.customBuildings;t<a.length;t++)e=a[t],te(e,Ue(e));for(var o,n=0,i=k.customUpgrades;n<i.length;n++)o=i[n],te(o,Be(o)),o.bought&&Game.CountsAsUpgradeOwned(o.pool)&&Game.UpgradesOwned++;for(var r,s=0,c=k.customAchievements;s<c.length;s++)r=c[s],te(r,Pe(r)),r.won&&Game.CountsAsAchievementOwned(r.pool)&&Game.AchievementsOwned++;cn()}function ln(){for(var e,t=0,a=k.customBuildings;t<a.length;t++)e=a[t],rn(e);for(var o,n=0,i=k.customUpgrades;n<i.length;n++)o=i[n],an(o);for(var r,s=0,c=k.customAchievements;s<c.length;s++)r=c[s],sn(r)}function dn(e){var t=pe();if(typeof e!="object"||e===null||!P(e,"saveVer")||typeof e.saveVer!="number"||1<e.saveVer)return t;if(t.foreign=P(e,"foreign")?function(n){var i=B("mod");if(typeof n!="object"||n===null)return i;if(P(n,"buildings")&&typeof n.buildings=="object"&&n.buildings!==null)for(var r in n.buildings){var s=n.buildings[r];if(typeof s=="object"&&s!==null)for(var c in i.buildings[r]=B("building"),s)typeof i.buildings[r][c]==typeof s[c]&&(i.buildings[r][c]=s[c])}if(P(n,"upgrades")&&typeof n.upgrades=="object"&&n.upgrades!==null)for(var u in n.upgrades){var m=n.upgrades[u];if(typeof m=="object"&&m!==null)for(var c in i.upgrades[u]=B("upgrade"),i.upgrades[u])typeof i.upgrades[u][c]==typeof m[c]&&(i.upgrades[u][c]=m[c])}if(P(n,"achievements")&&typeof n.achievements=="object"&&n.achievements!==null)for(var G in n.achievements){var L=n.achievements[G];if(typeof L=="object"&&L!==null)for(var c in i.achievements[G]=B("achievement"),i.achievements[G])typeof i.achievements[G][c]==typeof L[c]&&(i.achievements[G][c]=L[c])}return i}(e.foreign):B("mod"),P(e,"dragon")&&typeof e.dragon=="object"&&e.dragon!==null&&(P(e.dragon,"level")&&(typeof e.dragon.level=="number"||e.dragon.level==="sync")&&(t.dragon.level=e.dragon.level),P(e.dragon,"auras")&&e.dragon.auras instanceof Array))for(var a in e.dragon.auras){var o=e.dragon.auras[a];(typeof o=="number"||o==="sync")&&(t.dragon.auras[a]=o)}return t}function pn(e){var t;try{t=JSON.parse(e)}catch(a){e!==""&&console.warn("CPPKIES: Found invalid save, creating new one..."),on()}v=k.save=dn(t),un()}function mn(){return ln(),JSON.stringify(v)}function oe(e,t){re[e]=t}function O(e){if(fe.includes(e))throw new Error("Recursive alias");return fe.push(e),e in re?O(re[e]):(fe=[],e)}function Me(e){return new Promise(function(t){var a=new Image;a.addEventListener("load",function(){t(a)}),a.crossOrigin="Anonymous",a.src=e})}function Ee(e){return new Promise(function(t){e.canvas.toBlob(function(a){t(URL.createObjectURL(a))})})}function Ne(e,t,a,o,n,i){return new Promise(function(r){a[0]instanceof Array||(a=[a]),a=a;var s={};for(var c in a)for(var u in a[c])if(a[c][u]){if(a[c][u]=a[c][u].toString().toLowerCase(),!(a[c][u]in t))throw new Error("Invalid icon name");s[a[c][u]]=[parseInt(u),parseInt(c)]}var m=document.createElement("canvas").getContext("2d"),G=new Image;G.addEventListener("load",function(){for(var L in m.canvas.width=n[0],m.canvas.height=n[1],s)m.drawImage(G,s[L][0]*o[0],s[L][1]*o[1],o[0],o[1],t[L][0]*o[0],t[L][1]*o[1],o[0],o[1]);var A,b=function(){Ee(m).then(r)};i&&(A=i(m)),A instanceof Promise?A.then(b):b()}),G.crossOrigin="Anonymous",G.src=e})}function W(e){return e=j(e),(e[2]===void 0||e[2]===null)&&(e[2]=k.iconLink),e[2]=O(e[2]),e}function Re(e){var t=new Fe,a=[new C("tooltip",function(){e.tooltip=w(w(e.tooltip,"return","let tempRet = ","replace"),null,`
+//Cppkies injection
+				return Cppkies.buildingHooks[this.name].emit("tooltip", tempRet)`,"after")}),new C("buy",function(){e.buy=w(e.buy,null,`
+//Cppkies injection
+				if(success) {
+					Cppkies.buildingHooks[this.name].emit("buy")
+				}`,"after")}),new C("levelUp",function(){e.levelUp=w(e.levelUp,"me.level+=1;",`
+// Cppkies injection
+Cppkies.buildingHooks[me.name].emit("levelUp")`,"after",{me:e})})];a.forEach(function(o){var n;(n=o.func)===null||n===void 0||n.call(o)}),k.hooks.on("buildingCps",function(o){return{building:o.building,cps:Game.Objects[o.building]===e?t.emit("cps",o.cps):o.cps}}),$[e.name]=t}function He(){for(var e,t=0,a=Game.ObjectsById;t<a.length;t++)e=a[t],$[e.name]||Re(e)}function fn(e){return e.tier==="fortune"}function gn(e){for(var t,a=1,o=1;o<=e;o++)a+=(t=We[o])!==null&&t!==void 0?t:We.default;return 9*h(10,a)}function hn(){k.on("getIcon",function(e){var t=e.icon,a=e.type,o=e.tier;return k.customTiers.forEach(function(n){n.keyName===o.toString()&&n.iconLink&&(t[2]=n.iconLink)}),{icon:t,type:a,tier:o}}),k.on("getIcon",function(e){var t=e.icon,a=e.type,o=e.tier;return k.customBuildings.forEach(function(n){n.name===a&&n.iconLink&&(t[2]=n.iconLink)}),{icon:t,tier:o,type:a}}),k.on("getIcon",function(e){var t=e.icon,a=e.type,o=e.tier;return t[2]!==void 0&&t[2]!==null||P(Game.Tiers[o.toString()],"iconLink")||(t[2]=""),{icon:t,tier:o,type:a}}),k.on("preSave",function(){if(Game.dragonAura!==0&&(v.dragon.auras[0]="sync"),Game.dragonAura2!==0&&(v.dragon.auras[1]="sync"),Game.dragonAuras[Game.dragonAura]instanceof ke&&(v.dragon.auras[0]=Game.dragonAura,Game.dragonAura=0),Game.dragonAuras[Game.dragonAura2]instanceof ke&&(v.dragon.auras[1]=Game.dragonAura2,Game.dragonAura2=0),Game.dragonLevels[Game.dragonLevel]instanceof Y||Game.dragonLevel>=_e)for(v.dragon.level=Game.dragonLevel;Game.dragonLevels[Game.dragonLevel]instanceof Y||Game.dragonLevel>=_e;)Game.dragonLevel--}),k.on("postSave",function(){v.dragon.auras[0]!=="sync"&&Game.dragonAuras[v.dragon.auras[0]]&&(Game.dragonAura=v.dragon.auras[0]),v.dragon.auras[1]!=="sync"&&Game.dragonAuras[v.dragon.auras[1]]&&(Game.dragonAura2=v.dragon.auras[1]),v.dragon.level!=="sync"&&Game.dragonLevels[v.dragon.level]&&(Game.dragonLevel=v.dragon.level)}),k.on("reset",function(){v.dragon.auras=["sync","sync"],v.dragon.level="sync"}),k.on("specialPic",function(e){var t,a=Game.dragonLevels[Game.dragonLevel];return e.tab==="dragon"&&a instanceof Y&&(e.pic=(t=a.picLink)!==null&&t!==void 0?t:e.pic),e})}var D,me=function(e,t){return me=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(a,o){a.__proto__=o}||function(a,o){for(var n in o)o.hasOwnProperty(n)&&(a[n]=o[n])},me(e,t)},Fe=function(){function e(){this._events={}}return e.prototype.on=function(t,a){this._events[t]?this._events[t].push(a):this._events[t]=[a]},e.prototype.once=function(t,a){var o=this;this.on(t,function(n){return o.off(t,a),a(n)})},e.prototype.off=function(t,a){this._events[t].splice(this._events[t].indexOf(a),1)},e.prototype.emit=function(t){for(var a=[],o=1;o<arguments.length;o++)a[o-1]=arguments[o];var n=a[0];this._events[t]||(this._events[t]=[]);for(var i,r=0,s=this._events[t];r<s.length;r++)i=s[r],n=i(n);return n},e.prototype.constEmit=function(t){for(var a=[],o=1;o<arguments.length;o++)a[o-1]=arguments[o];this._events[t]||(this._events[t]=[]);for(var n,i=0,r=this._events[t];i<r.length;i++)n=r[i],n(a[0])},e}(),C=function(){return function(e,t){this.value=e,this.func=t}}(),_e=Game.dragonLevels.length+0,v=pe(),re={},fe=[],ge={},he={"3d":[0,21],milestone1:[0,22],milestone2:[0,23],milestone3:[0,24],krumblor:[0,25],level1:[0,26],level2:[0,27]},ve={},be={research:[9,0],cookie:[10,0],mouse:[11,0],multicursor:[12,0],kitten:[18,0]},$={},qe=[],ae=function(e){function t(a,o,n,i,r,s,c,u,m,G){var L,A,b=this;if(Game.Objects[a])throw new Error(`Can't create building, "`+a+'" is already used as a building name');i[1]!==0&&console.warn("All icon sheets must follow an order, see https://cppkies.js.org/#/CommonProblems#IconOrder?id=relink-column"),r[0]!==0&&console.warn("All big icon sheets must follow an order, see https://cppkies.js.org/#/CommonProblems#IconOrder?id=big-icons"),b=e.call(this,a,o,n,r[1],i[0],s,0,c,u)||this,qe.push(b),$[a]||Re(b);var se=function(S){if(0>=parseInt(S))return"continue";var x=Game.ObjectsById[S];if(x.canvas=l("rowCanvas"+S),!x.canvas)return"continue";if(x.ctx=x.canvas.getContext("2d"),x.canvas.addEventListener("mouseover",function(){x.mouseOn=!0}),x.canvas.addEventListener("mouseout",function(){x.mouseOn=!1}),x.canvas.addEventListener("mousemove",function(Xe){var ze=x.canvas.getBoundingClientRect();x.mousePos[0]=Xe.pageX-ze.left,x.mousePos[1]=Xe.pageY-ze.top}),x.minigame&&x.minigameLoaded){var Mn=x.minigame.save();x.minigame.launch(),x.minigame.load(Mn)}};for(var R in Game.ObjectsById)se(R);b.buildingLink=(L=r[2])!==null&&L!==void 0?L:k.buildingLink,b.iconLink=O((A=i[2])!==null&&A!==void 0?A:k.iconLink),m&&(Game.foolObjects[a]=m),G&&(Game.goldenCookieBuildingBuffs[a]=G),b.iconLink&&$[b.name].on("tooltip",function(S){return b.locked?S:S.replace("background-position","background-image:url("+b.iconLink+");background-position")}),Game.BuildStore(),b.buildingLink&&k.hooks.on("buildStore",function(){l("productIcon"+b.id).style.backgroundImage="url("+b.buildingLink+")",l("productIconOff"+b.id).style.backgroundImage="url("+b.buildingLink+")"}),Game.BuildStore(),b.canvas=l("rowCanvas"+b.id),b.ctx=b.canvas.getContext("2d"),b.pics=[];var U=document.createElement("div");U.className="tinyProductIcon",U.id="mutedProduct"+b.id,U.style.display="none",b.buildingLink&&(U.style.backgroundImage="url("+b.buildingLink+")"),U.style.backgroundPositionX="-"+i[0]+"px",U.style.backgroundPositionY="-"+i[1]+"px",U.addEventListener("click",function(){b.mute(0),window.PlaySound(b.muted?"snd/clickOff.mp3":"snd/clickOn.mp3")}),window.AddEvent(b.canvas,"mouseover",function(){b.mouseOn=!0}),window.AddEvent(b.canvas,"mouseout",function(){b.mouseOn=!1}),b.canvas.addEventListener("mousemove",function(S){var x=b.canvas.getBoundingClientRect();b.mousePos[0]=S.pageX-x.left,b.mousePos[1]=S.pageY-x.top}),l("buildingsMute").appendChild(U);var K=Ue(b);for(var R in K)b[R]=K[R];return Game.recalculateGains=1,b}return g(t,e),t}(Game.Object),De=[],M=function(e){function t(a,o,n,i,r){r===void 0&&(r=function(){});var s=e.call(this,a,typeof o=="function"?"":o,typeof n=="function"?0:n,typeof i=="function"?[0,0]:W(i),r)||this;typeof o=="function"&&(s.descFunc=o),typeof n=="function"&&(s.priceFunc=n),typeof i=="function"&&(s.iconFunction=function(){return W(i())}),De.push(s);var c=Be(s);for(var u in c)s[u]=c[u];return Game.upgradesToRebuild=1,s.bought&&Game.CountsAsUpgradeOwned(s.pool)&&Game.UpgradesOwned++,s}return g(t,e),t}(Game.Upgrade),vn=function(e){function t(a,o,n,i,r,s,c){s===void 0&&(s=["Legacy"]),c===void 0&&(c=function(){});var u=e.call(this,a,o,n,i,c)||this;return u.pool="prestige",u.posX=r[0],u.posY=r[1],u.parents=s.map(function(m){return Game.Upgrades[m]||Game.UpgradesById[m]}),Game.PrestigeUpgrades.push(u),Game.UpgradePositions[u.id]=r,u}return g(t,e),t}(M),bn=function(e){function t(a,o,n,i){var r=this;return typeof n=="string"&&(n=Game.Objects[n]),r=e.call(this,a,ie(n.plural)+" are <b>twice</b> as efficient.<q>"+o+"</q>",n.basePrice*Game.Tiers[i].price,Game.GetIcon(n.name,i))||this,Game.SetTier(n.name,i),r.buildingTie1=n,fn(r)&&(r.order=19e3,n.fortune=r),isNaN(parseInt(i.toString()))||(i=parseInt(i.toString())),typeof i=="number"&&(r.order=100*(n.id+1)+r.id/1e3,r.order-=75*y(0,f(n.id-4,3)),8<=n.id&&(r.order-=75)),i==="fortune"&&Game.Tiers[i].upgrades.push(r),n.buyFunction.apply(n),r}return g(t,e),t}(M),kn=function(e){function t(a,o,n,i){var r=this;if(i){if(!i.endsWith(".png"))throw new Error(`Can't use the grandma picture URL "`+i+'", URL must end with .png');i=i.substring(0,i.length-4)}typeof n=="string"&&(n=Game.Objects[n]);var s=n.id-1;return s===1?s="grandma":s+=" grandmas",r=e.call(this,a,"Grandmas are <b>twice</b> as efficient. "+ie(n.plural)+" gain <b>+1% CpS</b> per "+s+".<q>"+o+"</q>",n.basePrice*Game.Tiers[2].price,[10,9,""],Game.Objects.Grandma.redraw)||this,n.grandma=r,r.buildingTie=n,r.order=250+r.id/1e3,12<=n.id&&(r.order+=5),Game.GrandmaSynergies.push(r.name),i&&k.hooks.on("grandmaPic",function(c){return r.bought?j(c,[i]):c}),Game.Objects.Grandma.redraw(),n.buyFunction.apply(n),r}return g(t,e),t}(M),yn=function(e){function t(a,o,n,i,r){var s=this;typeof n=="string"&&(n=Game.Objects[n]),typeof i=="string"&&(i=Game.Objects[i]);var c=Game.GetIcon(n.name,r);if(n.basePrice>i.basePrice){var u=n;n=i,i=u}return s=e.call(this,a,ie(n.plural)+" gain <b>+5% CpS</b> per "+i.name.toLowerCase()+".<br>"+ie(i.plural)+` gain <b>+0.1% CpS</b> per 
+			`+n.name.toLowerCase()+".<q>"+o+"</q>",(10*n.basePrice+1*i.basePrice)*Game.Tiers[r].price,c)||this,s.tier=r,s.buildingTie1=n,s.buildingTie2=i,s.order=5e3+s.id/1e3,n.synergies.push(s),i.synergies.push(s),Game.Tiers[r].upgrades.push(s),Game.RebuildUpgrades(),n.buyFunction.apply(n),s}return g(t,e),t}(M),Ve=[5,7,8,9,10],Gn=function(e){function t(a,o,n,i){i===void 0&&(i=20);var r=this,s=Game.Objects.Cursor,c=parseInt(n.toString());return r=e.call(this,a,"Multiplies the gain from Thousand fingers by <b>"+i+"</b>.<q>"+o+"</q>",Game.Tiers[n].special||isNaN(c)?s.basePrice*Game.Tiers[n].price:h(10,Ve[f(c-4,Ve.length-1)]+3*y(c-8,0)),Game.GetIcon(s.name,n))||this,r.tier=n,r.pool="",r.order=100+r.id/1e3,k.on("cursorFingerMult",function(u){return r.bought?u*i:u}),Game.Tiers[n].special||isNaN(c)||k.buildingHooks.Cursor.on("buy",function(){s.amount>=(c===4?25:50*(c-4))&&Game.Unlock(r.name)}),n==="fortune"&&Game.Tiers[n].upgrades.push(r),Game.Objects.Cursor.buyFunction.apply(Game.Objects.Cursor),r}return g(t,e),t}(M),We={1:5,2:4,4:4,default:3},$e=[.1,.125,.15,.175,.2,.2,.2,.2,.2,.175,.15,.125,.115],wn=function(e){function t(a,o,n,i,r,s){i===void 0&&(i=Game.Tiers[n].special||isNaN(parseInt(n.toString()))?null:$e[(parseInt(n.toString())-1)%($e.length-1)]),s===void 0&&(s=Game.Tiers[n].special||isNaN(parseInt(n.toString()))?null:n===1?.5:n-1);var c=e.call(this,a,"You gain <b>more CpS</b> the more milk you have.<q>"+o+"</q>",Game.Tiers[n].special||isNaN(parseInt(n.toString()))?r!=null?r:0:gn(n),Game.GetIcon("Kitten",n))||this;return c.tier=n,c.kitten=!0,c.pool="",i===null&&console.warn("Please make sure to specify the power if the kitten tier is special"),(Game.Tiers[n].special||isNaN(parseInt(n.toString())))&&r===void 0&&console.warn("Please make sure to specify the cost if the kitten tier is special"),s!==null&&k.on("logic",function(){Game.milkProgress>=s&&Game.Unlock(c.name)}),c.order=2e4+c.id/1e3,i!==null&&k.on("rawCpsMult",function(u){var m=c.bought?1+Game.milkProgress*i*k.hiddenMilkMult:1;return Game.cookiesMultByType.kittens*=m,u*m}),Game.UpgradesByPool.kitten.push(c),n==="fortune"&&Game.Tiers[n].upgrades.push(c),c}return g(t,e),t}(M),Cn=function(e){function t(a,o,n,i){i===void 0&&(i=1);var r=e.call(this,a,"Clicking gains <b>+"+i+"% of your CpS</b>.<q>"+o+"</q>",h(10,3+2*parseInt(n.toString())),Game.GetIcon("Mouse",n))||this;r.tier=n,r.pool="";var s=parseInt(n.toString());return r.order=150+r.id/1e3,k.on("cpcAdd",function(c){return r.bought?c+Game.cookiesPs*i/100:c}),Game.Tiers[n].special||isNaN(s)||k.on("check",function(){Game.handmadeCookies>=h(10,1+2*s)&&Game.Unlock(r.name)}),n==="fortune"&&Game.Tiers[n].upgrades.push(r),r}return g(t,e),t}(M),xn=function(e){function t(a,o,n,i,r,s,c){var u,m=e.call(this,a,"Cookie production multiplier <b>+"+Beautify(typeof r=="function"?r():r,1)+"%</b>.<q>"+o+"</q>",n,i)||this;return m.power=r,m.pool="cookie",m.order=((u=c!=null?c:k.cookieOrder)!==null&&u!==void 0?u:10020)+m.id/1e3,m.unlockAt={name:a,cookies:(typeof n=="function"?n():n)/20,require:s==null?void 0:s.require,season:s==null?void 0:s.season},Game.UnlockAt.push(m.unlockAt),Game.UpgradesByPool.cookie.push(m),Game.cookieUpgrades.push(m),m}return g(t,e),t}(M),Ye=[],Tn=function(){return function(e,t,a,o,n,i,r,s,c){o===void 0&&(o=!1),n===void 0&&(n="auto"),i===void 0&&(i=null),r===void 0&&(r=null),s===void 0&&(s=null),c===void 0&&(c="auto");var u;this.name=e,this.color=a,this.special=o,this.keyName=c==="auto"?o?e:(Object.keys(Game.Tiers).filter(function(m){return!isNaN(parseInt(m))}).length+1).toString():c,i===null&&(this.unlock=-1),typeof i=="number"&&(this.unlock=i),(o===!1&&i===null||i==="auto")&&(this.unlock=Game.Tiers[parseInt(this.keyName)-1].unlock+50),typeof r=="number"&&(this.achievUnlock=r),(o===!1&&r===null||r==="auto")&&(this.achievUnlock=Game.Tiers[parseInt(this.keyName)-1].achievUnlock+50),s&&(this.req=s),this.price=n==="auto"?1e8*Game.Tiers[Object.keys(Game.Tiers).filter(function(m){return!isNaN(parseInt(m))}).length.toString()].price:n,this.iconRow=t[1],this.iconLink=O((u=t[2])!==null&&u!==void 0?u:k.iconLink),Game.Tiers[this.keyName]=this,Ye.push(this)}}(),Ke=[],N=function(e){function t(a,o,n){var i=e.call(this,a,o,W(n))||this;return te(i,Pe(i)),Ke.push(i),i.won&&Game.CountsAsAchievementOwned(i.pool)&&Game.AchievementsOwned++,i}return g(t,e),t}(Game.Achievement),Ln=function(e){function t(a,o,n,i){i===void 0&&(i=h(10,d(1.5*Game.BankAchievements.length+2)));var r=e.call(this,a,"Bake <b>"+toFixed(i)+"</b> cookie"+(p(i)===1?"":"s")+" in one ascension."+(n?"<q>"+n+"</q>":""),o)||this;return r.treshold=i,r.order=100+.01*Game.BankAchievements.length,Game.BankAchievements.push(r),r}return g(t,e),t}(N),Sn=function(e){function t(a,o,n,i){i===void 0&&(i=h(10,d(1.2*Game.BankAchievements.length)));var r=e.call(this,a,"Bake <b>"+toFixed(i)+"</b> cookie"+(p(i)===1?"":"s")+" per second."+(n?"<q>"+n+"</q>":""),o)||this;return r.treshold=i,r.order=200+.01*Game.CpsAchievements.length,Game.CpsAchievements.push(r),r}return g(t,e),t}(N),An=function(e){function t(a,o,n,i){var r=this,s=typeof n=="object"?n:Game.Objects[n],c=null,u=-1;if(s.id===0){switch(i){case"cursor2":c=[0,6],u=2;break;case"cursor50":c=[1,6],u=50;break;default:if(0>=Game.Tiers[i].achievUnlock){console.warn("Tier has invalid unlock amount");break}u=i===1?1:2*Game.Tiers[i].achievUnlock}k.buildingHooks.Cursor.on("buy",function(){Game.Objects.Cursor.amount>=u&&Game.Win(r.name)})}else u=Game.Tiers[i].achievUnlock;return r=e.call(this,a,"Have <b>"+u+"</b> "+(p(u)===1?s.single:s.plural)+"."+(o?"<q>"+o+"</q>":""),c!=null?c:Game.GetIcon(s.name,i))||this,Game.SetTier(s.name,i==="cursor2"||i==="cursor50"?1:i),s.tieredAchievs[i]=r,r.buildingTie=s,r.order=1e3+100*s.id+r.id/1e3,r.order-=75*y(0,f(s.id-4,3)),8<=s.id&&(r.order-=75),s.id===0&&(r.order+=50),r}return g(t,e),t}(N),In=function(e){function t(a,o,n,i,r){var s=this;typeof o=="string"&&(o=Game.Objects[o]);var c=[o.iconColumn,21+n,o instanceof ae?o.iconLink:void 0],u=h(10,12+o.id+(r!=null?r:0)+7*(n-1));return s=e.call(this,a,"Make <b>"+toFixed(u)+"</b> cookies just from "+o.plural+"."+(i?"<q>"+i+"</q>":""),c)||this,s.order=1020+100*o.id+s.id/1e3,s.order-=75*y(0,f(o.id-4,3)),8<=o.id&&(s.order-=75),o.id===0&&(s.order+=50),o.productionAchievs.push({pow:u,achiev:s}),s}return g(t,e),t}(N),On=function(e){function t(a,o,n){var i=this;typeof o=="string"&&(o=Game.Objects[o]);var r=[o.iconColumn,26,o instanceof ae?o.iconLink:void 0];return i=e.call(this,a,"Reach level <b>10</b> "+o.plural+"."+(n?"<q>"+n+"</q>":""),r)||this,i.order=1020+100*o.id+i.id/1e3,i.order-=75*y(0,f(o.id-4,3)),8<=o.id&&(i.order-=75),o.id===0&&(i.order+=50),o.levelAchiev10=i,i}return g(t,e),t}(N),jn=function(e){function t(a,o,n){var i=this,r=parseInt(o.toString());return i=e.call(this,a,"Make <b>"+toFixed(h(10,1+2*r))+"</b> cookies from clicking."+(n?"<q>"+n+"</q>":""),Game.GetIcon("Mouse",o))||this,i.pool="normal",i.tier=o,i.order=1e3+i.id/1e3,Game.Tiers[o].special||isNaN(r)||k.on("check",function(){Game.handmadeCookies>=h(10,1+2*r)&&Game.Win(i.name)}),i}return g(t,e),t}(N),ke=function(){function e(t,a,o){this.name=t,this.desc=a,typeof o=="string"&&(o=Game.Objects[o]),this.pic=o instanceof Game.Object?W([o.iconColumn,25,o instanceof ae?o.iconLink:void 0]):o,Game.dragonAuras[Object.keys(Game.dragonAuras).length]=this,v.dragon.auras[0]!=="sync"&&Object.keys(Game.dragonAuras).length>=v.dragon.auras[0]&&(Game.dragonAura=v.dragon.auras[0]),v.dragon.auras[1]!=="sync"&&Object.keys(Game.dragonAuras).length>=v.dragon.auras[1]&&(Game.dragonAura2=v.dragon.auras[1])}return e}(),Y=function(){function e(t,a,o,n,i,r,s){s===void 0&&(s=Game.dragonLevels.length-3),this.buy=i,this.picY=0;var c=Game.dragonLevels[s-1];this.name=t!=null?t:c.name,this.action=a,this.costStr=typeof o=="string"?function(){return o}:o,this.cost=n,r?(this.pic=r[0],this.picY=r[1],this.picY!==0&&console.warn("For now, all dragon levels must not use pic Y, sorry."),this.picLink=r[2]):(this.pic=c.pic,c instanceof e&&(this.picY=c.picY,this.picLink=c.picLink)),Game.dragonLevels.splice(s,0,this),v.dragon.level!=="sync"&&Game.dragonLevels.length>=v.dragon.level&&(Game.dragonLevel=v.dragon.level)}return e}(),Un=function(e){function t(a,o,n){var i=this;return typeof n=="string"&&(n=Game.Objects[n]),i=e.call(this,null,"Train "+a+"<br/><small>Aura : "+o+"</small>","100 "+n.plural,function(){return 100<=n.amount},function(){return n.sacrifice(100)})||this,i}return g(t,e),t}(Y),Bn=function(){return function(e,t,a,o){if(o===void 0&&(o=!1),this.name=e,this.pic=a,this.special=o,!a.endsWith(".png"))throw new Error(`Can't create milk with the milk URL "`+a+'", the URL must end with .png!');o||(this.name="Rank "+tn(Game.Milks.length+1)+" - "+e),this.pic=a.substr(0,a.length-4),W(t),this.icon=[t[0],t[1]],this.iconLink=t[2],o?Game.MilksByChoice[Object.keys(Game.MilksByChoice).length]=this:Game.Milks.push(this)}}(),k={hooks:null,on:null,hiddenMilkMult:1,iconLink:"",buildingLink:"",cookieOrder:10020,buildingHooks:$,buildingHooksById:[],hookAllBuildings:He,customBuildings:qe,customUpgrades:De,customTiers:Ye,save:v,onLoad:[],Building:ae,Upgrade:M,TieredUpgrade:bn,Tier:Tn,HeavenlyUpgrade:vn,GrandmaSynergy:kn,SynergyUpgrade:yn,CursorUpgrade:Gn,KittenUpgrade:wn,MouseUpgrade:Cn,CookieUpgrade:xn,Achievement:N,CpsAchievement:Sn,BankAchievement:Ln,TieredAchievement:An,ProductionAchievement:In,Level10Achievement:On,MouseAchievement:jn,customAchievements:Ke,DragonAura:ke,DragonLevel:Y,DragonAuraLevel:Un,Milk:Bn,injectCode:w,injectCodes:q,DEFAULT_ONBUY:function(){Game.UnlockTiered(this),this.amount>=Game.SpecialGrandmaUnlock&&0<Game.Objects.Grandma.amount&&this.grandma&&Game.Unlock(this.grandma.name)},DEFAULT_CPS:function(e){return Game.GetTieredCpsMult(e)*Game.magicCpS(e.name)*e.baseCps},icons:{relinkColumn:function(e,t,a,o){return o===void 0&&(o=!1),I(this,void 0,void 0,function(){var n,i,i,r,s;return T(this,function(c){switch(c.label){case 0:for(i in a===void 0&&(!ge[e]&&(ge[e]=0),a=ge[e]++),n={},he)n[i]=[a,he[i][1]];for(i in Game.Tiers)n[Game.Tiers[i].name.toLowerCase()]=n[i.toString()]=[a,Game.Tiers[i].iconRow];return r=oe,s=[e],[4,Ne(o?O(e):e,n,t,[48,48],[48*(a+1),48*(Object.values(n).reduce(function(u,m){return y(u,m[1])},-1/0)+1)],function(u){return new Promise(function(m){if(O(e)!==e){var G=new Image;G.addEventListener("load",function(){u.drawImage(G,0,0),m()}),G.src=O(e),G.crossOrigin="Anonymous"}else m()})})];case 1:return r.apply(void 0,s.concat([c.sent()])),[2]}})})},relinkRow:function(e,t,a,o){return o===void 0&&(o=!1),I(this,void 0,void 0,function(){var n,i,i,r,s;return T(this,function(c){switch(c.label){case 0:for(i in a===void 0&&(!ve[e]&&(ve[e]=0),a=ve[e]++),n={},be)n[i]=[be[i][0],a];for(i in Game.ObjectsById)n[Game.ObjectsById[i].single.toLowerCase()]=n[i]=[Game.ObjectsById[i].iconColumn,a];return r=oe,s=[e],[4,Ne(o?O(e):e,n,t,[48,48],[48*(Object.values(n).reduce(function(u,m){return y(u,m[0])},-1/0)+1),48*(a+1)],function(u){return new Promise(function(m){if(O(e)!==e){var G=new Image;G.addEventListener("load",function(){u.drawImage(G,0,0),m()}),G.src=O(e),G.crossOrigin="Anonymous"}else m()})})];case 1:return r.apply(void 0,s.concat([c.sent()])),[2]}})})},patchIconsheet:function(e,t,a){var o;return a===void 0&&(a=!0),I(this,void 0,void 0,function(){var n,i,r,s,c,u,m,G,L,A,b,se,R,U,K;return T(this,function(S){switch(S.label){case 0:return n=document.createElement("canvas").getContext("2d"),[4,Me(a?O(e):e)];case 1:for(i=S.sent(),r=[i.width,i.height],s=0,c=t;s<c.length;s++)u=c[s],48*u[0][0]>r[0]&&(r[0]=48*u[0][0]),48*u[0][1]>r[1]&&(r[1]=48*u[0][1]);n.canvas.width=r[0],n.canvas.height=r[1],n.drawImage(i,0,0),m={},G=0,L=t,S.label=2;case 2:return G<L.length?(A=L[G],b=O(((o=A[1][2])!==null&&o!==void 0?o:k.iconLink)||"img/icons.png"),!m[b]?(se=m,R=b,[4,Me(b)]):[3,4]):[3,6];case 3:se[R]=S.sent(),S.label=4;case 4:n.clearRect(48*A[0][0],48*A[0][1],48,48),n.drawImage(m[b],48*A[1][0],48*A[1][1],48,48,48*A[0][0],48*A[0][1],48,48),S.label=5;case 5:return G++,[3,2];case 6:return U=oe,K=[e],[4,Ee(n)];case 7:return U.apply(void 0,K.concat([S.sent()])),[2]}})})},extraColumnIcons:he,extraRowIcons:be,alias:oe,aliases:re}};window.Cppkies?D=window.Cppkies:(D=k,window.Cppkies=D,function(){return new Promise(function(e){var t=new Fe,a=[new C("customMenu",function(){Game.UpdateMenu=w(Game.UpdateMenu,null,`
+					// Cppkies injection
+					switch (Game.onMenu) {
+						case "prefs":
+							Cppkies.hooks.emit("optionsMenu")
+							break
+						case "stats":
+							Cppkies.hooks.emit("statsMenu")
+							break
+						case "log":
+							Cppkies.hooks.emit("logMenu")
+							break
+					}
+					Cppkies.hooks.emit("menu")
+					`,"after")}),new C("preSave",function(){Game.WriteSave=w(Game.WriteSave,null,`
+					// Cppkies injection
+					Cppkies.hooks.emit("preSave")
+					`,"before")}),new C("postSave",function(){Game.WriteSave=w(Game.WriteSave,"if (type==2 || type==3)",`
+					// Cppkies injection
+					Cppkies.hooks.emit("postSave")
+					`,"before")}),new C("reset",function(){Game.Reset=w(Game.Reset,null,`
+					// Cppkies injection
+					Cppkies.hooks.constEmit("reset", hard)
+					`,"before")}),new C("reincarnate",function(){Game.registerHook("reincarnate",function(){return t.emit("reincarnate")})}),new C("getIcon",function(){Game.GetIcon=q(Game.GetIcon,[["return [col,Game.Tiers[tier].iconRow];",`// Cppkies Injection
+					return Cppkies.hooks.emit("getIcon", { icon: [col, Game.Tiers[tier].iconRow], tier: tier, type: type }).icon`,"replace"],["col=18;",'else if (type === "Mouse") col = 11;',"after"]])}),new C("buildStore",function(){Game.BuildStore=w(Game.BuildStore,null,`;
+Cppkies.hooks.emit("buildStore")`,"after")}),new C("grandmaPic",function(){Game.Objects.Grandma.art.pic=w(Game.Objects.Grandma.art.pic,"return choose(list)+'.png'",`// Cppkies injection
+					list = Cppkies.hooks.emit("grandmaPic", list)
+					`,"before")}),new C("cps",function(){Game.CalculateGains=q(Game.CalculateGains,[["var rawCookiesPs=Game.cookiesPs*mult;",`// Cppkies injection
+					Game.cookiesPs = Cppkies.hooks.emit("rawCps", Game.cookiesPs);
+					mult = Cppkies.hooks.emit("rawCpsMult", mult);
+`,"before"],["Game.cookiesPs=Game.runModHookOnValue('cps',Game.cookiesPs);",`// Cppkies injection
+						mult = Cppkies.hooks.emit("cpsMult", mult);
+`,"before"]]),Game.registerHook("cps",function(o){return t.emit("cps",o)})}),new C("cursorFingerMult",function(){Game.Objects.Cursor.cps=w(Game.Objects.Cursor.cps,"var mult=1;",`// Cppkies injection
+add = Cppkies.hooks.emit("cursorFingerMult", add);
+`,"before")}),new C("cpc",function(){Game.mouseCps=q(Game.mouseCps,[["var num=0;",`// Cppkies injection
+						add = Cppkies.hooks.emit("cursorFingerMult", add);
+`,"before"],["var out",`// Cppkies injection
+						add = Cppkies.hooks.emit("cpcAdd", add);
+`,"before"]]),Game.registerHook("cookiesPerClick",function(o){return t.emit("cpc",o)})}),new C("buildingCps",function(){Game.CalculateGains=w(Game.CalculateGains,"me.storedTotalCps=me.amount*me.storedCps;",`// Cppkies injection (internal, do not use)
+me.storedCps = Cppkies.hooks.emit("buildingCps", { building: i, cps: me.storedCps }).cps;
+`,"before")}),new C("logic",function(){Game.registerHook("logic",function(){return t.emit("logic")})}),new C("draw",function(){Game.registerHook("draw",function(){return t.emit("draw")})}),new C("check",function(){Game.registerHook("check",function(){return t.emit("check")})}),new C("ticker",function(){Game.getNewTicker=w(Game.getNewTicker,"Game.TickerAge=Game.fps*10;",`// Cppkies injection
+list = Cppkies.hooks.emit("ticker", list);
+`,"before")}),new C("specialPic",function(){Game.DrawSpecial=w(Game.DrawSpecial,"if (hovered || selected)",`// Cppkies injection
+const override = Cppkies.hooks.emit("specialPic", {tab: Game.specialTabs[i], frame: frame, pic: pic})
+pic = override.pic
+frame = override.frame;
+`,"before"),Game.ToggleSpecialMenu=w(Game.ToggleSpecialMenu,"else {pic='dragon.png?v='+Game.version;frame=4;}",`// Cppkies injection
+const override = Cppkies.hooks.emit("specialPic", {tab: Game.specialTab, frame: frame, pic: pic})
+pic = override.pic
+frame = override.frame;
+`,"after")})];a.forEach(function(o){var n;(n=o.func)===null||n===void 0||n.call(o)}),Game.Loader.Load=w(Game.Loader.Load,"img.src=this.domain",`
 			// Cppkies injection
 			img.src = (assets[i].indexOf('http') !== -1 ? "" : this.domain)
-`, "replace"), Game.UpdateMenu = d(Game.UpdateMenu, [["url(img/'+milk.pic+'.png)", "url(' + (milk.pic.indexOf('http') >= 0 ? milk.pic : 'img/'+milk.pic) + '.png)", "replace"], ["img/icons.png?v='+Game.version+'", "' + (Game.Milks[i].iconLink ? Game.Milks[i].iconLink : 'img/icons.png?v='+Game.version) + '", "replace"]]), Game.ToggleSpecialMenu = d(Game.ToggleSpecialMenu, [[">=5", '>=Game.dragonLevels.findIndex(val => val.name === "Krumblor, cookie hatchling")', "replace"], [">=25", '>=Game.dragonLevels.findIndex(val => val.action === "Train secondary aura<br><small>Lets you use two dragon auras simultaneously</small>") + 1', "replace"]]), Game.Objects.Cursor.buyFunction = s(Game.Objects.Cursor.buyFunction, "Game.Unlock('Octillion fingers');", "\n 			// Cppkies injection\n			for(const i in this.tieredUpgrades) {\n				if (isNaN(parseInt(i))) continue\n				if (this.amount >= Game.Tiers[this.tieredUpgrades[i].tier].unlock - 50) this.tieredUpgrades[i].unlock()\n			}\n", "after"), Game.Object = s(Game.Object, "Game.ObjectsN++", "\n// Cppkies injection\nCppkies.hookAllBuildings();\n", "after"), Game.CalculateGains = s(Game.CalculateGains, "var catMult=1;", "// Cppkies injection\n			Cppkies.hiddenMilkMult = milkMult;\n", "before"), e2(n2);
-          });
-        }().then(function(e2) {
-          W.hooks = e2, W.on = e2.on.bind(e2), Game.Notify("Cppkies loaded!", "", [32, 17], 1.5);
-          var n2 = document.createElement("div");
-          n2.textContent = "Cppkies!", document.querySelector("#topBar").insertBefore(n2, document.querySelector("#topBar").children[1]), Game.modSaveData.cppkies || (Game.modSaveData.cppkies = "{}"), Game.registerMod("cppkies", { save: T, load: S }), Game.Win("Third-party"), N(), Ge.onLoad.forEach(function(e3) {
-            return e3();
-          }), Ge.onLoad = new Proxy(Ge.onLoad, { set: function(e3, n3, i) {
-            return n3 !== "length" && i(), true;
-          } }), window.CPPKIES_ONLOAD || (window.CPPKIES_ONLOAD = []), window.CPPKIES_ONLOAD.forEach(function(e3) {
-            return e3();
-          }), window.CPPKIES_ONLOAD = new Proxy(Ge.onLoad, { set: function(e3, n3, i) {
-            return n3 !== "length" && i(), true;
-          } }), x();
-        }));
-        var _e = W;
-        return _e;
-      });
-    }
-  });
-
-  // jscc_temp/src/index.ts
-  var import_cppkies4 = __toModule(require_dist());
-
-  // jscc_temp/src/tags.ts
-  var _TagCondition = class {
-    constructor(name, color, tagFunction) {
-      this.name = name;
-      this.color = color;
-      this.tagFunction = tagFunction;
-      _TagCondition.Conditions.push(this);
-    }
-  };
-  var TagCondition = _TagCondition;
-  TagCondition.Conditions = [];
-
-  // jscc_temp/src/upgrade/AdvancedHeavelyUpgrade.ts
-  var import_cppkies = __toModule(require_dist());
-  var AdvancedHeavenlyUpgrade = class extends import_cppkies.default.HeavenlyUpgrade {
-    constructor(name, desc, price, icon, position, parents, buyFunc) {
-      super(name, desc, price, icon, [position[0], position[1]], parents, buyFunc);
-    }
-  };
-
-  // jscc_temp/src/upgrade/AdvancedUpgrade.ts
-  var import_cppkies2 = __toModule(require_dist());
-  var AdvancedUpgrade = class extends import_cppkies2.default.Upgrade {
-    constructor(name, desc, price, icon, buyFunc) {
-      super(name, desc, price, icon, buyFunc);
-    }
-  };
-
-  // jscc_temp/src/rifts.ts
-  var PagedHeavenlyUpgrade = class extends AdvancedHeavenlyUpgrade {
-    constructor(name, desc, price, position, page, icon, parents, buyFunc) {
-      super(name, desc, price, icon, position, parents, buyFunc);
-      if (typeof window.SkullyCore.pages[page] === "undefined")
-        window.SkullyCore.pages[page] = [];
-      window.SkullyCore.pages[page].push(this);
-      if (page !== "vanilla")
-        Game.PrestigeUpgrades.pop();
-    }
-  };
-  var RiftUpgrade = class extends PagedHeavenlyUpgrade {
-    constructor(name, desc, position, goto, back, icon = [
-      1,
-      2,
-      "https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png"
-    ], parents, buyFunc) {
-      super(name, desc, 0, position, back, icon, parents, buyFunc);
-      this.isRift = true;
-      this.activateFunction = () => {
-        window.SkullyCore.currentPage = this.goto;
-        Game.BuildAscendTree();
-      };
-      this.exclude = {
-        all: true
-      };
-      this.back = back;
-      this.noTags = true;
-      this.unlocked = 1;
-      this.bought = 1;
-      this.noNeuromancy = true;
-      this.goto = goto;
-    }
-  };
-  new TagCondition("Rift", "#9700cf", (me) => typeof me.isRift !== "undefined");
-  var PrestigePage = class {
-    constructor(name, id, parents, gotoicon, backicon) {
-      this.name = name;
-      this.id = id;
-      this.Rift = new RiftUpgrade(`Goto${this.name}...`, "Goto a new universe of possiblities. Don't worry, you can come back.", [-30, -130], this.id, "vanilla", gotoicon, parents);
-      this.VanillaRift = new RiftUpgrade("Goto Vanilla...", "Takes you back to the vanilla prestige tree.", [-30, -30], "vanilla", this.id, backicon);
-    }
-  };
-
-  // jscc_temp/src/bars/BaseWidget.ts
-  var BaseWidget = class {
-    constructor() {
-      this._hidden = false;
-    }
-    set hidden(state) {
-      this._hidden = state;
-      if (typeof this.div !== "undefined") {
-        this.div.style.display = state ? "none" : "block";
-      }
-    }
-    get hidden() {
-      return this._hidden;
-    }
-  };
-
-  // jscc_temp/src/helpers/common.ts
-  function createElementFromString(htmlString) {
-    const div = document.createElement("div");
-    div.innerHTML = htmlString.trim();
-    return div.firstChild;
-  }
-  function exclude(type, me) {
-    var _a, _b;
-    if (typeof (me == null ? void 0 : me.exclude) !== "undefined") {
-      if (typeof ((_a = me == null ? void 0 : me.exclude) == null ? void 0 : _a.all) !== "undefined" && !me.exclude.all)
-        return true;
-      if (typeof ((_b = me == null ? void 0 : me.exclude) == null ? void 0 : _b[type]) !== "undefined" && !me.exclude[type])
-        return true;
-    }
-    return false;
-  }
-  function IconToStyle(icon) {
-    return `${!(typeof icon[2] === "undefined" || icon[2] === "") ? `background-image: url(${icon[2]});` : ""}background-position:${-icon[0] * 48}px ${-icon[1] * 48}px;`;
-  }
-
-  // jscc_temp/src/helpers/tooltip.ts
-  function attachTooltip(div, tooltip) {
-    div.addEventListener("mouseout", () => {
-      Game.tooltip.shouldHide = 1;
-    });
-    div.addEventListener("mouseover", function arrow() {
-      Game.tooltip.dynamic = 1;
-      Game.tooltip.draw(this, tooltip, "bottom");
-      Game.tooltip.wobble();
-    });
-  }
-
-  // jscc_temp/src/bars/BuildingBarMenuWidget.ts
-  var _BuildingBarMenuWidget = class extends BaseWidget {
-    constructor(id, icon, building, tooltip) {
-      super();
-      var _a, _b;
-      this.id = id;
-      this.icon = icon;
-      this.building = building;
-      this.tooltip = tooltip;
-      const bars = _BuildingBarMenuWidget.Bars;
-      (_b = bars[_a = this.building]) != null ? _b : bars[_a] = [];
-      this.index = bars[this.building].push(this) - 1;
-    }
-    getDiv() {
-      let div = createElementFromString(`
+`,"replace"),Game.UpdateMenu=q(Game.UpdateMenu,[["url(img/'+milk.pic+'.png)","url(' + (milk.pic.indexOf('http') >= 0 ? milk.pic : 'img/'+milk.pic) + '.png)","replace"],["img/icons.png?v='+Game.version+'","' + (Game.Milks[i].iconLink ? Game.Milks[i].iconLink : 'img/icons.png?v='+Game.version) + '","replace"]]),Game.ToggleSpecialMenu=q(Game.ToggleSpecialMenu,[[">=5",'>=Game.dragonLevels.findIndex(val => val.name === "Krumblor, cookie hatchling")',"replace"],[">=25",'>=Game.dragonLevels.findIndex(val => val.action === "Train secondary aura<br><small>Lets you use two dragon auras simultaneously</small>") + 1',"replace"]]),Game.Objects.Cursor.buyFunction=w(Game.Objects.Cursor.buyFunction,"Game.Unlock('Octillion fingers');",`
+ 			// Cppkies injection
+			for(const i in this.tieredUpgrades) {
+				if (isNaN(parseInt(i))) continue
+				if (this.amount >= Game.Tiers[this.tieredUpgrades[i].tier].unlock - 50) this.tieredUpgrades[i].unlock()
+			}
+`,"after"),Game.Object=w(Game.Object,"Game.ObjectsN++",`
+// Cppkies injection
+Cppkies.hookAllBuildings();
+`,"after"),Game.CalculateGains=w(Game.CalculateGains,"var catMult=1;",`// Cppkies injection
+			Cppkies.hiddenMilkMult = milkMult;
+`,"before"),e(t)})}().then(function(e){D.hooks=e,D.on=e.on.bind(e),Game.Notify("Cppkies loaded!","",[32,17],1.5);var t=document.createElement("div");t.textContent="Cppkies!",document.querySelector("#topBar").insertBefore(t,document.querySelector("#topBar").children[1]),Game.modSaveData.cppkies||(Game.modSaveData.cppkies="{}"),Game.registerMod("cppkies",{save:mn,load:pn}),Game.Win("Third-party"),He(),k.onLoad.forEach(function(a){return a()}),k.onLoad=new Proxy(k.onLoad,{set:function(a,o,n){return o!=="length"&&n(),!0}}),window.CPPKIES_ONLOAD||(window.CPPKIES_ONLOAD=[]),window.CPPKIES_ONLOAD.forEach(function(a){return a()}),window.CPPKIES_ONLOAD=new Proxy(k.onLoad,{set:function(a,o,n){return o!=="length"&&n(),!0}}),hn()}));var Pn=D;return Pn})});var _=ce(X());var Ce=class{constructor(d,f,h){this.name=d;this.color=f;this.tagFunction=h;Ce.Conditions.push(this)}},H=Ce;H.Conditions=[];var Je=ce(X()),z=class extends Je.default.HeavenlyUpgrade{constructor(d,f,h,y,g,I,T){super(d,f,h,y,[g[0],g[1]],I,T)}};var Qe=ce(X()),xe=class extends Qe.default.Upgrade{constructor(d,f,h,y,g){super(d,f,h,y,g)}};var ue=class extends z{constructor(d,f,h,y,g,I,T,j){super(d,f,h,I,y,T,j);typeof window.SkullyCore.pages[g]=="undefined"&&(window.SkullyCore.pages[g]=[]),window.SkullyCore.pages[g].push(this),g!=="vanilla"&&Game.PrestigeUpgrades.pop()}},J=class extends ue{constructor(d,f,h,y,g,I=[1,2,"https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png"],T,j){super(d,f,0,h,g,I,T,j);this.isRift=!0;this.activateFunction=()=>{window.SkullyCore.currentPage=this.goto,Game.BuildAscendTree()};this.exclude={all:!0},this.back=g,this.noTags=!0,this.unlocked=1,this.bought=1,this.noNeuromancy=!0,this.goto=y}};new H("Rift","#9700cf",p=>typeof p.isRift!="undefined");var Te=class{constructor(d,f,h,y,g){this.name=d,this.id=f,this.Rift=new J(`Goto${this.name}...`,"Goto a new universe of possiblities. Don't worry, you can come back.",[-30,-130],this.id,"vanilla",y,h),this.VanillaRift=new J("Goto Vanilla...","Takes you back to the vanilla prestige tree.",[-30,-30],"vanilla",this.id,g)}};var Q=class{constructor(){this._hidden=!1}set hidden(d){this._hidden=d,typeof this.div!="undefined"&&(this.div.style.display=d?"none":"block")}get hidden(){return this._hidden}};function E(p){let d=document.createElement("div");return d.innerHTML=p.trim(),d.firstChild}function Ze(p,d){var f,h;return typeof(d==null?void 0:d.exclude)!="undefined"&&(typeof((f=d==null?void 0:d.exclude)==null?void 0:f.all)!="undefined"&&!d.exclude.all||typeof((h=d==null?void 0:d.exclude)==null?void 0:h[p])!="undefined"&&!d.exclude[p])}function V(p){return`${typeof p[2]=="undefined"||p[2]===""?"":`background-image: url(${p[2]});`}background-position:${-p[0]*48}px ${-p[1]*48}px;`}function le(p,d){p.addEventListener("mouseout",()=>{Game.tooltip.shouldHide=1}),p.addEventListener("mouseover",function(){Game.tooltip.dynamic=1,Game.tooltip.draw(this,d,"bottom"),Game.tooltip.wobble()})}var Le=class extends Q{constructor(d,f,h,y){super();var I,T;this.id=d,this.icon=f,this.building=h,this.tooltip=y;let g=Le.Bars;(T=g[I=this.building])!=null||(g[I]=[]),this.index=g[this.building].push(this)-1}getDiv(){let d=E(`
 			<div 
 				class="building_bar" 
 				id="${this.id}BuildingBarMenu"
 			> 
 				<div 
 					id="${this.id}BuildingBarMenuIcon" 
-					class="baseIcon ${!this.icon[2] ? "usesIcon" : ""}" 
-					style="${IconToStyle(this.icon)}"
+					class="baseIcon ${this.icon[2]?"":"usesIcon"}" 
+					style="${V(this.icon)}"
 				></div>
 			</div>
-		`);
-      if (typeof this.onclick !== "undefined") {
-        div.addEventListener("click", this.onclick.bind(this));
-      }
-      if (typeof this.tooltip !== "undefined") {
-        attachTooltip(div, this.tooltip);
-      }
-      if (typeof this.customDiv !== "undefined") {
-        div = this.customDiv(div);
-      }
-      if (this.hidden) {
-        div.style.display = "none";
-      }
-      return div;
-    }
-  };
-  var BuildingBarMenuWidget = _BuildingBarMenuWidget;
-  BuildingBarMenuWidget.Bars = {};
-
-  // jscc_temp/src/bars/TopBarMenuWidget.ts
-  var _TopBarMenuWidget = class extends BaseWidget {
-    constructor(id, icon, tooltip) {
-      super();
-      this.id = id;
-      this.icon = icon;
-      this.tooltip = tooltip;
-      this.index = _TopBarMenuWidget.Bars.push(this) - 1;
-    }
-    getDiv() {
-      let div = createElementFromString(`
+		`);return typeof this.onclick!="undefined"&&d.addEventListener("click",this.onclick.bind(this)),typeof this.tooltip!="undefined"&&le(d,this.tooltip),typeof this.customDiv!="undefined"&&(d=this.customDiv(d)),this.hidden&&(d.style.display="none"),d}},Z=Le;Z.Bars={};var Se=class extends Q{constructor(d,f,h){super();this.id=d,this.icon=f,this.tooltip=h,this.index=Se.Bars.push(this)-1}getDiv(){let d=E(`
         <div 
 			class="top_bar"
 			id="${this.id}TopBarMenu"
 		> 
             <div 
 				id="${this.id}TopBarMenuIcon" 
-				class="baseIcon ${!this.icon[2] ? "usesIcon" : ""}" 
-				style="${IconToStyle(this.icon)}"
+				class="baseIcon ${this.icon[2]?"":"usesIcon"}" 
+				style="${V(this.icon)}"
 			></div>
-        </div>`);
-      if (typeof this.onclick !== "undefined") {
-        div.addEventListener("click", this.onclick.bind(this));
-      }
-      if (typeof this.tooltip !== "undefined") {
-        attachTooltip(div, this.tooltip);
-      }
-      if (typeof this.customDiv !== "undefined") {
-        div = this.customDiv(div);
-      }
-      if (this.hidden) {
-        div.style.display = "none";
-      }
-      return div;
-    }
-  };
-  var TopBarMenuWidget = _TopBarMenuWidget;
-  TopBarMenuWidget.Bars = [];
-
-  // jscc_temp/src/buff/AdvancedBuff.ts
-  var AdvancedBuff = class extends Game.buffType {
-    constructor(name, func) {
-      super(name, func);
-    }
-  };
-
-  // jscc_temp/src/quests.ts
-  var Task = class extends AdvancedBuff {
-    constructor(name, func, check, finish) {
-      super(name, func);
-    }
-  };
-
-  // jscc_temp/src/achievement/AdvancedAchievement.ts
-  var import_cppkies3 = __toModule(require_dist());
-  var AdvancedAchievement = class extends import_cppkies3.default.Achievement {
-    constructor(name, desc, icon) {
-      super(name, desc, icon);
-    }
-  };
-
-  // jscc_temp/src/achievement/AuthorAchievement.ts
-  var AuthorAchievement = class extends AdvancedAchievement {
-    constructor(name, desc, icon) {
-      super(name, desc, icon);
-      this.pool = "authors";
-      this.exclude = { shadow: true };
-      this.won = 1;
-      this.noTags = true;
-      this.noNeuromancy = true;
-    }
-  };
-
-  // jscc_temp/src/index.ts
-  var SkullyCore = {
-    AdvancedAchievement,
-    AdvancedHeavenlyUpgrade,
-    AdvancedUpgrade,
-    AuthorAchievement,
-    TagCondition,
-    PrestigePage,
-    RiftUpgrade,
-    PagedHeavenlyUpgrade,
-    currentPage: "vanilla",
-    pages: { vanilla: Game.PrestigeUpgrades },
-    TopBarMenuWidget,
-    BuildingBarMenuWidget,
-    Task,
-    onLoad: [],
-    exclude,
-    IconToStyle,
-    createElementFromString
-  };
-  var SkullyCoreExport;
-  if (typeof window.SkullyCore !== "undefined")
-    SkullyCoreExport = window.SkullyCore;
-  else {
-    window.SkullyCore = SkullyCore;
-    SkullyCoreExport = SkullyCore;
-    import_cppkies4.default.onLoad.push(() => {
-      var InjectCode;
-      (function(InjectCode2) {
-        InjectCode2["After"] = "after";
-        InjectCode2["Replace"] = "replace";
-        InjectCode2["Before"] = "before";
-      })(InjectCode || (InjectCode = {}));
-      Game.UpdateMenu = import_cppkies4.default.injectCodes(Game.UpdateMenu, [
-        [
-          "for (var i in achievements)",
-          'pools.authors = "<b>Authors</b> <small>The people who made the mods you are playing with now!</small>";',
-          InjectCode.Before
-        ]
-      ]);
-      Game.crate = import_cppkies4.default.injectCodes(Game.crate, [
-        [
-          "if (neuromancy)",
-          'if (neuromancy && (typeof me.noNeuromancy !== "undefined" ? !me.noNeuromancy : true))',
-          InjectCode.Replace
-        ]
-      ]);
-      Game.crateTooltip = import_cppkies4.default.injectCodes(Game.crateTooltip, [
-        [
-          "var tagsStr='';",
-          `
+        </div>`);return typeof this.onclick!="undefined"&&d.addEventListener("click",this.onclick.bind(this)),typeof this.tooltip!="undefined"&&le(d,this.tooltip),typeof this.customDiv!="undefined"&&(d=this.customDiv(d)),this.hidden&&(d.style.display="none"),d}},ee=Se;ee.Bars=[];var Ae=class extends Game.buffType{constructor(d,f){super(d,f)}};var Ie=class extends Ae{constructor(d,f,h,y){super(d,f)}};var en=ce(X()),ne=class extends en.default.Achievement{constructor(d,f,h){super(d,f,h)}};var F=class extends ne{constructor(d,f,h){super(d,f,h);this.pool="authors",this.exclude={shadow:!0},this.won=1,this.noTags=!0,this.noNeuromancy=!0}};var de={AdvancedAchievement:ne,AdvancedHeavenlyUpgrade:z,AdvancedUpgrade:xe,AuthorAchievement:F,TagCondition:H,PrestigePage:Te,RiftUpgrade:J,PagedHeavenlyUpgrade:ue,currentPage:"vanilla",pages:{vanilla:Game.PrestigeUpgrades},TopBarMenuWidget:ee,BuildingBarMenuWidget:Z,Task:Ie,onLoad:[],exclude:Ze,IconToStyle:V,createElementFromString:E},Oe;typeof window.SkullyCore!="undefined"?Oe=window.SkullyCore:(window.SkullyCore=de,Oe=de,_.default.onLoad.push(()=>{var p;(function(g){g.After="after",g.Replace="replace",g.Before="before"})(p||(p={})),Game.UpdateMenu=_.default.injectCodes(Game.UpdateMenu,[["for (var i in achievements)",'pools.authors = "<b>Authors</b> <small>The people who made the mods you are playing with now!</small>";',p.Before]]),Game.crate=_.default.injectCodes(Game.crate,[["if (neuromancy)",'if (neuromancy && (typeof me.noNeuromancy !== "undefined" ? !me.noNeuromancy : true))',p.Replace]]),Game.crateTooltip=_.default.injectCodes(Game.crateTooltip,[["var tagsStr='';",`
 				if (typeof me.noTags !== "undefined" ? me.noTags : false) tags = []
 				if (typeof me.tags !== "undefined") {
 					for(let i in me.tags) {
@@ -1160,87 +106,34 @@
 						console.warn("Malformed TagCondition")
 					}
 				})
-				`,
-          InjectCode.Before
-        ]
-      ]);
-      Game.UpdateMenu = import_cppkies4.default.injectCodes(Game.UpdateMenu, [
-        [
-          "if (me.pool=='' || me.pool=='cookie' || me.pool=='tech') upgradesTotal++;",
-          `if (me.pool=='' || me.pool=='cookie' || me.pool=='tech') {
+				`,p.Before]]),Game.UpdateMenu=_.default.injectCodes(Game.UpdateMenu,[["if (me.pool=='' || me.pool=='cookie' || me.pool=='tech') upgradesTotal++;",`if (me.pool=='' || me.pool=='cookie' || me.pool=='tech') {
 					// SkullyCore Inject
 					if (window.SkullyCore.exclude("total", me)) upgradesTotal++;
-				}`,
-          InjectCode.Replace
-        ],
-        [
-          "if (me.pool=='debug') hiddenUpgrades += str2;",
-          `if (me.pool=='debug') { 
+				}`,p.Replace],["if (me.pool=='debug') hiddenUpgrades += str2;",`if (me.pool=='debug') { 
 					// SkullyCore Inject
 					if (window.SkullyCore.exclude("debug", me)) hiddenUpgrades += str2;
-				}`,
-          InjectCode.Replace
-        ],
-        [
-          "if (me.pool=='prestige') {prestigeUpgrades+=str2;prestigeUpgradesTotal++;}",
-          `if (me.pool=='prestige') {
+				}`,p.Replace],["if (me.pool=='prestige') {prestigeUpgrades+=str2;prestigeUpgradesTotal++;}",`if (me.pool=='prestige') {
                		// SkullyCore Inject
 					if (window.SkullyCore.exclude("prestige", me)) {
 						prestigeUpgrades += str2;
 						prestigeUpgradesTotal++;
 					}
-				}`,
-          InjectCode.Replace
-        ],
-        [
-          "if (me.pool=='prestige') prestigeUpgradesOwned++;",
-          `if (me.pool=='prestige') {
+				}`,p.Replace],["if (me.pool=='prestige') prestigeUpgradesOwned++;",`if (me.pool=='prestige') {
 					// SkullyCore Inject
 					if (window.SkullyCore.exclude("prestige", me)) prestigeUpgradesOwned++;
-				}`,
-          InjectCode.Replace
-        ],
-        [
-          "if (me.pool=='cookie') cookieUpgrades+=str2;",
-          `if (me.pool=='cookie') {
+				}`,p.Replace],["if (me.pool=='cookie') cookieUpgrades+=str2;",`if (me.pool=='cookie') {
 					// SkullyCore Inject
 					if (window.SkullyCore.exclude("cookie", me)) cookieUpgrades += str2;
-				}`,
-          InjectCode.Replace
-        ],
-        [
-          "if (me.pool!='toggle' && me.pool!='unused') upgrades+=str2;",
-          `if (me.pool!='toggle' && me.pool!='unused') {
+				}`,p.Replace],["if (me.pool!='toggle' && me.pool!='unused') upgrades+=str2;",`if (me.pool!='toggle' && me.pool!='unused') {
 					// SkullyCore Inject
 					if (window.SkullyCore.exclude("other", me)) {
 						upgrades+=str2;
 					}
-				}`,
-          InjectCode.Replace
-        ],
-        [
-          "achievementsOwnedOther++;",
-          `if (window.SkullyCore.exclude("shadow", me)) {
+				}`,p.Replace],["achievementsOwnedOther++;",`if (window.SkullyCore.exclude("shadow", me)) {
 					// SkullyCore Inject
 					achievementsOwnedOther++;
-				}`,
-          InjectCode.Replace
-        ]
-      ]);
-      Game.BuildAscendTree = import_cppkies4.default.injectCodes(Game.BuildAscendTree, [
-        [
-          "for (var i in Game.PrestigeUpgrades)",
-          "for (var i in window.SkullyCore.pages[window.SkullyCore.currentPage])",
-          InjectCode.Replace
-        ],
-        [
-          "var str='';",
-          "var currentHeavenlyUpgrades = window.SkullyCore.pages[window.SkullyCore.currentPage];\n",
-          InjectCode.Before
-        ],
-        ["Game.PrestigeUpgrades", "currentHeavenlyUpgrades", InjectCode.Replace]
-      ]);
-      document.getElementsByTagName("head")[0].appendChild(createElementFromString(`
+				}`,p.Replace]]),Game.BuildAscendTree=_.default.injectCodes(Game.BuildAscendTree,[["for (var i in Game.PrestigeUpgrades)","for (var i in window.SkullyCore.pages[window.SkullyCore.currentPage])",p.Replace],["var str='';",`var currentHeavenlyUpgrades = window.SkullyCore.pages[window.SkullyCore.currentPage];
+`,p.Before],["Game.PrestigeUpgrades","currentHeavenlyUpgrades",p.Replace]]),document.getElementsByTagName("head")[0].appendChild(E(`
 			<style type="text/css">
 				.widget_container {
 					display: flex;
@@ -1285,94 +178,9 @@
 				{
 					position: relative !important;
 				}
-			</style>`));
-      SkullyCore.onLoad.forEach((func) => func());
-      const TopBar = l("comments").appendChild(createElementFromString(`
+			</style>`)),de.onLoad.forEach(f=>f());let d=l("comments").appendChild(E(`
 				<div id="comments_container" class="widget_container"></div>
-			`));
-      TopBarMenuWidget.Bars.forEach((bar) => {
-        bar.div = TopBar.appendChild(bar.getDiv());
-      });
-      Game.ObjectsById.forEach((object) => {
-        var _a, _b;
-        const el = l(`row${object.id}`);
-        if (el !== null) {
-          const building = el.appendChild(createElementFromString(`
-						<div id="row${object.id}_container" class="widget_container"></div>
-					`));
-          const bars = BuildingBarMenuWidget.Bars;
-          (_b = bars[_a = object.name]) != null ? _b : bars[_a] = [];
-          bars[object.name].forEach((bar) => {
-            bar.div = building.appendChild(bar.getDiv());
-          });
-        }
-      });
-    });
-    SkullyCore.onLoad.push(() => {
-      new TagCondition("Author", "#ffffff", (me) => me.pool === "authors");
-      const iconLink = "https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png";
-      new AuthorAchievement("Orteil & Opti", "The people who made this awesome game!", [17, 5, ""]);
-      new AuthorAchievement("TheGLander", "The developer of Cppkies and the CCRepo (W.I.P)", [3, 2, iconLink]);
-      new AuthorAchievement("TheSkullyKO", "The ideas guy and artist for SkullyCore and other Skully mods", [
-        1,
-        0,
-        iconLink
-      ]);
-      const BobCheevo = new AuthorAchievement("Bob", "The developer that made this menu for authors and hopefully will work on much more.", [2, 2, iconLink]);
-      let BobClicks = 0;
-      let BobLines = [
-        { text: "The developer that made this menu for authors and hopefully will work on much more." },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "You can stop clicking on me now. There's not an achievement or anything, there's not bcps (Bob Clicks per Second), there's really nothing too interesting." },
-        { text: "Like I'm serious there's nothing execept these words." },
-        { text: "..." },
-        { text: "....." },
-        { text: "......." },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "Hi!" },
-        { text: "Wow, you're still here. Usually those two tricks work. " },
-        { text: "Well there's nothing else." },
-        { text: "I mean you can keep clicking on me." },
-        { text: "But it's ultimately a waste of your time." },
-        { text: "Oh look! There's a golden cookie, better go click on it not me!", func: () => {
-          new Game.shimmer("golden").force = "blab";
-        } },
-        { text: "Hah that's what you get for clicking on me!" },
-        { text: "Wait that wasn't a wrath cookie, just a harmless blab! Grrrrr, I'll get you next time!" },
-        { text: "For a reward, I'll go away for now, but I'll be back!", func: () => {
-          Game.RemoveAchiev("Bob");
-          setTimeout(() => {
-            Game.Achievements["Bob"].won = 1;
-            BobClicks++;
-          }, 1e4);
-        } },
-        { text: "Okay, I'm Back." },
-        { text: "To be continued..... " }
-      ];
-      BobCheevo.clickFunction = () => {
-        if (BobClicks !== BobLines.length)
-          BobClicks++;
-      };
-      BobCheevo.descFunc = () => {
-        if (typeof BobLines[BobClicks].func !== "undefined") {
-          BobLines[BobClicks].func();
-        }
-        return BobLines[BobClicks].text;
-      };
-      BobCheevo.iconFunction = () => {
-        var _a, _b;
-        return (_b = (_a = BobLines[BobClicks]) == null ? void 0 : _a.icon) != null ? _b : [0, 2];
-      };
-      console.log("SkullyCore Loaded!");
-    });
-  }
-  var src_default = SkullyCoreExport;
-})();
+			`));ee.Bars.forEach(f=>{f.div=d.appendChild(f.getDiv())}),Game.ObjectsById.forEach(f=>{var y,g;let h=l(`row${f.id}`);if(h!==null){let I=h.appendChild(E(`
+						<div id="row${f.id}_container" class="widget_container"></div>
+					`)),T=Z.Bars;(g=T[y=f.name])!=null||(T[y]=[]),T[f.name].forEach(j=>{j.div=I.appendChild(j.getDiv())})}})}),de.onLoad.push(()=>{new H("Author","#ffffff",y=>y.pool==="authors");let p="https://raw.githubusercontent.com/MasterOfBob777/SkullyCore/master/static/skullyCoreIcons.png";new F("Orteil & Opti","The people who made this awesome game!",[17,5,""]),new F("TheGLander","The developer of Cppkies and the CCRepo (W.I.P)",[3,2,p]),new F("TheSkullyKO","The ideas guy and artist for SkullyCore and other Skully mods",[1,0,p]);let d=new F("Bob","The developer that made this menu for authors and hopefully will work on much more.",[2,2,p]),f=0,h=[{text:"The developer that made this menu for authors and hopefully will work on much more."},{text:"Hi!"},{text:"Hi!"},{text:"Hi!"},{text:"Hi!"},{text:"Hi!"},{text:"You can stop clicking on me now. There's not an achievement or anything, there's not bcps (Bob Clicks per Second), there's really nothing too interesting."},{text:"Like I'm serious there's nothing execept these words."},{text:"..."},{text:"....."},{text:"......."},{text:"Hi!"},{text:"Hi!"},{text:"Hi!"},{text:"Hi!"},{text:"Hi!"},{text:"Wow, you're still here. Usually those two tricks work. "},{text:"Well there's nothing else."},{text:"I mean you can keep clicking on me."},{text:"But it's ultimately a waste of your time."},{text:"Oh look! There's a golden cookie, better go click on it not me!",func:()=>{new Game.shimmer("golden").force="blab"}},{text:"Hah that's what you get for clicking on me!"},{text:"Wait that wasn't a wrath cookie, just a harmless blab! Grrrrr, I'll get you next time!"},{text:"For a reward, I'll go away for now, but I'll be back!",func:()=>{Game.RemoveAchiev("Bob"),setTimeout(()=>{Game.Achievements.Bob.won=1,f++},1e4)}},{text:"Okay, I'm Back."},{text:"To be continued..... "}];d.clickFunction=()=>{f!==h.length&&f++},d.descFunc=()=>(typeof h[f].func!="undefined"&&h[f].func(),h[f].text),d.iconFunction=()=>{var y,g;return(g=(y=h[f])==null?void 0:y.icon)!=null?g:[0,2,p]},console.log("SkullyCore Loaded!")}));var Bt=Oe;})();
 //# sourceMappingURL=index.js.map
